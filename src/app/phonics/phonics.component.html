@@ -1,1 +1,18 @@
-<p>phonics works!</p>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+  <mat-tab label="Reading Words">
+    <mat-form-field class="filter-words-field">
+      <mat-label>Filter words to display</mat-label>
+      <input matInput type="text" [(ngModel)]="filterTxt" autocomplete="off">
+      <button mat-button *ngIf="filterTxt" matSuffix mat-icon-button aria-label="Clear" (click)="filterTxt=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let word of getFiltered()" class="word-tile" (click)="showPic(word)">
+        <span class="word-item">{{word.word}}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </mat-tab>
+  <mat-tab label="Match Words with Pictures"> Content 1 </mat-tab>
+</mat-tab-group>

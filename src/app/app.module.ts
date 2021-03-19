@@ -15,25 +15,43 @@ import {MatListModule} from "@angular/material/list";
 import { PhonicsComponent } from './phonics/phonics.component';
 import { MathsComponent } from './maths/maths.component';
 import { HomeComponent } from './home/home.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatBadgeModule} from "@angular/material/badge";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {WordPicComponent} from './phonics/word.pic.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     PhonicsComponent,
     MathsComponent,
-    HomeComponent
+    HomeComponent,
+    WordPicComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatTabsModule,
     MatCardModule,
+    MatDividerModule,
     MatSidenavModule,
     MatListModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MatFormFieldModule,
+    MatInputModule,
+    MatBadgeModule,
+    MatGridListModule,
+    MatDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
