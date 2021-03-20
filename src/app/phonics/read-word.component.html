@@ -1,18 +1,20 @@
-<h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
-<mat-dialog-content>
-  <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
-    <mat-grid-tile mat-ripple class="nav-item" (click)="prev()">
-      <mat-icon *ngIf="displayIndex>0">navigate_before</mat-icon>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="5" class="word-item" [ngClass]="{'clickable':getWord()?.resources?.length}" (click)="!allDone() && showPic()">
-      <mat-card *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">{{getWord().word}}</mat-card>
-      <mat-card *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile mat-ripple class="nav-item" (click)="next()">
-      <mat-icon *ngIf="displayIndex<words.length">navigate_next</mat-icon>
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button color="warn" mat-dialog-close>Close</button>
-</mat-dialog-actions>
+<div (keydown.ArrowLeft)="prev()" (keydown.ArrowRight)="next()" (keydown.escape)="close()">
+  <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
+  <mat-dialog-content>
+    <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
+      <mat-grid-tile mat-ripple class="nav-item" (click)="prev()">
+        <mat-icon *ngIf="displayIndex>0">navigate_before</mat-icon>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="5" class="word-item" [ngClass]="{'clickable':getWord()?.resources?.length}" (click)="!allDone() && showPic()">
+        <mat-card *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">{{getWord().word}}</mat-card>
+        <mat-card *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile mat-ripple class="nav-item" (click)="next()">
+        <mat-icon *ngIf="displayIndex<words.length">navigate_next</mat-icon>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="warn" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>

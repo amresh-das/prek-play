@@ -12,7 +12,7 @@ export class ReadWordComponent {
   words: Word[];
   displayIndex = 0;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>) {
     this.words = this.data.items;
   }
 
@@ -44,6 +44,9 @@ export class ReadWordComponent {
         item: this.getWord()
       }
     });
+  }
 
+  close() {
+    this.dialogRef.close();
   }
 }

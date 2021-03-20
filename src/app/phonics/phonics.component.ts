@@ -4,6 +4,8 @@ import {Word} from "../model/word.model";
 import {MatDialog} from "@angular/material/dialog";
 import {WordPicComponent} from "./word.pic.component";
 import {ReadWordComponent} from "./read-word.component";
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-phonics',
@@ -15,7 +17,11 @@ export class PhonicsComponent implements OnInit {
   constructor(private wordsService: WordsService, public dialog: MatDialog) { }
 
   words: Word[] = [];
-  filterTxt = '';
+  filters: string[] = [];
+  selectable = true;
+  removable = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
+
   columnCount: number = 3;
   wordWidth: number = 220;
 
@@ -30,10 +36,10 @@ export class PhonicsComponent implements OnInit {
   }
 
   getFiltered(): Word[] {
-    if (this.filterTxt === '') {
+    if (this.filters.length == 0) {
       return this.words;
     } else {
-      return this.words.filter(w => w.word.indexOf(this.filterTxt.toLowerCase()) >= 0);
+      return this.words.filter(w => this.filters.find(f => w.word.indexOf(f.toLowerCase()) >= 0));
     }
   }
 
@@ -78,6 +84,21 @@ export class PhonicsComponent implements OnInit {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  }
+
+  remove(filter: string) {
+    this.filters.splice(this.filters.indexOf(filter), 1);
+  }
+
+  addFilter(event: MatChipInputEvent) {
+    const input = event.input;
+    const value = event.value;
+    if (value.length > 0) {
+      this.filters.push(value);
+    }
+    if (input) {
+      input.value = '';
+    }
   }
 
 }

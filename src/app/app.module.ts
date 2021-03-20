@@ -29,6 +29,7 @@ import {MatRippleModule} from "@angular/material/core";
 import {MatMenuModule} from "@angular/material/menu";
 import { ReadWordComponent } from './phonics/read-word.component';
 import {MatButtonModule} from "@angular/material/button";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatRippleModule,
     MatMenuModule,
     MatButtonModule,
+    MatChipsModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
