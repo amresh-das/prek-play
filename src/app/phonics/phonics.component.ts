@@ -37,8 +37,9 @@ export class PhonicsComponent implements OnInit {
   }
 
   showPic(word: Word) {
+    let dialogWidth = window.innerWidth < window.innerHeight ? '80%' : '40%';
     this.dialog.open(WordPicComponent, {
-      width: '40%',
+      width: dialogWidth,
       data: {
         item: word,
       }
