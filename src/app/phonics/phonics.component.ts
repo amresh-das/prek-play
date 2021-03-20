@@ -28,7 +28,7 @@ export class PhonicsComponent implements OnInit {
     this.columnCount = window.innerWidth / this.wordWidth;
   }
 
-  getFiltered() {
+  getFiltered(): Word[] {
     if (this.filterTxt === '') {
       return this.words;
     } else {

@@ -1,21 +1,20 @@
 <mat-toolbar color="primary">
-  <mat-icon aria-hidden="false" aria-label="Open side nav" (click)="snav.toggle()" class="clickable">menu</mat-icon>
-  <mat-icon aria-hidden="false" aria-label="Go to Home" routerLink="" class="clickable">home</mat-icon>
+  <a [matMenuTriggerFor]="menu" aria-label="Open Menu" class="clickable">
+    <mat-icon>menu</mat-icon>
+  </a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="navigateMenu('phonics')">
+      <mat-icon>text_snippet</mat-icon>
+      <span>Phonics</span>
+    </button>
+    <button mat-menu-item (click)="navigateMenu('maths')">
+      <mat-icon>exposure</mat-icon>
+      <span>Maths</span>
+    </button>
+  </mat-menu>
   <span>Pre-K Play</span>
   <span class="app-spacer"></span>
   <mat-icon aria-hidden="false" aria-label="Pre-K Play">sports_soccer</mat-icon>
 </mat-toolbar>
 
-<mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-    <mat-nav-list>
-      <a mat-list-item routerLink="{{nav.path}}" *ngFor="let nav of navMenus">{{nav.label}}</a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
+<span><router-outlet></router-outlet></span>

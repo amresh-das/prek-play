@@ -5,7 +5,7 @@ import {MathsComponent} from "./maths/maths.component";
 import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/phonics', pathMatch: 'full' },
   { path: 'phonics', component: PhonicsComponent },
   { path: 'maths', component: MathsComponent }
 ];

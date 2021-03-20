@@ -25,6 +25,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {WordPicComponent} from './phonics/word.pic.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatRippleModule} from "@angular/material/core";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatBadgeModule,
     MatGridListModule,
     MatDialogModule,
+    MatRippleModule,
+    MatMenuModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
