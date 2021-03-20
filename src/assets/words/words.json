@@ -1,7 +1,7 @@
 [
   {"word": "pan", "resources" : ["pan.png"] },
   {"word": "pin", "resources" : ["pin.jpg"] },
-  {"word": "rub", "resources" : [] },
+  {"word": "rub", "resources" : ["rub.gif"] },
   {"word": "rib", "resources" : ["ribs.png"] },
   {"word": "cup", "resources" : ["cup.png"] },
   {"word": "cap", "resources" : ["cap.png"] },
@@ -45,7 +45,7 @@
   {"word": "weed", "resources" : ["weed1.png", "weed2.png"] },
   {"word": "deed", "resources" : [] },
   {"word": "teen", "resources" : [] },
-  {"word": "pick", "resources" : [] },
+  {"word": "pick", "resources" : ["pick.gif"] },
   {"word": "lick", "resources" : ["lick.gif"] },
   {"word": "sock", "resources" : ["sock.png"] },
   {"word": "duck", "resources" : ["duck.png"] },
