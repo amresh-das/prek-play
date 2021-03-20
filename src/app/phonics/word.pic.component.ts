@@ -11,6 +11,7 @@ import {Word} from "../model/word.model";
 export class WordPicComponent {
   word: string;
   resource: string;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.word = data.item.word;
     this.resource = this.getImage(data.item);

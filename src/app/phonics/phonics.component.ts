@@ -32,14 +32,15 @@ export class PhonicsComponent implements OnInit {
     if (this.filterTxt === '') {
       return this.words;
     } else {
-      return this.words.filter(w => w.word.indexOf(this.filterTxt) >= 0);
+      return this.words.filter(w => w.word.indexOf(this.filterTxt.toLowerCase()) >= 0);
     }
   }
 
   showPic(word: Word) {
     this.dialog.open(WordPicComponent, {
+      width: '40%',
       data: {
-        item: word
+        item: word,
       }
     });
   }

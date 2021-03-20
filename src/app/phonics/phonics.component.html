@@ -9,7 +9,7 @@
     </mat-form-field>
     <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
       <mat-grid-tile *ngFor="let word of getFiltered()" class="word-tile" (click)="showPic(word)">
-        <span class="word-item">{{word.word}}</span>
+        <span class="word-item">{{word.word | lowercase}}</span>
       </mat-grid-tile>
     </mat-grid-list>
 

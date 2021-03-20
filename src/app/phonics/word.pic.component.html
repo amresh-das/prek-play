@@ -1,6 +1,8 @@
 <mat-card>
-  <mat-card-title>{{word}}</mat-card-title>
-  <mat-card-content>
-    <img *ngIf="resource" src="/assets/images/{{resource}}" alt="{{word}}" width="400" height="420"/>
+  <mat-card-content *ngIf="resource"  fxLayout="row" fxLayoutAlign="center">
+    <img mat-card-image src="/assets/images/{{resource}}" alt="{{word}}"/>
   </mat-card-content>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="center" style="font-weight: normal; font-size: medium">
+    {{word}}
+  </mat-card-footer>
 </mat-card>
