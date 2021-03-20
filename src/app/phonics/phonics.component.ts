@@ -51,7 +51,7 @@ export class PhonicsComponent implements OnInit {
     const items = this.getFiltered();
     this.dialog.open(ReadWordComponent, {
       width: '100%',
-      height: '80%',
+      height: '50%',
       disableClose: true,
       data: {
         items: items,

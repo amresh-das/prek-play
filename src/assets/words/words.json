@@ -27,7 +27,7 @@
   {"word": "hood", "resources" : ["hood1.png", "hood2.png"] },
   {"word": "food", "resources" : ["food1.png", "food2.png"] },
   {"word": "root", "resources" : ["root1.png", "root2.gif"] },
-  {"word": "zoom", "resources" : [] },
+  {"word": "zoom", "resources" : ["zoom1.gif", "zoom2.gif"] },
   {"word": "soon", "resources" : [] },
   {"word": "room", "resources" : ["room1.png", "room2.png"] },
   {"word": "good", "resources" : [] },
