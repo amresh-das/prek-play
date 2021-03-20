@@ -1,0 +1,18 @@
+<h1>Read Words</h1>
+<mat-dialog-content>
+  <mat-grid-list cols="3" fxLayout="row" fxLayoutAlign="center">
+    <mat-grid-tile mat-ripple class="nav-item" (click)="prev()">
+      <mat-icon *ngIf="displayIndex>0">navigate_before</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile class="word-item" [ngClass]="{'clickable':getWord()?.resources?.length}" (click)="!allDone() && showPic()">
+      <mat-card *ngIf="!allDone()">{{getWord().word}}</mat-card>
+      <mat-card *ngIf="allDone()">Done!!!<mat-icon>done_all</mat-icon></mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile mat-ripple class="nav-item" (click)="next()">
+      <mat-icon *ngIf="displayIndex<words.length">navigate_next</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="warn" mat-dialog-close>Close</button>
+</mat-dialog-actions>

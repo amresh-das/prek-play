@@ -27,6 +27,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatRippleModule} from "@angular/material/core";
 import {MatMenuModule} from "@angular/material/menu";
+import { ReadWordComponent } from './phonics/read-word.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatMenuModule} from "@angular/material/menu";
     PhonicsComponent,
     MathsComponent,
     HomeComponent,
-    WordPicComponent
+    WordPicComponent,
+    ReadWordComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MatDialogModule,
     MatRippleModule,
     MatMenuModule,
+    MatButtonModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
