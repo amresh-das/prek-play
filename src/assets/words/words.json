@@ -91,5 +91,13 @@
   {"word": "shot", "resources" : [] },
   {"word": "show", "resources" : [] },
   {"word": "shut", "resources" : ["shut.gif"] },
-  {"word": "shun", "resources" : [] }
+  {"word": "shun", "resources" : [] },
+  {"word": "sheep", "resources" : ["sheep.png"] },
+  {"word": "sheet", "resources" : ["sheet1.png","sheet2.png","sheet3.png"] },
+  {"word": "lash", "resources" : ["lash.png"] },
+  {"word": "dash", "resources" : [] },
+  {"word": "cash", "resources" : ["cash.png"] },
+  {"word": "rash", "resources" : [] },
+  {"word": "mash", "resources" : ["mash.gif"] },
+  {"word": "hash", "resources" : [] }
 ]
