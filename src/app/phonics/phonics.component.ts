@@ -59,6 +59,7 @@ export class PhonicsComponent implements OnInit {
       width: '100%',
       height: '50%',
       disableClose: true,
+      hasBackdrop: true,
       data: {
         items: items,
       }

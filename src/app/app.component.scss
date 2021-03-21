@@ -9,3 +9,14 @@
 .app-spacer {
   flex: 1 1 auto;
 }
+
+.mat-toolbar {
+  border-radius: 5px;
+  background-color: cornflowerblue;
+  background-image:
+    linear-gradient(
+        to right,
+        #b264ed,
+        #3c0e5a 30%
+    );
+}

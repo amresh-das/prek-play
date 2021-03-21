@@ -1,20 +1,20 @@
-<div (keydown.ArrowLeft)="prev()" (keydown.ArrowRight)="next()" (keydown.escape)="close()" autofocus>
-  <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
-  <mat-dialog-content>
-    <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
-      <mat-grid-tile mat-ripple class="nav-item" (click)="prev()">
-        <mat-icon *ngIf="displayIndex>0">navigate_before</mat-icon>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="5" class="word-item" [ngClass]="{'clickable':getWord()?.resources?.length}" (click)="!allDone() && showPic()">
-        <mat-card *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">{{getWord().word}}</mat-card>
-        <mat-card *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile mat-ripple class="nav-item" (click)="next()">
-        <mat-icon *ngIf="displayIndex<words.length">navigate_next</mat-icon>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button color="warn" mat-dialog-close>Close</button>
-  </mat-dialog-actions>
-</div>
+<h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
+<mat-dialog-content>
+  <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
+    <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
+      <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (click)="!allDone() && showPic()">
+      <span *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">{{getWord().word}}</span>
+      <span *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></span>
+    </mat-grid-tile>
+    <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
+      <mat-icon *ngIf="displayIndex<words.length">arrow_right</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="warn" mat-dialog-close>
+    Close
+  </button>
+</mat-dialog-actions>

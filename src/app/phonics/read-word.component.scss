@@ -1,12 +1,28 @@
-.word-item {
-  font-size: xxx-large;
-  font-weight: bolder;
-}
 .nav-item {
+  border: none;
   font-size: xxx-large;
   font-weight: bold;
   cursor: pointer;
+  background-color: lightgray;
 }
-.word-with-pic {
-  background-color: coral;
+
+.nav-left-item {
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.nav-right-item {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.word-tile {
+  background-image: linear-gradient(140deg, #eadedb 0%, #afa2ab 50%, #9fa57b 75%);
+  font-size: xxx-large;
+}
+
+.word-pic-tile {
+  background-image: linear-gradient(140deg, #EADEDB 0%, #6d55d4 50%, #7aa5a2 75%);
+  cursor: pointer;
+  font-size: xxx-large;
 }
