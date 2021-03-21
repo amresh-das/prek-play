@@ -1,18 +1,18 @@
 <mat-toolbar color="primary">
   <a [matMenuTriggerFor]="menu" aria-label="Open Menu" class="clickable">
-    <mat-icon>menu</mat-icon>
+    <mat-icon class="app-menu">menu</mat-icon>
   </a>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="navigateMenu('phonics')">
+    <a mat-menu-item (click)="navigateMenu('phonics')">
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
-    </button>
-    <button mat-menu-item (click)="navigateMenu('maths')">
+    </a>
+    <a mat-menu-item (click)="navigateMenu('maths')">
       <mat-icon>exposure</mat-icon>
       <span>Maths</span>
-    </button>
+    </a>
   </mat-menu>
-  <span>Pre-K Play</span>
+  <span class="app-title">Pre-K Play</span>
   <span class="app-spacer"></span>
   <mat-icon aria-hidden="false" aria-label="Pre-K Play">sports_soccer</mat-icon>
 </mat-toolbar>

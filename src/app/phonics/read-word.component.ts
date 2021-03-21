@@ -37,13 +37,16 @@ export class ReadWordComponent {
   }
 
   showPic() {
-    let dialogWidth = window.innerWidth < window.innerHeight ? '80%' : '40%';
-    this.dialog.open(WordPicComponent, {
-      width: dialogWidth,
-      data: {
-        item: this.getWord()
-      }
-    });
+    if (this.getWord()?.resources?.length) {
+      let dialogWidth = window.innerWidth < window.innerHeight ? '80%' : '40%';
+      const dialogRef = this.dialog.open(WordPicComponent, {
+        width: dialogWidth,
+        data: {
+          item: this.getWord()
+        }
+      });
+      dialogRef.afterClosed().subscribe(() => console.log('closed'));
+    }
   }
 
   close() {

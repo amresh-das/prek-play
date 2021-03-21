@@ -2,16 +2,15 @@
   width:80%;
 }
 
-.word-item {
-  font-size: xx-large;
-}
-
 .word-tile {
-  background-color: lightgray;
-  cursor: pointer;
+  border-radius: 10px;
+  background-image: linear-gradient(140deg, #eadedb 0%, #afa2ab 50%, #9fa57b 75%);
+  font-size: xxx-large;
 }
 
 .word-pic-tile {
-  background-color: lightblue;
+  border-radius: 10px;
+  background-image: linear-gradient(140deg, #EADEDB 0%, #6d55d4 50%, #7aa5a2 75%);
   cursor: pointer;
+  font-size: xxx-large;
 }

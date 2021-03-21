@@ -20,8 +20,8 @@
     </div>
 
     <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
-      <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'" (click)="showPic(word)">
-        <span class="word-item">{{word.word | lowercase}}</span>
+      <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'" (click)="word.resources?.length!=0 && showPic(word)">
+        <span>{{word.word | lowercase}}</span>
       </mat-grid-tile>
     </mat-grid-list>
 

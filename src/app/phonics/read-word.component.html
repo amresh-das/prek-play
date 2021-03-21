@@ -1,4 +1,4 @@
-<div (keydown.ArrowLeft)="prev()" (keydown.ArrowRight)="next()" (keydown.escape)="close()">
+<div (keydown.ArrowLeft)="prev()" (keydown.ArrowRight)="next()" (keydown.escape)="close()" autofocus>
   <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
   <mat-dialog-content>
     <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
