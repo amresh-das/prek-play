@@ -2,13 +2,13 @@
   <mat-tab label="Reading Words">
     <div>
       <mat-form-field class="filter-chip-list">
-        <mat-label>Add one or more syllables to filter</mat-label>
+        <mat-label>Syllable Filter</mat-label>
         <mat-chip-list #chipList aria-label="Syllables">
           <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
             {{filter}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input placeholder="Syllables..."
+          <input placeholder="Separate each syllable with comma/enter/space"
                  [matChipInputFor]="chipList"
                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                  matChipInputAddOnBlur="true"
