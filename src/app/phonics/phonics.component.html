@@ -2,17 +2,17 @@
   <mat-tab label="Reading Words">
     <div>
       <mat-form-field class="filter-chip-list">
-        <mat-label>Add Phonics tokens to filter</mat-label>
-        <mat-chip-list #chipList aria-label="Phonic Tokens">
+        <mat-label>Add one or more syllables to filter</mat-label>
+        <mat-chip-list #chipList aria-label="Syllables">
           <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
             {{filter}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input placeholder="Phonics Tokens..."
+          <input placeholder="Syllables..."
                  [matChipInputFor]="chipList"
                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                  matChipInputAddOnBlur="true"
-                 (matChipInputTokenEnd)="addFilter($event)">
+                 (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
         </mat-chip-list>
       </mat-form-field>
       <mat-icon aria-label="Shuffle" class="clickable" (click)="shuffleAll()">shuffle</mat-icon>

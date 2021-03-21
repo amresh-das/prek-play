@@ -94,7 +94,7 @@ export class PhonicsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
     if (value.length > 0) {
-      this.filters.push(value);
+      this.filters.push(value.trim());
     }
     if (input) {
       input.value = '';
