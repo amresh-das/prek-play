@@ -4,8 +4,10 @@
     <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
       <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
     </mat-grid-tile>
-    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (click)="!allDone() && showPic()">
-      <span *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">{{getWord().word}}</span>
+    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'">
+      <span *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
+        {{getWord().word}}
+      </span>
       <span *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></span>
     </mat-grid-tile>
     <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
@@ -14,7 +16,6 @@
   </mat-grid-list>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button color="warn" mat-dialog-close>
-    Close
-  </button>
+  <button mat-button color="primary" (click)="!allDone() && showPic()">Show</button>
+  <button mat-button color="warn" mat-dialog-close>Close</button>
 </mat-dialog-actions>
