@@ -4,7 +4,7 @@
     <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
       <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
     </mat-grid-tile>
-    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'">
+    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
       <span *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
         {{getWord().word}}
       </span>
