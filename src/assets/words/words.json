@@ -97,6 +97,6 @@
   {"word": "dash", "resources" : [] },
   {"word": "cash", "resources" : ["cash.png"] },
   {"word": "rash", "resources" : [] },
-  {"word": "mash", "resources" : ["mash.gif"] },
+  {"word": "mash", "resources" : ["puree.gif"] },
   {"word": "hash", "resources" : [] }
 ]
