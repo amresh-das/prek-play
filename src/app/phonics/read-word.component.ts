@@ -25,7 +25,7 @@ export class ReadWordComponent implements OnInit {
         this.next();
       } else if (evt.key === 'Escape') {
         this.close();
-      } else if (evt.key === ' ') {
+      } else if (evt.key === 'Enter') {
         this.showPic();
       }
     });
