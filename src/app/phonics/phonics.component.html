@@ -2,7 +2,7 @@
   <mat-tab label="Reading Words">
     <div>
       <span class="app-spacer"></span>
-      <mat-form-field class="filter-chip-list">
+      <mat-form-field class="filter-chip-list" appearance="outline">
         <mat-label>
           <mat-icon>search</mat-icon>
           Filter Syllables
@@ -19,8 +19,8 @@
                  (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
         </mat-chip-list>
       </mat-form-field>
-      <button mat-button (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
-      <button mat-button (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+      <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
+      <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
     </div>
 
     <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
