@@ -32,7 +32,7 @@ export class ReadWordComponent implements OnInit {
   }
 
   next() {
-    if (this.displayIndex < this.words.length) {
+    if (this.displayIndex < this.words.length - 1) {
       this.displayIndex++;
       this.editable = false;
     }
