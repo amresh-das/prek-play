@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 
-$custom-typography: mat-typography-config($font-family: 'cursive, sans-serif;');
+$app-font: 'Google Sans, Verdana, sans-serif';
+
+$custom-typography: mat-typography-config($font-family: $app-font);
 @include mat-core($custom-typography);
 
 
 html, body { height: 100%; }
-body { margin: 2px; font-family: cursive, "Helvetica Neue", sans-serif; }
+body { margin: 2px; font-family: $app-font }
 
 .clickable {
   cursor: pointer;

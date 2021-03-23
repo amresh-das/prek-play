@@ -1,7 +1,11 @@
 <mat-card>
-  <mat-card-content *ngIf="resource"  fxLayout="row" fxLayoutAlign="center">
-    <img mat-card-image src="/assets/images/{{resource}}" alt=""/>
+  <mat-card-content *ngIf="resources"  fxLayout="row" fxLayoutAlign="center">
+    <img mat-card-image src="/assets/images/{{resources[displayIndex]}}" alt=""/>
   </mat-card-content>
+  <mat-card-actions>
+    <button [disabled]="displayIndex == 0" mat-button><mat-icon (click)="prev()">arrow_left</mat-icon></button>
+    <button [disabled]="displayIndex == count - 1" mat-button><mat-icon (click)="next()">arrow_right</mat-icon></button>
+  </mat-card-actions>
   <mat-card-footer fxLayout="row" fxLayoutAlign="center">
     <mat-card-title class="word-tile">{{word}}</mat-card-title>
   </mat-card-footer>

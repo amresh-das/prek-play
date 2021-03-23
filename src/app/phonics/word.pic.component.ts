@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Word} from "../model/word.model";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Shuffler} from "../services/shuffle";
 
 @Component({
   selector: 'app-word.pic',
@@ -10,14 +10,35 @@ import {Word} from "../model/word.model";
 
 export class WordPicComponent {
   word: string;
-  resource: string | null;
+  resources: any;
+  count = 0;
+  displayIndex = 0;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<WordPicComponent>) {
     this.word = data.item.word;
-    this.resource = this.getImage(data.item);
+    this.resources = Shuffler.shuffle(data.item.resources);
+    this.count = this.resources ? this.resources.length : 0;
+    this.dialogRef.keydownEvents().subscribe((evt) => this.handle(evt));
   }
 
-  private getImage(word: Word): string | null {
-    return word.resources ? word.resources[Math.floor(Math.random() * 10) % word.resources.length] : null;
+  handle(evt: any) {
+    if (evt.key === 'ArrowLeft') {
+      this.prev();
+    } else if (evt.key === 'ArrowRight') {
+      this.next();
+    }
   }
+
+  next() {
+    if (this.displayIndex < this.count - 1) {
+      this.displayIndex = (this.displayIndex + 1);
+    }
+  }
+
+  prev() {
+    if (this.displayIndex != 0) {
+      this.displayIndex = this.displayIndex - 1;
+    }
+  }
+
 }

@@ -1,16 +1,36 @@
+@import "../../app-style.scss";
+
+:host ::ng-deep .mat-tab-label {
+  background-image: $tab-gradient;
+}
+
+:host ::ng-deep .mat-form-field {
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
 .filter-chip-list {
-  width:95%;
+  width:80%;
+}
+
+.mat-button {
+  border: 1px solid gray;
+  margin: 1px;
+}
+
+.word-tile, .word-pic-tile {
+  border-radius: 10px;
+  text-shadow: 2px 2px;
+  font-size: 2.5em;
+  letter-spacing: .2em;
 }
 
 .word-tile {
-  border-radius: 10px;
-  background-image: linear-gradient(140deg, #eadedb 0%, #afa2ab 50%, #9fa57b 75%);
-  font-size: xxx-large;
+  background-image: $no-pic-word-gradient;
 }
 
 .word-pic-tile {
-  border-radius: 10px;
-  background-image: linear-gradient(140deg, #EADEDB 0%, #6d55d4 50%, #7aa5a2 75%);
+  background-image: $with-pic-word-gradient;
   cursor: pointer;
-  font-size: xxx-large;
 }

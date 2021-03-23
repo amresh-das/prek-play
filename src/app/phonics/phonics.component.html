@@ -1,22 +1,26 @@
-<mat-tab-group mat-stretch-tabs class="mat-elevation-z4">
+<mat-tab-group class="mat-elevation-z4">
   <mat-tab label="Reading Words">
     <div>
+      <span class="app-spacer"></span>
       <mat-form-field class="filter-chip-list">
-        <mat-label>Syllable Filter</mat-label>
+        <mat-label>
+          <mat-icon>search</mat-icon>
+          Syllable Filter
+        </mat-label>
         <mat-chip-list #chipList aria-label="Syllables">
           <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
             {{filter}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input placeholder="Separate each syllable with comma/enter/space"
+          <input matInput placeholder="Separate each syllable with comma/enter/space"
                  [matChipInputFor]="chipList"
                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                  matChipInputAddOnBlur="true"
                  (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
         </mat-chip-list>
       </mat-form-field>
-      <mat-icon aria-label="Shuffle" class="clickable" (click)="shuffleAll()">shuffle</mat-icon>
-      <mat-icon aria-label="Play" class="clickable" (click)="showWordsToRead()">play_circle</mat-icon>
+      <button mat-button (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
+      <button mat-button (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
     </div>
 
     <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
@@ -26,5 +30,5 @@
     </mat-grid-list>
 
   </mat-tab>
-  <mat-tab label="Match Words with Pictures"> Content 1 </mat-tab>
+  <mat-tab label="Matching Words with Pictures"> Content 1 </mat-tab>
 </mat-tab-group>

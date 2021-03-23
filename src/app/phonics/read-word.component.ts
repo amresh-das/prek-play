@@ -11,6 +11,7 @@ import {WordPicComponent} from "./word.pic.component";
 export class ReadWordComponent implements OnInit {
   words: Word[];
   displayIndex = 0;
+  editable = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>) {
     this.words = this.data.items;
@@ -18,7 +19,6 @@ export class ReadWordComponent implements OnInit {
 
   ngOnInit() {
     this.dialogRef.keydownEvents().subscribe((evt) => {
-      console.log(evt.key);
       if (evt.key === 'ArrowLeft') {
         this.prev();
       } else if (evt.key === 'ArrowRight') {
@@ -34,13 +34,19 @@ export class ReadWordComponent implements OnInit {
   next() {
     if (this.displayIndex < this.words.length) {
       this.displayIndex++;
+      this.editable = false;
     }
   }
 
   prev() {
     if (this.displayIndex > 0) {
       this.displayIndex--;
+      this.editable = false;
     }
+  }
+
+  toggleEditable() {
+    this.editable = !this.editable;
   }
 
   allDone() : boolean {

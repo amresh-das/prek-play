@@ -6,6 +6,7 @@ import {WordPicComponent} from "./word.pic.component";
 import {ReadWordComponent} from "./read-word.component";
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
+import {Shuffler} from "../services/shuffle";
 
 @Component({
   selector: 'app-phonics',
@@ -67,24 +68,7 @@ export class PhonicsComponent implements OnInit {
   }
 
   shuffleAll() {
-    this.shuffle(this.words);
-  }
-
-  private shuffle(array: any[]) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
+    Shuffler.shuffle(this.words);
   }
 
   remove(filter: string) {

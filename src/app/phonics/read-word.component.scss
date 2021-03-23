@@ -1,3 +1,5 @@
+@import "../../app-style.scss";
+
 .nav-item {
   border: none;
   font-size: xxx-large;
@@ -16,13 +18,17 @@
   border-bottom-right-radius: 8px;
 }
 
+.word-tile, .word-pic-tile {
+  text-shadow: 2px 2px;
+  font-size: 6em;
+  letter-spacing: .1em;
+  user-select: none;
+}
+
 .word-tile {
-  background-image: linear-gradient(140deg, #eadedb 0%, #afa2ab 50%, #9fa57b 75%);
-  font-size: xxx-large;
+  background-image: $no-pic-word-gradient;
 }
 
 .word-pic-tile {
-  background-image: linear-gradient(140deg, #EADEDB 0%, #6d55d4 50%, #7aa5a2 75%);
-  font-size: xxx-large;
+  background-image: $with-pic-word-gradient;
 }
-
