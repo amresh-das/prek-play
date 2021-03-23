@@ -8,11 +8,17 @@
   margin-top: 10px;
   margin-right: 10px;
   border-radius: 3px;
-  font-size: 1.3em;
+  font-size: 1.2em;
+  color: darkblue;
+  text-shadow: 1px 1px #3c0e5a;
 }
 
 .filter-chip-list {
   width:80%;
+}
+
+.mat-chip {
+  font-size: 1.2em;
 }
 
 .mat-button {
