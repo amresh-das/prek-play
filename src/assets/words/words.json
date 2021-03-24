@@ -54,7 +54,7 @@
   {"word": "pack", "resources" : ["pack.gif"] },
   {"word": "rack", "resources" : ["rack.png"] },
   {"word": "rock", "resources" : ["rock1.png", "rock2.png"] },
-  {"word": "sick", "resources" : [] },
+  {"word": "sick", "resources" : ["sick.png"] },
   {"word": "sack", "resources" : ["sack.png"] },
   {"word": "tack", "resources" : [] },
   {"word": "mock", "resources" : [] },
