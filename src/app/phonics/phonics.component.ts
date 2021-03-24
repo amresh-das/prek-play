@@ -18,7 +18,7 @@ export class PhonicsComponent implements OnInit {
   constructor(private wordsService: WordsService, public dialog: MatDialog) { }
 
   words: Word[] = [];
-  filters: string[] = ['ee', 'oo', 'ck', 'ch', 'th'];
+  filters: string[] = ['ee', 'oo', 'ck', 'ch', 'sh', 'th'];
   selectable = true;
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
