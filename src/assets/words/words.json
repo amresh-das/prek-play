@@ -98,5 +98,12 @@
   {"word": "cash", "resources" : ["cash.png"] },
   {"word": "rash", "resources" : [] },
   {"word": "mash", "resources" : ["puree.gif"] },
-  {"word": "hash", "resources" : [] }
+  {"word": "hash", "resources" : [] },
+  {"word": "that", "resources" : [] },
+  {"word": "then", "resources" : [] },
+  {"word": "them", "resources" : [] },
+  {"word": "this", "resources" : [] },
+  {"word": "those", "resources" : [] },
+  {"word": "there", "resources" : [] },
+  {"word": "than", "resources" : [] }
 ]
