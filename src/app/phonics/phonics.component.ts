@@ -14,14 +14,16 @@ import {Shuffler} from "../services/shuffle";
   styleUrls: ['./phonics.component.scss']
 })
 export class PhonicsComponent implements OnInit {
-
-  constructor(private wordsService: WordsService, public dialog: MatDialog) { }
-
   words: Word[] = [];
-  filters: string[] = ['ee', 'oo', 'ck', 'ch', 'sh', 'th'];
+  defaultFilters: string[] = ['ee', 'oo', 'ck', 'ch', 'sh', 'th'];
+  filters: string[];
   selectable = true;
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
+
+  constructor(private wordsService: WordsService, public dialog: MatDialog) {
+    this.resetFilters();
+  }
 
   columnCount: number = 3;
   wordWidth: number = 220;
@@ -84,6 +86,11 @@ export class PhonicsComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+  }
+
+  resetFilters() {
+    this.filters = [];
+    this.defaultFilters.forEach(f => this.filters.push(f));
   }
 
 }
