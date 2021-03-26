@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ALL_SYLLABLES, Syllable} from "../model/syllable";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +13,7 @@ export class SettingsComponent implements OnInit {
   syllableConfig: Syllable[];
   isSelectAll: boolean = false;
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar, private location: Location) {
     const syllableConfigValues = localStorage.getItem('syllableConfig');
     const syllableConfigs: string[] = syllableConfigValues ? JSON.parse(syllableConfigValues) : [];
     this.syllableConfig = [];
@@ -38,6 +39,10 @@ export class SettingsComponent implements OnInit {
     this.snackBar.open('Your configuration has been saved', '', {
       duration: 1000
     });
+  }
+
+  navigateBack() {
+    this.location.back();
   }
 
 }
