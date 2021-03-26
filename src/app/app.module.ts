@@ -30,6 +30,9 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ReadWordComponent } from './phonics/read-word.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
+import { SettingsComponent } from './settings/settings.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MathsComponent,
     HomeComponent,
     WordPicComponent,
-    ReadWordComponent
+    ReadWordComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MatMenuModule,
     MatButtonModule,
     MatChipsModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule

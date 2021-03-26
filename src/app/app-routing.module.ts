@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {PhonicsComponent} from "./phonics/phonics.component";
 import {MathsComponent} from "./maths/maths.component";
-import {HomeComponent} from "./home/home.component";
+import {SettingsComponent} from "./settings/settings.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/phonics', pathMatch: 'full' },
   { path: 'phonics', component: PhonicsComponent },
-  { path: 'maths', component: MathsComponent }
+  { path: 'maths', component: MathsComponent },
+  { path: 'settings', component: SettingsComponent }
 ];
 
 @NgModule({

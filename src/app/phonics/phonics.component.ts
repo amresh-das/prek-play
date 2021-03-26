@@ -15,13 +15,15 @@ import {Shuffler} from "../services/shuffle";
 })
 export class PhonicsComponent implements OnInit {
   words: Word[] = [];
-  defaultFilters: string[] = ['ee', 'oo', 'ck', 'ch', 'sh', 'th'];
+  defaultFilters: string[];
   filters: string[];
   selectable = true;
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
   constructor(private wordsService: WordsService, public dialog: MatDialog) {
+    const syllableConfig = localStorage.getItem('syllableConfig');
+    this.defaultFilters = syllableConfig ? JSON.parse(syllableConfig) : [];
     this.resetFilters();
   }
 

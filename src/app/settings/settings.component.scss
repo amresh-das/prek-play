@@ -1,0 +1,5 @@
+@import "../../app-style.scss";
+
+:host ::ng-deep .mat-tab-label {
+  background-image: $tab-gradient;
+}

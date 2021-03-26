@@ -1,0 +1,13 @@
+<mat-tab-group>
+  <mat-tab label="Phonics Settings">
+    <mat-label>Default syllable list: </mat-label>
+    <section>
+      <mat-checkbox [(ngModel)]="isSelectAll" (click)="selectAll()">Select All</mat-checkbox>
+      <div *ngFor="let s of syllableConfig">
+        <mat-checkbox [(ngModel)]="s.selected">{{s.token}}</mat-checkbox>
+      </div>
+    </section>
+    <button mat-raised-button color="warn" (click)="reset()">Reset</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </mat-tab>
+</mat-tab-group>
