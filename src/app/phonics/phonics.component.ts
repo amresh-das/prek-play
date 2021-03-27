@@ -7,6 +7,7 @@ import {ReadWordComponent} from "./read-word.component";
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
 import {Shuffler} from "../services/shuffle";
+import {SettingsService} from "../services/settings.service";
 
 @Component({
   selector: 'app-phonics',
@@ -20,7 +21,7 @@ export class PhonicsComponent implements OnInit {
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
-  constructor(private wordsService: WordsService, public dialog: MatDialog) {;
+  constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
   }
 
   columnCount: number = 3;
@@ -55,7 +56,7 @@ export class PhonicsComponent implements OnInit {
   }
 
   showWordsToRead() {
-    const items = this.getFiltered();
+    const items = this.getFiltered().splice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 20));
     this.dialog.open(ReadWordComponent, {
       width: '100%',
       height: '50%',

@@ -1,6 +1,14 @@
 <mat-tab-group>
   <mat-tab label="Phonics Settings">
     <mat-label>Settings Page Placeholder</mat-label>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>How many words to Show on Play: </mat-label>
+        <input matInput type="number" [(ngModel)]="phonicsShowWordsBatchCount">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-raised-button color="warn" (click)="reset()">Reset</button>
     <button mat-raised-button color="accent" (click)="navigateBack()">Go Back</button>
   </mat-tab>
 </mat-tab-group>
