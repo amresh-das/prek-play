@@ -122,7 +122,7 @@
   {"word": "clot", "resources" : [] },
   {"word": "cluck", "resources" : ["cluck.mp3"] },
   {"word": "clip", "resources" : ["clip1.png", "clip2.png", "clip3.png"] },
-  {"word": "clam", "resources" : ["clam1.png", "clam1.png"] },
+  {"word": "clam", "resources" : ["clam1.png", "clam2.png"] },
   {"word": "clap", "resources" : ["clap.gif"] },
   {"word": "cloth", "resources" : ["cloth1.png", "cloth2.png", "cloth3.png"] },
   {"word": "flap", "resources" : ["flap1.gif", "flap2.gif", "flap3.gif"] },
