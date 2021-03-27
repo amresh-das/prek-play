@@ -1,6 +1,9 @@
 <mat-card>
   <mat-card-content *ngIf="resources"  fxLayout="row" fxLayoutAlign="center">
-    <img mat-card-image src="/assets/images/{{resources[displayIndex]}}" alt=""/>
+    <img *ngIf="resourceType() === 'image'" mat-card-image src="{{resource()}}" alt=""/>
+    <audio *ngIf="resourceType() === 'audio'" controls autoplay>
+      <source src="{{resource()}}" type="audio/mpeg">
+    </audio>
   </mat-card-content>
   <mat-card-actions>
     <button [disabled]="displayIndex == 0" mat-button><mat-icon (click)="prev()">arrow_left</mat-icon></button>

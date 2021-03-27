@@ -15,16 +15,12 @@ import {Shuffler} from "../services/shuffle";
 })
 export class PhonicsComponent implements OnInit {
   words: Word[] = [];
-  defaultFilters: string[];
-  filters: string[];
+  filters: string[] = [];
   selectable = true;
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
-  constructor(private wordsService: WordsService, public dialog: MatDialog) {
-    const syllableConfig = localStorage.getItem('syllableConfig');
-    this.defaultFilters = syllableConfig ? JSON.parse(syllableConfig) : [];
-    this.resetFilters();
+  constructor(private wordsService: WordsService, public dialog: MatDialog) {;
   }
 
   columnCount: number = 3;
@@ -88,11 +84,6 @@ export class PhonicsComponent implements OnInit {
     if (input) {
       input.value = '';
     }
-  }
-
-  resetFilters() {
-    this.filters = [];
-    this.defaultFilters.forEach(f => this.filters.push(f));
   }
 
 }

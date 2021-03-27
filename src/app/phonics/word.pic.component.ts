@@ -29,6 +29,25 @@ export class WordPicComponent {
     }
   }
 
+  resourceType(): string {
+    const imageRegex = new RegExp('((gif)|(jpeg)|(jpg)|(png))$');
+    const audioRegex = new RegExp('mp3$');
+    const res = this.resources[this.displayIndex];
+    return imageRegex.test(res) ? 'image' : audioRegex.test(res) ? 'audio' : 'video';
+  }
+
+  resource(): string {
+    let prefix;
+    if (this.resourceType() === 'image') {
+      prefix = '/assets/images/'
+    } else if (this.resourceType() === 'audio') {
+      prefix = '/assets/audio/'
+    } else if (this.resourceType() === 'video') {
+      prefix = '/assets/video/'
+    }
+    return prefix + this.resources[this.displayIndex];
+  }
+
   next() {
     if (this.displayIndex < this.count - 1) {
       this.displayIndex = (this.displayIndex + 1);
