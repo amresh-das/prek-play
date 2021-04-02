@@ -1,0 +1,32 @@
+@import "../../app-style.scss";
+
+:host ::ng-deep .mat-tab-label {
+  background-image: $tab-gradient;
+}
+
+.season-rainy, .season-fall, .season-winter, .season-summer {
+  color: white;
+  font-size: 3em;
+  background-color: #aaaaaa;
+  user-select: none;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+
+.season-rainy {
+  background-image: url("/assets/images/season_rainy.jpg");
+}
+
+.season-fall {
+  background-image: url("/assets/images/season_fall.jpg");
+}
+
+.season-winter {
+  background-image: url("/assets/images/season_winter.jpg");
+}
+
+.season-summer {
+  background-image: url("/assets/images/season_summer.jpg");
+}

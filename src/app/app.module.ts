@@ -33,6 +33,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { SettingsComponent } from './settings/settings.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { EvsComponent } from './evs/evs.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     HomeComponent,
     WordPicComponent,
     ReadWordComponent,
-    SettingsComponent
+    SettingsComponent,
+    EvsComponent
   ],
   imports: [
     BrowserModule,
