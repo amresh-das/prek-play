@@ -1,0 +1,9 @@
+{
+  "name": "Summer",
+  "pics": ["summer.jpg", "season_summer.jpg"],
+  "items": {
+    "clothes": ["shorts", "t-shirt", "cap", "sun glass"],
+    "food/drinks": ["ice cream", "cold drink", "water melon"],
+    "appliances" : ["fan", "air conditioner"]
+  }
+}

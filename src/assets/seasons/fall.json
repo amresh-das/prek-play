@@ -1,0 +1,7 @@
+{
+  "name": "Fall / Autumn",
+  "pics": ["season_fall.jpg"],
+  "items": {
+    "tools": ["rake"]
+  }
+}

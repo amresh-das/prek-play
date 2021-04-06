@@ -1,0 +1,8 @@
+{
+  "name": "Rainy / Monsoon",
+  "pics": ["rainy.jpg", "season_rainy.jpg"],
+  "items": {
+    "clothes": ["rain pants", "rain coat", "umbrella", "gum boots"],
+    "games": ["paper boat"]
+  }
+}

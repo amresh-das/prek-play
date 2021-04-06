@@ -34,6 +34,7 @@ import { SettingsComponent } from './settings/settings.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EvsComponent } from './evs/evs.component';
+import {SelectContextItemsComponent} from "./shared/select-context-items/select-context-items.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EvsComponent } from './evs/evs.component';
     WordPicComponent,
     ReadWordComponent,
     SettingsComponent,
-    EvsComponent
+    EvsComponent,
+    SelectContextItemsComponent
   ],
   imports: [
     BrowserModule,

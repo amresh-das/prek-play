@@ -1,0 +1,9 @@
+{
+  "name": "Winter",
+  "pics": ["winter.jpg", "season_winter.jpg"],
+  "items": {
+    "clothes": ["jacket", "gloves", "hat", "scarf", "warm shoes"],
+    "food/drinks": ["hot drink", "hot soup"],
+    "appliances": ["heater", "fireplace"]
+  }
+}
