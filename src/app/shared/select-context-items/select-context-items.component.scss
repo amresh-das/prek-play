@@ -1,28 +1,24 @@
-.mat-card-image {
-  object-fit: scale-down;
-  justify-content: center;
+.mat-dialog-content {
+
+}
+
+.theme-band {
   box-sizing: border-box;
   background: white;
 }
 
 .theme-pic {
-  width: 80%;
-  height: 60vh;
+  object-fit: scale-down;
+  justify-content: center;
   box-sizing: border-box;
   background: white;
+  width: 80%;
+  height: 60vh;
   padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 3em;
   box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
-}
-
-.mat-grid-list {
-  padding-bottom: 2em;
-}
-
-.mat-card {
-  height: 95%;
 }
 
 .mat-button {

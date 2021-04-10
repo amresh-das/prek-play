@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Shuffler} from "../services/shuffle";
+import {Randomizer} from "../services/shuffle";
 
 @Component({
   selector: 'app-word.pic',
@@ -16,7 +16,7 @@ export class WordPicComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<WordPicComponent>) {
     this.word = data.item.word;
-    this.resources = Shuffler.shuffle(data.item.resources);
+    this.resources = Randomizer.randomize(data.item.resources);
     this.count = this.resources ? this.resources.length : 0;
     this.dialogRef.keydownEvents().subscribe((evt) => this.handle(evt));
   }

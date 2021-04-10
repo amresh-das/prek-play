@@ -1,6 +1,6 @@
-export class Shuffler {
+export class Randomizer {
 
-  public static shuffle(array: any[]) {
+  public static randomize(array: any[]) {
     if (!array) return;
     var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
@@ -16,6 +16,12 @@ export class Shuffler {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  }
+
+  public static randomInt(endExclusive?: number, startInclusive?: number): number {
+    const max = endExclusive === undefined ? 10000 : endExclusive - 1;
+    const min = startInclusive === undefined ? 0 : startInclusive;
+    return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
 }

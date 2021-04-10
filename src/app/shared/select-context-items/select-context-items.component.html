@@ -1,26 +1,22 @@
+<h2 mat-dialog-title>{{data.context | titlecase}}</h2>
 <mat-dialog-content>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{data.context | titlecase}}</mat-card-title>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <mat-grid-list cols="11" rowHeight="30em" fxLayout="row" fxLayoutAlign="center">
-        <mat-grid-tile>
-          <button [disabled]="displayIndex == 0" mat-button><mat-icon (click)="prev()">arrow_left</mat-icon></button>
-        </mat-grid-tile>
-        <mat-grid-tile colspan="9">
-          <img mat-card-image class="theme-pic" src="{{getThemePic()}}"/>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <button [disabled]="displayIndex == data.themePics.length - 1" mat-button><mat-icon (click)="next()">arrow_right</mat-icon></button>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-card-content>
-    <mat-card-footer>
-      <mat-grid-list [cols]="allItems.length" rowHeight="10em" fxLayout="row" fxLayoutAlign="center">
-        <img *ngFor="let item in allItems" mat-card-image class="item-pic" src="{{item.pics[0]}}"/>
-      </mat-grid-list>
-    </mat-card-footer>
-  </mat-card>
+  <mat-grid-list cols="11" rowHeight="30em" fxLayout="row" fxLayoutAlign="center" class="theme-band">
+    <mat-grid-tile>
+      <button [disabled]="displayIndex == 0" mat-button><mat-icon (click)="prev()">arrow_left</mat-icon></button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="9">
+      <img mat-card-image class="theme-pic" src="{{getThemePic()}}"/>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button [disabled]="displayIndex == data.themePics.length - 1" mat-button><mat-icon (click)="next()">arrow_right</mat-icon></button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+  <mat-grid-list [cols]="choices.length" rowHeight="10em" fxLayout="row" fxLayoutAlign="center">
+    <mat-grid-tile *ngFor="let item of choices">
+      <img mat-card-image class="item-pic" src="{{getPic(item)}}" alt="{{item.name}}"/>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-dialog-content>
+<mat-dialog-actions>
+</mat-dialog-actions>

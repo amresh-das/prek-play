@@ -3,7 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Item} from "./model/seasons";
 import {SeasonsService} from "../services/seasons.service";
 import {SelectContextItemsComponent} from "../shared/select-context-items/select-context-items.component";
-import {Shuffler} from "../services/shuffle";
+import {Randomizer} from "../services/shuffle";
 import {SettingsService} from "../services/settings.service";
 
 @Component({
@@ -22,25 +22,32 @@ export class EvsComponent implements OnInit {
     const allItems: Item[] = [];
     this.seasonsService.getItems().subscribe(items => items.forEach(i => allItems.push(i)));
     this.seasonsService.getSeason(name).subscribe(season => {
-      const items : any = JSON.parse(JSON.stringify(season.items));
-      const usedItems: any[] = [];
-      for (let key in items) {
+      const itemObj : object = JSON.parse(JSON.stringify(season.items));
+      const items: Map<string, Item[]> = new Map<string, Item[]>();
+      for (let key in itemObj) {
         // @ts-ignore
-        items[key].forEach(i => usedItems.push(i));
+        const keyItems: string[] = itemObj[key];
+        // @ts-ignore
+        const itemList: Item[] = keyItems.map(name => allItems.find(i => i.name === name)).filter(Boolean);
+        items.set(key, itemList);
       }
-      items['unrelated'] = [];
-      Shuffler.shuffle(allItems);
-      allItems.filter(i => !usedItems.indexOf(i.name))
+      const usedItems: string[] = [];
+      items.forEach((values) => {
+        values.forEach(i => usedItems.push(i.name));
+      })
+      items.set('unrelated', []);
+      Randomizer.randomize(allItems);
+      allItems.filter(i => usedItems.indexOf(i.name) === -1)
         .splice(0, this.settingsService.getConfigInt(SettingsService.SEASONS_EXTRA_ITEM_COUNT, 6))
         .forEach(i => {
-          items['unrelated'].push(i);
+          // @ts-ignore
+          items.get('unrelated').push(i);
       });
       this.dialog.open(SelectContextItemsComponent, {
         data: {
           context: name + ' Season',
           themePics: season.pics,
-          items: items,
-          itemPics: allItems
+          items: items
         },
         height: '100%',
         width: '100%',
