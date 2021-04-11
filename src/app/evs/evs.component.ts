@@ -19,41 +19,39 @@ export class EvsComponent implements OnInit {
   }
 
   showSeason(name: string) {
-    const allItems: Item[] = [];
-    this.seasonsService.getItems().subscribe(items => items.forEach(i => allItems.push(i)));
-    this.seasonsService.getSeason(name).subscribe(season => {
-      const itemObj : object = JSON.parse(JSON.stringify(season.items));
-      const items: Map<string, Item[]> = new Map<string, Item[]>();
-      for (let key in itemObj) {
-        // @ts-ignore
-        const keyItems: string[] = itemObj[key];
-        // @ts-ignore
-        const itemList: Item[] = keyItems.map(name => allItems.find(i => i.name === name)).filter(Boolean);
-        items.set(key, itemList);
-      }
-      const usedItems: string[] = [];
-      items.forEach((values) => {
-        values.forEach(i => usedItems.push(i.name));
-      })
-      items.set('unrelated', []);
-      Randomizer.randomize(allItems);
-      allItems.filter(i => usedItems.indexOf(i.name) === -1)
-        .splice(0, this.settingsService.getConfigInt(SettingsService.SEASONS_EXTRA_ITEM_COUNT, 6))
-        .forEach(i => {
-          // @ts-ignore
-          items.get('unrelated').push(i);
-      });
-      this.dialog.open(SelectContextItemsComponent, {
-        data: {
-          context: name + ' Season',
-          themePics: season.pics,
-          items: items
-        },
-        height: '100%',
-        width: '100%',
-        maxHeight: '100%',
-        maxWidth: '100%',
+    this.seasonsService.getItems().subscribe(allItems => {
+      this.seasonsService.getSeason(name).subscribe(season => {
+        const itemObj : object = JSON.parse(JSON.stringify(season.items));
+        const items: Map<string, Item[]> = new Map<string, Item[]>();
+        for (const key in itemObj) {
+          if (itemObj.hasOwnProperty(key)) {
+            // @ts-ignore
+            const keyItems: string[] = itemObj[key];
+            // @ts-ignore
+            const itemList: Item[] = keyItems.map(name => allItems.find(i => i.name === name)).filter(Boolean);
+            items.set(key, itemList);
+          }
+        }
+        const usedItems: string[] = [];
+        items.forEach((values) => {
+          values.forEach(i => usedItems.push(i.name));
+        });
+        Randomizer.randomize(allItems);
+        const otherItems = allItems.filter(i => usedItems.indexOf(i.name) === -1)
+          .splice(0, this.settingsService.getConfigInt(SettingsService.SEASONS_EXTRA_ITEM_COUNT, 6));
+        this.dialog.open(SelectContextItemsComponent, {
+          data: {
+            themePics: season.pics,
+            items: items,
+            otherItems: otherItems
+          },
+          height: '100%',
+          width: '100%',
+          maxHeight: '100%',
+          maxWidth: '100%',
+        });
       });
     });
+
   }
 }

@@ -13,13 +13,17 @@ export class SelectContextItemsComponent implements OnInit {
   displayIndex: number;
   themePicCount: number;
   choices: Item[] = [];
+  items: Map<string, Item[]>
 
   constructor(private dialogRef: MatDialogRef<SelectContextItemsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.themePicCount = data.themePics ? data.themePics.length : 0;
     this.displayIndex = 0;
-    (<Map<string, Item[]>>data.items).forEach((values,key) => {
+    this.items = data.items;
+    this.items.forEach((values,key) => {
       values.forEach(v => this.choices.push(v));
-    })
+    });
+    (<Item[]>data.otherItems).forEach(v => this.choices.push(v));
+    Randomizer.randomize(this.choices);
   }
 
   ngOnInit(): void {
@@ -58,4 +62,25 @@ export class SelectContextItemsComponent implements OnInit {
     const pic = item.pics ? item.pics[Randomizer.randomInt(item.pics.length)] : '';
     return '/assets/images/' + pic;
   }
+
+  getAnswerColumnCount() {
+    let count = 1;
+    this.items.forEach((values) => count = count + values.length + 1);
+    return count;
+  }
+
+  getAnswerColumns() {
+    const cols: string[] = [''];
+    this.items.forEach((values, key) => {
+      cols.push(key);
+      cols.push('');
+    });
+    return cols;
+  }
+
+  getAnswerColSpan(key: string) {
+    // @ts-ignore
+    return this.items.has(key) ? this.items.get(key).length : 1;
+  }
+
 }

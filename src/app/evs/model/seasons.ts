@@ -6,5 +6,5 @@ export interface Item {
 export interface Season {
   name: string;
   pics?: string[];
-  items?: Map<string, Item[]>;
+  items?: Map<string, string[]>;
 }

@@ -1,5 +1,5 @@
 .mat-dialog-content {
-
+  max-height: 100vh;
 }
 
 .theme-band {
@@ -13,11 +13,19 @@
   box-sizing: border-box;
   background: white;
   width: 80%;
-  height: 60vh;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 3em;
+  height: 45vh;
+  padding: 1em;
+  box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+}
+
+.choice-pic {
+  object-fit: scale-down;
+  justify-content: center;
+  box-sizing: border-box;
+  background: white;
+  width: 90%;
+  height: 15vh;
+  padding: 3px;
   box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
 }
 
@@ -26,4 +34,9 @@
   height: 6em;
   width: 6em;
   border-radius: 50%;
+}
+
+.answer-category {
+  border-radius: 2px;
+  box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
 }
