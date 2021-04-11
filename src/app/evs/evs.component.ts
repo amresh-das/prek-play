@@ -49,6 +49,7 @@ export class EvsComponent implements OnInit {
           width: '100%',
           maxHeight: '100%',
           maxWidth: '100%',
+          panelClass: 'season-container'
         });
       });
     });

@@ -1,5 +1,6 @@
 .mat-dialog-content {
   max-height: 100vh;
+  height: 100vh;
 }
 
 .theme-band {
@@ -26,17 +27,23 @@
   width: 90%;
   height: 15vh;
   padding: 3px;
-  box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
 }
 
 .mat-button {
   background-color: lightgray;
+}
+
+.nav-button {
   height: 6em;
   width: 6em;
   border-radius: 50%;
 }
 
-.answer-category {
+.choice-category, .answer-category {
   border-radius: 2px;
+  padding: 4px;
   box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+}
+
+.answer-category {
 }

@@ -2,25 +2,32 @@
 <mat-dialog-content>
   <mat-grid-list cols="15" rowHeight="30em" fxLayout="row" fxLayoutAlign="center" class="theme-band">
     <mat-grid-tile>
-      <button [disabled]="displayIndex == 0" mat-button><mat-icon (click)="prev()">arrow_left</mat-icon></button>
+      <button [disabled]="displayIndex == 0" mat-button class="nav-button"><mat-icon (click)="prev()">arrow_left</mat-icon></button>
     </mat-grid-tile>
     <mat-grid-tile colspan="13">
       <img mat-card-image class="theme-pic" src="{{getThemePic()}}"/>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button [disabled]="displayIndex == data.themePics.length - 1" mat-button><mat-icon (click)="next()">arrow_right</mat-icon></button>
+      <button [disabled]="displayIndex == data.themePics.length - 1" mat-button class="nav-button"><mat-icon (click)="next()">arrow_right</mat-icon></button>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list [cols]="getAnswerColumnCount()" rowHeight="10em" fxLayout="row" fxLayoutAlign="center">
-    <mat-grid-tile *ngFor="let category of getAnswerColumns()" [colspan]="getAnswerColSpan(category)" [class.answer-category]="category">
-      {{category}}
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-grid-list [cols]="choices.length" rowHeight="10em" fxLayout="row" fxLayoutAlign="center">
-    <mat-grid-tile *ngFor="let item of choices">
-      <img mat-card-image class="choice-pic" src="{{getPic(item)}}" alt="{{item.name}}"/>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-divider></mat-divider>
+  <div cdkDropList id="answerList" [cdkDropListData]="answers" [cdkDropListConnectedTo]="['choiceList']" (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="allowDrag">
+    <mat-grid-list [cols]="answers.length" rowHeight="10em" fxLayout="row" fxLayoutAlign="center" class="answer-category">
+      <mat-grid-tile *ngFor="let answer of answers" cdkDrag>
+        <img mat-card-image class="choice-pic" src="{{getPic(answer)}}" alt="{{answer.name}}"/>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-divider></mat-divider>
+  <div cdkDropList id="choiceList" [cdkDropListData]="choices" [cdkDropListConnectedTo]="['answerList']" (cdkDropListDropped)="drop($event)">
+    <mat-grid-list [cols]="choices.length" rowHeight="10em" fxLayout="row" fxLayoutAlign="center" class="choice-category">
+      <mat-grid-tile id="{{relations.get(item.name) + ':' + item.name}}" *ngFor="let item of choices" cdkDrag>
+        <img mat-card-image class="choice-pic" src="{{getPic(item)}}" alt="{{item.name}}"/>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

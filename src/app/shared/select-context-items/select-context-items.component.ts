@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Item} from "../../evs/model/seasons";
 import {Randomizer} from "../../services/shuffle";
+import {CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-select-context-items',
@@ -13,14 +14,20 @@ export class SelectContextItemsComponent implements OnInit {
   displayIndex: number;
   themePicCount: number;
   choices: Item[] = [];
-  items: Map<string, Item[]>
+  answers: Item[] = [];
+  items: Map<string, Item[]>;
+  relations: Map<string, string>;
 
   constructor(private dialogRef: MatDialogRef<SelectContextItemsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.themePicCount = data.themePics ? data.themePics.length : 0;
     this.displayIndex = 0;
     this.items = data.items;
+    this.relations = new Map<string, string>();
     this.items.forEach((values,key) => {
-      values.forEach(v => this.choices.push(v));
+      values.forEach(v => {
+        this.choices.push(v);
+        this.relations.set(v.name, key);
+      });
     });
     (<Item[]>data.otherItems).forEach(v => this.choices.push(v));
     Randomizer.randomize(this.choices);
@@ -63,24 +70,18 @@ export class SelectContextItemsComponent implements OnInit {
     return '/assets/images/' + pic;
   }
 
-  getAnswerColumnCount() {
-    let count = 1;
-    this.items.forEach((values) => count = count + values.length + 1);
-    return count;
+  allowDrag(item: CdkDrag<any>) {
+    return item.element.nativeElement.id.split(':')[0] !== 'undefined';
   }
 
-  getAnswerColumns() {
-    const cols: string[] = [''];
-    this.items.forEach((values, key) => {
-      cols.push(key);
-      cols.push('');
-    });
-    return cols;
+  drop(event: CdkDragDrop<Item[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+        transferArrayItem(event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+    }
   }
-
-  getAnswerColSpan(key: string) {
-    // @ts-ignore
-    return this.items.has(key) ? this.items.get(key).length : 1;
-  }
-
 }

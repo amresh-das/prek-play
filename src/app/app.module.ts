@@ -35,6 +35,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EvsComponent } from './evs/evs.component';
 import {SelectContextItemsComponent} from "./shared/select-context-items/select-context-items.component";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {SelectContextItemsComponent} from "./shared/select-context-items/select-
     MatSnackBarModule,
     MatCheckboxModule,
     FlexLayoutModule,
+    DragDropModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
   ],
