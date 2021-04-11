@@ -3,7 +3,8 @@ import {Injectable} from "@angular/core";
 @Injectable({providedIn: "root"})
 export class SettingsService {
   static PHONICS_SHOW_WORDS_BATCH_COUNT = 'phonics.show.words.batch.count';
-  static SEASONS_EXTRA_ITEM_COUNT = 'seasons.extra.item.count';
+  static SEASONS_MIN_EXTRA_ITEM_COUNT = 'seasons.min.extra.item.count';
+  static SEASONS_MAX_EXTRA_ITEM_COUNT = 'seasons.max.extra.item.count';
 
   getConfig(key: string, defaultVal?: string): string | undefined {
     const item = localStorage.getItem(key);

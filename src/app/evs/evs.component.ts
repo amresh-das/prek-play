@@ -37,8 +37,9 @@ export class EvsComponent implements OnInit {
           values.forEach(i => usedItems.push(i.name));
         });
         Randomizer.randomize(allItems);
-        const otherItems = allItems.filter(i => usedItems.indexOf(i.name) === -1)
-          .splice(0, this.settingsService.getConfigInt(SettingsService.SEASONS_EXTRA_ITEM_COUNT, 6));
+        const extraCount = Randomizer.randomInt(this.settingsService.getConfigInt(SettingsService.SEASONS_MIN_EXTRA_ITEM_COUNT, 3),
+          this.settingsService.getConfigInt(SettingsService.SEASONS_MAX_EXTRA_ITEM_COUNT, 6));
+        const otherItems = allItems.filter(i => usedItems.indexOf(i.name) === -1).splice(0, extraCount);
         this.dialog.open(SelectContextItemsComponent, {
           data: {
             themePics: season.pics,
