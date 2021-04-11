@@ -3,7 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Item} from "./model/seasons";
 import {SeasonsService} from "../services/seasons.service";
 import {SelectContextItemsComponent} from "../shared/select-context-items/select-context-items.component";
-import {Randomizer} from "../services/shuffle";
+import {Randomizer} from "../services/randomizer";
 import {SettingsService} from "../services/settings.service";
 
 @Component({

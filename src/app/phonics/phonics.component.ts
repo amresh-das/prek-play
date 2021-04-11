@@ -6,7 +6,7 @@ import {WordPicComponent} from "./word.pic.component";
 import {ReadWordComponent} from "./read-word.component";
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
-import {Randomizer} from "../services/shuffle";
+import {Randomizer} from "../services/randomizer";
 import {SettingsService} from "../services/settings.service";
 
 @Component({
