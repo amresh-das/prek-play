@@ -84,4 +84,8 @@ export class SelectContextItemsComponent implements OnInit {
           event.currentIndex);
     }
   }
+
+  isSuccess() {
+    return this.choices.filter(c => this.relations.has(c.name)).length === 0;
+  }
 }

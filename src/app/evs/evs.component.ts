@@ -44,7 +44,9 @@ export class EvsComponent implements OnInit {
           data: {
             themePics: season.pics,
             items: items,
-            otherItems: otherItems
+            otherItems: otherItems,
+            subject: 'What do you use in this Season?',
+            success: 'Yay! You found them All!'
           },
           height: '100%',
           width: '100%',
