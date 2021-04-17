@@ -131,6 +131,14 @@ export class ReadWordComponent implements OnInit {
   startDraw(x: number, y: number) {
     this.drawPosX = x;
     this.drawPosY = y;
+    const ctx = this.wordCanvas.nativeElement.getContext('2d');
+    if (ctx) {
+      ctx.strokeStyle = this.drawColor;
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, 2 * Math.PI, true);
+      ctx.fill();
+      ctx.stroke();
+    }
     this.isDrawing = true;
   }
 
