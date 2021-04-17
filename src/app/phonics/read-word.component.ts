@@ -43,6 +43,7 @@ export class ReadWordComponent implements OnInit {
     if (this.displayIndex < this.words.length - 1) {
       this.displayIndex++;
       this.editable = false;
+      this.clearCanvas();
     }
   }
 
@@ -50,6 +51,7 @@ export class ReadWordComponent implements OnInit {
     if (this.displayIndex > 0) {
       this.displayIndex--;
       this.editable = false;
+      this.clearCanvas();
     }
   }
 
