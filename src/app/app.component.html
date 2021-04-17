@@ -7,18 +7,26 @@
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('maths')">
-      <mat-icon>exposure</mat-icon>
-      <span>Maths</span>
-    </a>
-    <a mat-menu-item (click)="navigateMenu('evs')">
+    <a mat-menu-item [matMenuTriggerFor]="evsMenu">
       <mat-icon>public</mat-icon>
       <span>Environmental Studies</span>
+    </a>
+  </mat-menu>
+  <mat-menu #evsMenu="matMenu">
+    <a mat-menu-item (click)="navigateMenu('seasons')">
+      <mat-icon>wb_cloudy</mat-icon>
+      <span>Seasons</span>
+    </a>
+    <a mat-menu-item (click)="navigateMenu('family')">
+      <mat-icon>groups</mat-icon>
+      <span>Family</span>
     </a>
   </mat-menu>
   <span class="app-title">Pre-K Play</span>
   <span class="app-spacer"></span>
   <button mat-button (click)="navigateMenu('settings')"><mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon></button>
 </mat-toolbar>
-
-<span><router-outlet></router-outlet></span>
+<mat-divider></mat-divider>
+<mat-card>
+  <router-outlet></router-outlet>
+</mat-card>

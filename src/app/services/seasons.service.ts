@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Item, Season} from "../evs/model/seasons";
+import {Season} from "../evs/seasons/seasons";
+import {Item} from "../shared/model/item";
 
 @Injectable({providedIn: "root"})
 export class SeasonsService {

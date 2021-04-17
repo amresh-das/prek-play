@@ -1,34 +1,28 @@
-<mat-tab-group class="mat-elevation-z4">
-  <mat-tab label="Reading Words">
-    <div>
-      <span class="app-spacer"></span>
-      <mat-form-field class="filter-chip-list" appearance="outline">
-        <mat-label>
-          <mat-icon>search</mat-icon>
-          Filter Syllables
-        </mat-label>
-        <mat-chip-list #chipList aria-label="Syllables">
-          <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
-            {{filter}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input matInput placeholder="Separate each syllable with comma/enter/space"
-                 [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 matChipInputAddOnBlur="true"
-                 (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
-        </mat-chip-list>
-      </mat-form-field>
-      <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
-      <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
-    </div>
+<div>
+  <span class="app-spacer"></span>
+  <mat-form-field class="filter-chip-list" appearance="outline">
+    <mat-label>
+      <mat-icon>search</mat-icon>
+      Filter Syllables
+    </mat-label>
+    <mat-chip-list #chipList aria-label="Syllables">
+      <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
+        {{filter}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input matInput placeholder="Separate each syllable with comma/enter/space"
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             matChipInputAddOnBlur="true"
+             (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
+    </mat-chip-list>
+  </mat-form-field>
+  <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
+  <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+</div>
 
-    <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
-      <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'" (click)="word.resources?.length!=0 && showPic(word)">
-        <span>{{word.word | lowercase}}</span>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-  </mat-tab>
-  <mat-tab label="Matching Words with Pictures"> Content 1 </mat-tab>
-</mat-tab-group>
+<mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
+  <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'" (click)="word.resources?.length!=0 && showPic(word)">
+    <span>{{word.word | lowercase}}</span>
+  </mat-grid-tile>
+</mat-grid-list>

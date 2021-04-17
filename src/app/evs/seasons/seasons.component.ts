@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {Item} from "./model/seasons";
-import {SeasonsService} from "../services/seasons.service";
-import {SelectContextItemsComponent} from "../shared/select-context-items/select-context-items.component";
-import {Randomizer} from "../services/randomizer";
-import {SettingsService} from "../services/settings.service";
+import {SeasonsService} from "../../services/seasons.service";
+import {SelectContextItemsComponent} from "../../shared/select-context-items/select-context-items.component";
+import {Randomizer} from "../../services/randomizer";
+import {SettingsService} from "../../services/settings.service";
+import {Item} from "../../shared/model/item";
 
 @Component({
-  selector: 'app-evs',
-  templateUrl: './evs.component.html',
-  styleUrls: ['./evs.component.scss']
+  selector: 'app-seasons',
+  templateUrl: './seasons.component.html',
+  styleUrls: ['./seasons.component.scss']
 })
-export class EvsComponent implements OnInit {
+export class SeasonsComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private seasonsService: SeasonsService, private settingsService: SettingsService) { }
 

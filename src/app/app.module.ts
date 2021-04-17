@@ -13,8 +13,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { PhonicsComponent } from './phonics/phonics.component';
-import { MathsComponent } from './maths/maths.component';
-import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -33,21 +31,21 @@ import {MatChipsModule} from "@angular/material/chips";
 import { SettingsComponent } from './settings/settings.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { EvsComponent } from './evs/evs.component';
 import {SelectContextItemsComponent} from "./shared/select-context-items/select-context-items.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { FamilyTreeComponent } from './evs/family-tree/family-tree.component';
+import { SeasonsComponent } from './evs/seasons/seasons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhonicsComponent,
-    MathsComponent,
-    HomeComponent,
     WordPicComponent,
     ReadWordComponent,
     SettingsComponent,
-    EvsComponent,
-    SelectContextItemsComponent
+    SelectContextItemsComponent,
+    FamilyTreeComponent,
+    SeasonsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +67,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MatRippleModule,
     MatMenuModule,
     MatButtonModule,
+    MatTabsModule,
     MatChipsModule,
     MatSnackBarModule,
     MatCheckboxModule,
