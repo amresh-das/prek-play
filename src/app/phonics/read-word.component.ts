@@ -150,7 +150,6 @@ export class ReadWordComponent implements OnInit {
       this.isDrawn = true;
       ctx.strokeStyle = this.drawColor;
       ctx.beginPath();
-      // console.log('Drawing ', this.drawPosX, this.drawPosY, x, y);
       ctx.moveTo(this.drawPosX, this.drawPosY);
       ctx.lineTo(x, y);
       ctx.stroke();
