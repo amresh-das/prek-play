@@ -41,7 +41,10 @@ export class PhonicsComponent implements OnInit {
     if (this.filters.length == 0) {
       return this.words;
     } else {
-      return this.words.filter(w => this.filters.find(f => w.word.indexOf(f.toLowerCase()) >= 0));
+      return this.words.filter(w => this.filters.find(f => {
+        const regex = new RegExp(f, 'ig');
+        return w.word.match(regex);
+      }));
     }
   }
 
@@ -78,9 +81,11 @@ export class PhonicsComponent implements OnInit {
 
   addFilter(event: MatChipInputEvent) {
     const input = event.input;
-    const value = event.value;
+    const value = event.value.trim();
     if (value.length > 0) {
-      this.filters.push(value.trim());
+      const plainTxtSegments = value.split('*');
+      const filterRegexPattern = plainTxtSegments.map(s => (s.endsWith('.') ? s : s + '.')).join('*');
+      this.filters.push(filterRegexPattern.slice(0, filterRegexPattern.length - 1));
     }
     if (input) {
       input.value = '';
