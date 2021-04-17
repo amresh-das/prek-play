@@ -1,3 +1,4 @@
+<mat-icon tabindex="3" (click)="close()" style="float: right; top:-8px; right:-8px;">close</mat-icon>
 <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
 <mat-dialog-content>
   <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
@@ -5,10 +6,17 @@
       <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
     </mat-grid-tile>
     <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
-      <span *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
+      <span id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}" (load)="positionCanvas($event)">
         {{getWord().word}}
       </span>
+      <canvas #wordCanvas id="wordCanvas"
+              (mousedown)="mouseDown($event)" (touchstart)="startTouch($event)"
+              (mouseup)="stopDraw()" (mouseout)="stopDraw()" (touchcancel)="stopDraw()" (touchend)="stopDraw()"
+              (mousemove)="mouseMove($event)" (touchmove)="touchMove($event)">
+      </canvas>
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
+      <mat-icon *ngIf="isDrawn" (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
+      <input tabindex="2" class="color-picker" type="color" [(ngModel)]="drawColor">
     </mat-grid-tile>
     <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
       <mat-icon *ngIf="displayIndex<words.length-1">arrow_right</mat-icon>
@@ -16,6 +24,5 @@
   </mat-grid-list>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="!allDone() && showPic()" autofocus>Show</button>
-  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button tabindex="1" mat-raised-button color="primary" (click)="!allDone() && showPic()" autofocus>Show</button>
 </mat-dialog-actions>

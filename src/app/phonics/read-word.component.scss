@@ -32,3 +32,23 @@
 .word-pic-tile {
   background-image: $with-pic-word-gradient;
 }
+
+#wordCanvas {
+  position: absolute;
+}
+
+.clear-canvas-btn {
+  //position: absolute;
+  cursor: pointer;
+  font-size: medium;
+  text-shadow: none;
+  position: absolute;
+  right: 2px;
+  top: 5px;
+}
+
+.color-picker {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}

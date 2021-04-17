@@ -2,3 +2,7 @@ $no-pic-word-gradient: linear-gradient(140deg, #b5b4b0 0%, #b6b0b3 50%, #c4c6b8 
 $with-pic-word-gradient: linear-gradient(140deg, #7eb9d6 0%, #dcd9ec 50%, #d4ece9 75%);
 $selection-success-gradient: linear-gradient(140deg, #21672a 0%, #aff3c8 50%, #ade7bb 75%);
 $tab-gradient: linear-gradient(140deg, #e8d9f3 0%, #b399cd 50%, #e8d9f3 75%);
+
+.clickable {
+  cursor: pointer;
+}
