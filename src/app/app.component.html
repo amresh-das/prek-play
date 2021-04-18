@@ -3,7 +3,7 @@
     <mat-icon class="app-menu">menu</mat-icon>
   </a>
   <mat-menu #menu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('phonics')">
+    <a mat-menu-item (click)="navigateMenu('phonics', 'Learn Phonics')">
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
     </a>
@@ -13,18 +13,20 @@
     </a>
   </mat-menu>
   <mat-menu #evsMenu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('seasons')">
+    <a mat-menu-item (click)="navigateMenu('seasons', 'Learn Seasons')">
       <mat-icon>wb_cloudy</mat-icon>
       <span>Seasons</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('family')">
+    <a mat-menu-item (click)="navigateMenu('family', 'Family Tree')">
       <mat-icon>groups</mat-icon>
       <span>Family</span>
     </a>
   </mat-menu>
-  <span class="app-title">Pre-K Play</span>
+  <span class="app-title">Pre-K Play<span *ngIf="subtitle"> - {{subtitle}}</span></span>
   <span class="app-spacer"></span>
-  <button mat-button (click)="navigateMenu('settings')"><mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon></button>
+  <button mat-button (click)="navigateMenu('settings', 'Configure Settings')">
+    <mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon>
+  </button>
 </mat-toolbar>
 <mat-divider></mat-divider>
 <mat-card>

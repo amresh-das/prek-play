@@ -1,0 +1,20 @@
+[
+  {"p1": "aarav-das", "relation":  "CHILD", "p2": "amresh-das"},
+  {"p1": "aarav-das", "relation":  "CHILD", "p2": "vandana-kushwaha"},
+  {"p1": "amresh-das", "relation":  "SPOUSE", "p2": "vandana-kushwaha"},
+  {"p1": "amresh-das", "relation":  "CHILD", "p2": "sachchida-nand-das"},
+  {"p1": "amresh-das", "relation":  "CHILD", "p2": "shanti-devi"},
+  {"p1": "sachchida-nand-das", "relation":  "SPOUSE", "p2": "shanti-devi"},
+  {"p1": "vandana-kushwaha", "relation":  "CHILD", "p2": "ram-nawal-kushwaha"},
+  {"p1": "vandana-kushwaha", "relation":  "CHILD", "p2": "ram-shri-kushwaha"},
+  {"p1": "ram-nawal-kushwaha", "relation":  "SPOUSE", "p2": "ram-shri-kushwaha"},
+  {"p1": "rajesh-kushwaha", "relation":  "CHILD", "p2": "ram-nawal-kushwaha"},
+  {"p1": "rajesh-kushwaha", "relation":  "CHILD", "p2": "ram-shri-kushwaha"},
+  {"p1": "rajesh-kushwaha", "relation":  "SPOUSE", "p2": "sandhya-kushwaha"},
+  {"p1": "suresh-kushwaha", "relation":  "CHILD", "p2": "ram-nawal-kushwaha"},
+  {"p1": "suresh-kushwaha", "relation":  "CHILD", "p2": "ram-shri-kushwaha"},
+  {"p1": "suresh-kushwaha", "relation":  "SPOUSE", "p2": "sharmila"},
+  {"p1": "vijay-kushwaha", "relation":  "CHILD", "p2": "ram-nawal-kushwaha"},
+  {"p1": "vijay-kushwaha", "relation":  "CHILD", "p2": "ram-shri-kushwaha"},
+  {"p1": "vijay-kushwaha", "relation":  "SPOUSE", "p2": "geeta"}
+]

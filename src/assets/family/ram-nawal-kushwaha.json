@@ -1,1 +1,5 @@
-["pic1.png"]
+{
+  "name": "Ram Nawal Kushwaha",
+  "gender": "male",
+  "pics": ["pic1.png"]
+}

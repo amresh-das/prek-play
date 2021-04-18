@@ -1,1 +1,5 @@
-["pic1.png"]
+{
+  "name": "Shanti Devi",
+  "gender": "female",
+  "pics": ["pic1.png"]
+}

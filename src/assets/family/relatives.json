@@ -1,8 +1,0 @@
-[
-  {"person": "aarav-das", "relation":  "SON", "relative": "amresh-das"},
-  {"person": "aarav-das", "relation":  "SON", "relative": "vandana-kushwaha"},
-  {"person": "amresh-das", "relation":  "SON", "relative": "sachchida-nand-das"},
-  {"person": "amresh-das", "relation":  "SON", "relative": "shanti-devi"},
-  {"person": "vandana-kushwaha", "relation":  "DAUGHTER", "relative": "ram-nawal-kushwaha"},
-  {"person": "vandana-kushwaha", "relation":  "DAUGHTER", "relative": "ram-shri-kushwaha"}
-]

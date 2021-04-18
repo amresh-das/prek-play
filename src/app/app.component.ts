@@ -9,12 +9,14 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'prek-play';
+  subtitle: string;
 
   constructor(private router: Router) {
   }
 
-  navigateMenu(path: string){
-      this.router.navigate(['/' + path]);
+  navigateMenu(path: string, subtitle: string) {
+    this.subtitle = subtitle;
+    this.router.navigate(['/' + path]);
   }
 
 }

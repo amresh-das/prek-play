@@ -1,1 +1,6 @@
-["amresh1.png", "amresh2.png"]
+{
+  "name": "Amresh Das",
+  "nicknames": ["Tipu"],
+  "gender": "male",
+  "pics": ["amresh1.png", "amresh2.png"]
+}

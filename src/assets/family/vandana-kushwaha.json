@@ -1,1 +1,6 @@
-["vandana1.png", "vandana2.png"]
+{
+  "name": "Vandana Kushwaha",
+  "nicknames": ["Guddi"],
+  "gender": "female",
+  "pics": ["vandana1.png", "vandana2.png"]
+}

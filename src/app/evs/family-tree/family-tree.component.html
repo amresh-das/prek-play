@@ -1,1 +1,31 @@
-<p>family-tree works!</p>
+<ng-template #nodeTemplateRef let-person>
+  <ul>
+    <li>
+      <div>
+        <mat-card [class]="person.gender">
+          <mat-card-header>{{person.fullName}}</mat-card-header>
+          <mat-card-content>
+            <img class="person-pic" src="/assets/family/images/{{person.name}}/{{person.pics[getPicIndex(person)]}}" alt="{{person.name}}">
+          </mat-card-content>
+        </mat-card>
+        <span class="spacer" *ngIf="person.spouse"></span>
+        <mat-card *ngIf="people.get(person.spouse); let spouse" [class]="spouse.gender">
+          <mat-card-header>{{spouse.fullName}}</mat-card-header>
+          <mat-card-content>
+            <img class="person-pic" *ngIf="spouse.pics" src="/assets/family/images/{{spouse.name}}/{{spouse.pics[getPicIndex(spouse)]}}" alt="{{spouse.name}}">
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <ng-template ngFor [ngForOf]="person.kids" [ngForTemplate]="nodeTemplateRef"></ng-template>
+    </li>
+  </ul>
+</ng-template>
+
+<div class="tree" id="FamilyTreeDiv" fxLayout="row" fxLayoutAlign="center">
+  <span *ngFor="let person of getFamilyData()">
+    <ng-template
+      [ngTemplateOutlet]="nodeTemplateRef"
+      [ngTemplateOutletContext]="{ $implicit: person }">
+    </ng-template>
+  </span>
+</div>
