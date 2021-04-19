@@ -16,5 +16,9 @@
   {"p1": "suresh-kushwaha", "relation":  "SPOUSE", "p2": "sharmila"},
   {"p1": "vijay-kushwaha", "relation":  "CHILD", "p2": "ram-nawal-kushwaha"},
   {"p1": "vijay-kushwaha", "relation":  "CHILD", "p2": "ram-shri-kushwaha"},
-  {"p1": "vijay-kushwaha", "relation":  "SPOUSE", "p2": "geeta"}
+  {"p1": "vijay-kushwaha", "relation":  "SPOUSE", "p2": "geeta"},
+  {"p1": "shreyansh", "relation":  "CHILD", "p2": "rajesh-kushwaha"},
+  {"p1": "shreyansh", "relation":  "CHILD", "p2": "sandhya-kushwaha"},
+  {"p1": "yash", "relation":  "CHILD", "p2": "rajesh-kushwaha"},
+  {"p1": "yash", "relation":  "CHILD", "p2": "sandhya-kushwaha"}
 ]
