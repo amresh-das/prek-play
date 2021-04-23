@@ -21,6 +21,10 @@
       <mat-icon>groups</mat-icon>
       <span>Family</span>
     </a>
+    <a mat-menu-item (click)="navigateMenu('animal-categories', 'Domestic & Wild Animals')">
+      <mat-icon>pets</mat-icon>
+      <span>Domestic & Wild Animals</span>
+    </a>
   </mat-menu>
   <span class="app-title">Pre-K Play<span *ngIf="subtitle"> - {{subtitle}}</span></span>
   <span class="app-spacer"></span>

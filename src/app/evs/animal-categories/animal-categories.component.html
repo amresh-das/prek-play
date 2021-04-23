@@ -1,0 +1,30 @@
+<mat-grid-list fxLayout="row" fxLayoutAlign="center" [cols]="5" rowHeight="1:2">
+  <mat-grid-tile colspan="2">
+    <mat-card class="category-card">
+      <mat-card-content>
+        <img src="/assets/images/backgrounds/farm.png" class="category mat-elevation-z2"/>
+      </mat-card-content>
+    </mat-card>
+    <mat-grid-tile-footer>Domestic</mat-grid-tile-footer>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <span #choiceHolder>
+      <mat-card class="selection mat-elevation-z10">
+        <mat-card-content>
+          <img #choiceImg cdkDrag src="{{'/assets/images/animals/' + choice + '.png'}}" alt="{{choice}}" class="choice"/>
+        </mat-card-content>
+        <mat-card-footer>
+          <button mat-button (click)="next()"><mat-icon>navigate_next</mat-icon></button>
+        </mat-card-footer>
+      </mat-card>
+    </span>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-card class="category-card">
+      <mat-card-content>
+        <img src="/assets/images/backgrounds/jungle.png" class="category mat-elevation-z2"/>
+      </mat-card-content>
+    </mat-card>
+    <mat-grid-tile-footer>Wild</mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>

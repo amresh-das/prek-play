@@ -35,6 +35,7 @@ import {SelectContextItemsComponent} from "./shared/select-context-items/select-
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { FamilyTreeComponent } from './evs/family-tree/family-tree.component';
 import { SeasonsComponent } from './evs/seasons/seasons.component';
+import { AnimalCategoriesComponent } from './evs/animal-categories/animal-categories.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SeasonsComponent } from './evs/seasons/seasons.component';
     SettingsComponent,
     SelectContextItemsComponent,
     FamilyTreeComponent,
-    SeasonsComponent
+    SeasonsComponent,
+    AnimalCategoriesComponent
   ],
   imports: [
     BrowserModule,

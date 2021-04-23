@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FamilyService} from "../../services/family.service";
 import {Person, Related} from "./person";
-import {Observable} from "rxjs";
 import {Randomizer} from "../../services/randomizer";
 
 @Component({

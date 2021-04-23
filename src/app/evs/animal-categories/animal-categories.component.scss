@@ -1,0 +1,27 @@
+.category {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.mat-grid-list {
+  height: 55vh;
+}
+
+.selection {
+  width: 15vw;
+  font-size: 2em;
+  z-index: 10000;
+  text-align: center;
+}
+
+.category-card {
+  z-index: 0;
+}
+
+.choice {
+  object-fit: cover;
+  height: 90%;
+  width: 90%;
+}

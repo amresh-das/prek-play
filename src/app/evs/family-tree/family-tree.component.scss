@@ -1,7 +1,7 @@
 .tree {
   white-space: nowrap;
-  min-width: 800px;
-  min-height:500px;
+  min-width: 900px;
+  min-height:700px;
 }
 .tree ul {
   padding-top: 20px;
@@ -89,7 +89,7 @@
 .tree li div .male {
   background-color:lightblue;
   display: inline-block;
-  width:90px;
+  width:110px;
   padding:10px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -98,7 +98,7 @@
 .tree li div .female {
   background-color:lightpink;
   display: inline-block;
-  width:90px;
+  width:110px;
   padding:10px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -112,9 +112,9 @@
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also*/
 .tree li div:hover, .tree li div:hover + ul li div {
-  background: #c8e4f8;
+  background: #102786;
   color: #000;
-  border: 1px solid #94a0b4;
+  border: 1px solid #0b3885;
 }
 /*Connector styles on hover*/
 .tree li div:hover + ul li::after,
@@ -125,7 +125,12 @@
 }
 
 .person-pic {
-  height: 100px;
-  width: 100px;
+  height: 83px;
+  width: 83px;
   object-fit: cover;
 }
+
+.mat-card-footer {
+  font-size: small;
+}
+
