@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Randomizer} from "../../services/randomizer";
+import {CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-animal-categories',
@@ -8,16 +9,18 @@ import {Randomizer} from "../../services/randomizer";
 })
 export class AnimalCategoriesComponent implements OnInit {
 
-  domesticAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf'];
-  wildAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig'];
+  static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig'];
+  static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf'];
   animals: string[] = [];
+  resultDomestic: string[] = [];
+  resultWild: string[] = [];
   choice: string | undefined;
   @ViewChild('choiceHolder') choiceHolder: ElementRef<HTMLSpanElement>;
   @ViewChild('choiceImg') choiceImg: ElementRef<HTMLImageElement>;
 
   constructor() {
-    this.domesticAnimals.forEach(a => this.animals.push(a));
-    this.wildAnimals.forEach(a => this.animals.push(a));
+    AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
+    AnimalCategoriesComponent.wildAnimals.forEach(a => this.animals.push(a));
     Randomizer.randomize(this.animals);
     this.next();
   }
@@ -31,6 +34,25 @@ export class AnimalCategoriesComponent implements OnInit {
     } else {
       this.choice = this.animals.splice(1, 1)[0];
     }
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
+
+  isDomesticAllowed(item: CdkDrag<any>) {
+    return AnimalCategoriesComponent.domesticAnimals.indexOf(item.element.nativeElement.id) !== -1;
+  }
+
+  isWildAllowed(item: CdkDrag<any>) {
+    return AnimalCategoriesComponent.wildAnimals.indexOf(item.element.nativeElement.id) !== -1;
   }
 
 }
