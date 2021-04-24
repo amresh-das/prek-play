@@ -17,12 +17,12 @@ export class AnimalCategoriesComponent implements OnInit {
   choice: string | undefined;
   @ViewChild('choiceHolder') choiceHolder: ElementRef<HTMLSpanElement>;
   @ViewChild('choiceImg') choiceImg: ElementRef<HTMLImageElement>;
+  pos: any;
 
   constructor() {
     AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
     AnimalCategoriesComponent.wildAnimals.forEach(a => this.animals.push(a));
     Randomizer.randomize(this.animals);
-    this.next();
   }
 
   ngOnInit(): void {
@@ -44,15 +44,19 @@ export class AnimalCategoriesComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+
     }
   }
 
-  isDomesticAllowed(item: CdkDrag<any>) {
+  isDomesticAllowed(item: CdkDrag) {
     return AnimalCategoriesComponent.domesticAnimals.indexOf(item.element.nativeElement.id) !== -1;
   }
 
-  isWildAllowed(item: CdkDrag<any>) {
+  isWildAllowed(item: CdkDrag) {
     return AnimalCategoriesComponent.wildAnimals.indexOf(item.element.nativeElement.id) !== -1;
   }
 
+  move(event: MouseEvent) {
+    this.pos = {x: event.x, y: event.y};
+  }
 }

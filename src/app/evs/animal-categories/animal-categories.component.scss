@@ -33,3 +33,25 @@
 .cdk-drag-placeholder {
   display:none;
 }
+
+.animal-result {
+  width: 10%;
+  height: 10%;
+  object-fit: scale-down;
+  position: absolute;
+}
+
+.cow { left: 437px; top: 280px; width: 8%; height: 8%}
+.hen { left: 39px; top: 318px; width: 5%; height: 5%}
+.sheep { left: 97px; top: 378px; width: 6%; height: 6%}
+.cat { left: 433px; top: 475px; width: 7%; height: 7%}
+.dog { left: 473px; top: 396px; width: 7%; height: 7%}
+.horse { left: 233px; top: 317px; width: 12%; height: 12%}
+.pig { left: 447px; top: 185px; width: 6%; height: 6%}
+.lion { left: 0; top: 0;}
+.tiger { left: 0; top: 0;}
+.bear { left: 0; top: 0;}
+.elephant { left: 0; top: 0;}
+.dear { left: 0; top: 0;}
+.zebra { left: 0; top: 0;}
+.wolf { left: 0; top: 0;}
