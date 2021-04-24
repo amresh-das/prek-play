@@ -15,8 +15,8 @@
     <span #choiceHolder cdkDropList [cdkDropListData]="animals" [cdkDropListConnectedTo]="[domesticHolder, wildHolder]">
       <mat-card *ngFor="let animal of animals.slice(0, 6); index as i" class="selection mat-elevation-z10">
         <mat-card-content>
-          <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'/assets/images/animals/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
           <span *ngIf="i != 0" class="other-choices">{{animal}}</span>
+          <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'/assets/images/animals/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
         </mat-card-content>
       </mat-card>
       <mat-card *ngIf="animals.length === 0">All Done!!!</mat-card>
