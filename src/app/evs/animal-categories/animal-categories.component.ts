@@ -17,7 +17,6 @@ export class AnimalCategoriesComponent implements OnInit {
   choice: string | undefined;
   @ViewChild('choiceHolder') choiceHolder: ElementRef<HTMLSpanElement>;
   @ViewChild('choiceImg') choiceImg: ElementRef<HTMLImageElement>;
-  pos: any;
 
   constructor() {
     AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
@@ -54,9 +53,5 @@ export class AnimalCategoriesComponent implements OnInit {
 
   isWildAllowed(item: CdkDrag) {
     return AnimalCategoriesComponent.wildAnimals.indexOf(item.element.nativeElement.id) !== -1;
-  }
-
-  move(event: MouseEvent) {
-    this.pos = {x: event.x, y: event.y};
   }
 }

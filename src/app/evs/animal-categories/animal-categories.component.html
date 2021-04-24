@@ -1,5 +1,4 @@
-<span (mousemove)="move($event)">
-<h4>Which Animals are Domestic, Which are Wild? {{pos | json}}</h4>
+<h4>Which Animals are Domestic, Which are Wild?</h4>
 <mat-grid-list fxLayout="row" fxLayoutAlign="center" [cols]="5" rowHeight="1:2">
   <mat-grid-tile colspan="2">
     <span id="domestic" #domesticHolder="cdkDropList" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="resultDomestic" [cdkDropListEnterPredicate]="isDomesticAllowed">
@@ -35,4 +34,3 @@
     <mat-grid-tile-footer>Wild</mat-grid-tile-footer>
   </mat-grid-tile>
 </mat-grid-list>
-</span>
