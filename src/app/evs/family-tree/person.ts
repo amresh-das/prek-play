@@ -1,4 +1,5 @@
 export interface Person {
+  code: string;
   name: string;
   fullName?: string;
   nicknames?: string[];
@@ -8,6 +9,7 @@ export interface Person {
   spouse?: string;
   kids?: Person[];
   isHead?: Boolean;
+  isRelated?: Boolean;
 }
 
 export interface Related {

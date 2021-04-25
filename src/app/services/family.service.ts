@@ -11,8 +11,8 @@ export class FamilyService {
     return this.http.get<Related[]>('/assets/family/family.json');
   }
 
-  getPerson(person: string): Observable<Person> {
-    return this.http.get<Person>('/assets/family/' + person + '.json');
+  getPeople(): Observable<Person[]> {
+    return this.http.get<Person[]>('/assets/family/people.json');
   }
 
 }

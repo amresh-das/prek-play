@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FamilyService} from "../../services/family.service";
 import {Person, Related} from "./person";
 import {Randomizer} from "../../services/randomizer";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-family-tree',
@@ -14,28 +15,18 @@ export class FamilyTreeComponent implements OnInit {
   picDisplayIndices: Map<string, number> = new Map<string, number>();
   show: string = "1";
 
-  constructor(private familyService: FamilyService) {
-    this.familyService.getFamily().subscribe(r => {
-      r.forEach(rel => this.relations.push(rel));
-      this.relations.forEach(r => {
-        this.cachePerson(r.p1);
-        this.cachePerson(r.p2);
-      });
+constructor(private familyService: FamilyService) {
+    forkJoin([this.familyService.getFamily(), this.familyService.getPeople()]).subscribe(results => {
+      results[0].forEach(relation => this.relations.push(relation));
+      results[1].forEach(person => this.cachePerson(person));
     });
   }
 
-  private cachePerson(person: string) {
-    if (!this.people.has(person)) {
-      let personObj: Person = {name: person, isHead: true};
-      this.people.set(person, personObj);
-      this.familyService.getPerson(person).subscribe((p) => {
-        personObj.pics = p.pics;
-        Randomizer.randomize(personObj.pics ? personObj.pics : []);
-        personObj.gender = p.gender;
-        personObj.nicknames = p.nicknames;
-        personObj.fullName = p.name;
-        personObj.relationship = p.relationship;
-      });
+  private cachePerson(person: Person) {
+    if (!this.people.has(person.code)) {
+      person.isHead = true;
+      Randomizer.randomize(person.pics ? person.pics : []);
+      this.people.set(person.code, person);
     }
   }
 
@@ -48,17 +39,18 @@ export class FamilyTreeComponent implements OnInit {
       const relative = this.people.get(r.p2);
       if (person && relative) {
         if (r.relation === 'SPOUSE') {
-            person.spouse = relative.name;
-            relative.spouse = person.name;
+            person.spouse = relative.code;
+            relative.spouse = person.code;
         } else if (r.relation === 'CHILD') {
           if (!relative.kids) {
             relative.kids = [];
           }
           person.isHead = false;
-          if (relative.kids.filter(k => k.name === person.name).length == 0) {
+          if (relative.kids.filter(k => k.code === person.code).length == 0) {
             relative.kids.push(person);
           }
         }
+        person.isRelated = true;
       }
     });
     const heads: Person[] = [];
@@ -66,7 +58,7 @@ export class FamilyTreeComponent implements OnInit {
       if (p.spouse && !this.people.get(p.spouse)?.isHead) {
         p.isHead = false;
       }
-      if (p.isHead && !heads.find(h => h.spouse == p.name)) {
+      if (p.isRelated && p.isHead && !heads.find(h => h.spouse == p.code)) {
         heads.push(p);
       }
     });
@@ -74,19 +66,8 @@ export class FamilyTreeComponent implements OnInit {
   }
 
   getPicIndex(person: Person): number {
-    const index = this.picDisplayIndices.get(person.name);
+    const index = this.picDisplayIndices.get(person.code);
     return index ? index : 0;
-  }
-
-  nextPicIndex(person: Person) {
-    const len = person.pics ? person.pics.length : 0;
-    const index = this.picDisplayIndices.get(person.name);
-    this.picDisplayIndices.set(person.name, (index && (index < len - 1) ? index + 1 : 1));
-  }
-
-  prevPicIndex(person: Person) {
-    const index = this.picDisplayIndices.get(person.name);
-    this.picDisplayIndices.set(person.name, (index && (index > 0) ? index - 1 : 0));
   }
 
 }

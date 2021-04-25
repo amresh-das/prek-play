@@ -1,0 +1,231 @@
+[
+  {
+    "code": "aarav",
+    "name": "Aarav Das",
+    "nicknames": ["Maaoon"],
+    "gender": "male",
+    "relationship": "me",
+    "pics": ["aarav1.png", "aarav2.png"]
+  },
+  {
+    "code": "amresh",
+    "name": "Amresh Das",
+    "nicknames": ["Tipu"],
+    "relationship": "father",
+    "gender": "male",
+    "pics": ["amresh1.png", "amresh2.png"]
+  },
+  {
+    "code": "vandana",
+    "name": "Vandana Kushwaha",
+    "nicknames": ["Guddi"],
+    "gender": "female",
+    "relationship": "mother",
+    "pics": ["vandana1.png", "vandana2.png"]
+  },
+  {
+    "code": "ramnawal",
+    "name": "Ram Nawal Kushwaha",
+    "relationship": "grand father",
+    "gender": "male",
+    "pics": ["rnk.png"]
+  },
+  {
+    "code": "ramshri",
+    "name": "Ram Shri Kushwaha",
+    "relationship": "grand mother",
+    "gender": "female",
+    "pics": ["rsk.png"]
+  },
+  {
+    "code": "rajesh",
+    "name": "Rajesh Kushwaha",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": ["rk.png"]
+  },
+  {
+    "code": "sandhya",
+    "name": "Sandhya Kushwaha",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": ["sandhya.png"]
+  },
+  {
+    "code": "suresh",
+    "name": "Suresh Kushwaha",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": ["sk.png"]
+  },
+  {
+    "code": "sharmila",
+    "name": "Sharmila",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": ["sharmila.png"]
+  },
+  {
+    "code": "vijay",
+    "name": "Vijay Kushwaha",
+    "nicknames": ["bablu"],
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": ["vk.png"]
+  },
+  {
+    "code": "geeta",
+    "name": "Geeta",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": ["geeta.png"]
+  },
+  {
+    "code": "shreyansh",
+    "name": "Shreyansh",
+    "gender": "male",
+    "relationship": "cousin",
+    "pics": ["shreyansh.png"]
+  },
+  {
+    "code": "yash",
+    "name": "Yash",
+    "gender": "male",
+    "relationship": "cousin",
+    "pics": ["yash.png"]
+  },
+  {
+    "code": "kanika",
+    "name": "Kanika",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": ["kanika1.png", "kanika2.png"]
+  },
+  {
+    "code": "kavya",
+    "name": "Kavya",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": ["kavya.png"]
+  },
+  {
+    "code": "sndas",
+    "name": "Sachchida Nand Das",
+    "gender": "male",
+    "relationship": "grand father",
+    "pics": ["snd.png"]
+  },
+  {
+    "code": "shanti",
+    "name": "Shanti Devi",
+    "gender": "female",
+    "relationship": "grand mother",
+    "pics": ["sd.png"]
+  },
+  {
+    "code": "minni",
+    "name": "Minni",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": []
+  },
+  {
+    "code": "sudhanshu",
+    "name": "Sudhanshu Shekhar",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": []
+  },
+  {
+    "code": "tanu",
+    "name": "Tanya Tanu",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "chiya",
+    "name": "Tanvi Tanu",
+    "nicknames": ["chiya"],
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "neena",
+    "name": "Neena",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": []
+  },
+  {
+    "code": "sanjay",
+    "name": "Sanjay Chaudhari",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": []
+  },
+  {
+    "code": "akshat",
+    "name": "Akshat",
+    "gender": "male",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "jiya",
+    "name": "Jiya",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "ruby",
+    "name": "Ruby",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": []
+  },
+  {
+    "code": "subhash",
+    "name": "Subhash Kumar",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": []
+  },
+  {
+    "code": "abha",
+    "name": "Abha",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "sameer",
+    "name": "Sameer Kumar",
+    "gender": "male",
+    "relationship": "uncle",
+    "pics": []
+  },
+  {
+    "code": "anjali",
+    "name": "Anjali",
+    "gender": "female",
+    "relationship": "aunt",
+    "pics": []
+  },
+  {
+    "code": "anika",
+    "name": "Anika",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  },
+  {
+    "code": "amyra",
+    "name": "Amyra",
+    "gender": "female",
+    "relationship": "cousin",
+    "pics": []
+  }
+]

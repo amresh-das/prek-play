@@ -2,12 +2,14 @@
   <mat-radio-button value="1">Relationship</mat-radio-button>
   <mat-radio-button value="2">Name</mat-radio-button>
 
-  <mat-card *ngFor="let person of getFamilyData()">
+  <mat-card *ngFor="let person of getFamilyData().slice(0, 1)">
     <div class="tree" id="FamilyTreeDiv-{{person.name}}" fxLayout="row" fxLayoutAlign="center">
-      <ng-template
-        [ngTemplateOutlet]="nodeTemplateRef"
-        [ngTemplateOutletContext]="{ $implicit: person }">
-      </ng-template>
+      <ul>
+        <ng-template
+          [ngTemplateOutlet]="nodeTemplateRef"
+          [ngTemplateOutletContext]="{ $implicit: person }">
+        </ng-template>
+      </ul>
     </div>
   </mat-card>
 </mat-radio-group>
@@ -16,95 +18,23 @@
   <span *ngIf="person" [class]="person.gender">
     <mat-card>
       <mat-card-content *ngIf="person.pics">
-        <img class="person-pic" src="/assets/family/images/{{person.name}}/{{person.pics[getPicIndex(person)]}}" alt="{{person.name}}">
+        <img *ngIf="person.pics?.length > 0" class="person-pic" src="/assets/family/images/{{person.pics[getPicIndex(person)]}}" alt="{{person.name | titlecase}}">
+        <span *ngIf="person.pics?.length === 0">{{person.name}}</span>
       </mat-card-content>
-      <mat-card-footer>{{(this.show === "1" ? person.relationship : person.fullName) | titlecase}}</mat-card-footer>
+      <mat-card-footer>{{(this.show === "1" ? person.relationship : person.name) | titlecase}}</mat-card-footer>
     </mat-card>
   </span>
 </ng-template>
 
 <ng-template #nodeTemplateRef let-person>
-  <ul>
-    <li>
-      <div>
-        <ng-template ngFor [ngForOf]="[person]" [ngForTemplate]="personTemplateRef"></ng-template>
-        <span class="spacer" *ngIf="person.spouse"></span>
-        <ng-template ngFor [ngForOf]="[people.get(person.spouse)]" [ngForTemplate]="personTemplateRef"></ng-template>
-      </div>
-        <ng-template ngFor [ngForOf]="person.kids" [ngForTemplate]="nodeTemplateRef"></ng-template>
-    </li>
-  </ul>
+  <li>
+    <div>
+      <ng-template ngFor [ngForOf]="[person]" [ngForTemplate]="personTemplateRef"></ng-template>
+      <span class="spacer" *ngIf="person.spouse"></span>
+      <ng-template ngFor [ngForOf]="[people.get(person.spouse)]" [ngForTemplate]="personTemplateRef"></ng-template>
+    </div>
+    <ul *ngIf="person.kids?.length > 0">
+      <ng-template ngFor [ngForOf]="person.kids" [ngForTemplate]="nodeTemplateRef"></ng-template>
+    </ul>
+  </li>
 </ng-template>
-
-<div class="tree" id="FamilyTreeDiv2">
-  <ul>
-    <li>
-      <div>
-        <ng-template ngFor [ngForOf]="[people.get('ram-nawal-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-        <span class="spacer"></span>
-        <ng-template ngFor [ngForOf]="[people.get('ram-shri-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-      </div>
-      <ul>
-        <li>
-          <div>
-            <ng-template ngFor [ngForOf]="[people.get('rajesh-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-            <span class="spacer"></span>
-            <ng-template ngFor [ngForOf]="[people.get('sandhya-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-          </div>
-          <ul>
-            <li>
-              <div>
-                <ng-template ngFor [ngForOf]="[people.get('shreyansh')]" [ngForTemplate]="personTemplateRef"></ng-template>
-              </div>
-            </li>
-            <li>
-              <div>
-                <ng-template ngFor [ngForOf]="[people.get('yash')]" [ngForTemplate]="personTemplateRef"></ng-template>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <div>
-            <ng-template ngFor [ngForOf]="[people.get('suresh-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-            <span class="spacer"></span>
-            <ng-template ngFor [ngForOf]="[people.get('sharmila')]" [ngForTemplate]="personTemplateRef"></ng-template>
-          </div>
-          <ul>
-            <li>
-              <div>
-                <ng-template ngFor [ngForOf]="[people.get('kanika')]" [ngForTemplate]="personTemplateRef"></ng-template>
-              </div>
-            </li>
-            <li>
-              <div>
-                <ng-template ngFor [ngForOf]="[people.get('kavya')]" [ngForTemplate]="personTemplateRef"></ng-template>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <div>
-            <ng-template ngFor [ngForOf]="[people.get('vandana-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-            <span class="spacer"></span>
-            <ng-template ngFor [ngForOf]="[people.get('amresh-das')]" [ngForTemplate]="personTemplateRef"></ng-template>
-          </div>
-          <ul>
-            <li>
-              <div>
-                <ng-template ngFor [ngForOf]="[people.get('aarav-das')]" [ngForTemplate]="personTemplateRef"></ng-template>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <div>
-            <ng-template ngFor [ngForOf]="[people.get('vijay-kushwaha')]" [ngForTemplate]="personTemplateRef"></ng-template>
-            <span class="spacer"></span>
-            <ng-template ngFor [ngForOf]="[people.get('geeta')]" [ngForTemplate]="personTemplateRef"></ng-template>
-          </div>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
