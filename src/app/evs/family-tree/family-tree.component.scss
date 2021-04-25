@@ -15,7 +15,7 @@
   text-align: center;
   list-style-type: none;
   position: relative;
-  padding: 20px 5px 0 5px;
+  padding: 20px 1px 0 1px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -26,14 +26,14 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #333;
   width: 50%;
   height: 20px;
 }
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 2px solid #333;
 }
 /*We need to remove left-right connectors from elements without any siblings*/
 .tree li:only-child::after, .tree li:only-child::before {
@@ -49,15 +49,15 @@
 }
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before {
-  border-right: 1px solid #ccc;
-  border-radius: 0 5px 0 0;
-  -webkit-border-radius: 0 5px 0 0;
-  -moz-border-radius: 0 5px 0 0;
+  border-right: 2px solid #333;
+  border-radius: 0 1px 0 0;
+  -webkit-border-radius: 0 1px 0 0;
+  -moz-border-radius: 0 1px 0 0;
 }
 .tree li:first-child::after {
-  border-radius: 5px 0 0 0;
-  -webkit-border-radius: 5px 0 0 0;
-  -moz-border-radius: 5px 0 0 0;
+  border-radius: 2px 0 0 0;
+  -webkit-border-radius: 1px 0 0 0;
+  -moz-border-radius: 1px 0 0 0;
 }
 /*Time to add downward connectors from parents*/
 .tree ul ul::before {
@@ -65,13 +65,13 @@
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 1px solid #ccc;
+  border-left: 2px solid #333;
   width: 0;
   height: 20px;
 }
 .tree li div {
-  border: 1px solid #ccc;
-  padding: 5px 10px;
+  border: 2px solid #333;
+  padding: 2px 2px;
   text-decoration: none;
   color: #666;
   font-family: arial, verdana, tahoma;
@@ -79,30 +79,30 @@
   display: inline-block;
   min-width: 80px;
   min-height: 30px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
 }
 .tree li div .male {
-  background-color:lightblue;
+  background-color: #ebf6f9;
   display: inline-block;
   width:110px;
-  padding:10px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  padding:3px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
 }
 .tree li div .female {
-  background-color:lightpink;
+  background-color: #f5e8ea;
   display: inline-block;
   width:110px;
-  padding:10px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+  padding:3px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
 }
 .tree li div .spacer {
   background-color:lightblue;
@@ -112,9 +112,9 @@
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also*/
 .tree li div:hover, .tree li div:hover + ul li div {
-  background: #102786;
-  color: #000;
-  border: 1px solid #0b3885;
+  background: #b7c3f3;
+  color: #b89c9c;
+  border: 1px solid #5a74a1;
 }
 /*Connector styles on hover*/
 .tree li div:hover + ul li::after,
@@ -125,8 +125,8 @@
 }
 
 .person-pic {
-  height: 83px;
-  width: 83px;
+  height: 85px;
+  width: 85px;
   object-fit: cover;
 }
 
