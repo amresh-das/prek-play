@@ -10,6 +10,7 @@ import {SettingsService} from "../../services/settings.service";
 })
 export class AnimalCategoriesComponent {
   private static readonly SHOW_NAMES = 'animal.categories.show.names';
+  private static readonly SHOW_IMAGES = 'animal.categories.show.images';
 
   static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig', 'goat'];
   static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf', 'monkey'];
@@ -18,15 +19,19 @@ export class AnimalCategoriesComponent {
   resultWild: string[] = [];
   choice: string | undefined;
   showNames: Boolean = false;
+  showImage: Boolean = false;
 
   constructor(private settingsService: SettingsService) {
     this.init();
     this.showNames = settingsService.getConfig(AnimalCategoriesComponent.SHOW_NAMES, 'N') === 'Y';
+    this.showImage = settingsService.getConfig(AnimalCategoriesComponent.SHOW_IMAGES, 'N') === 'Y';
   }
 
   init() {
     AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
     AnimalCategoriesComponent.wildAnimals.forEach(a => this.animals.push(a));
+    this.resultDomestic = [];
+    this.resultWild = [];
     Randomizer.randomize(this.animals);
   }
 
@@ -52,7 +57,7 @@ export class AnimalCategoriesComponent {
     return AnimalCategoriesComponent.wildAnimals.indexOf(item.element.nativeElement.id) !== -1;
   }
 
-  setPref(checked: boolean) {
-    this.settingsService.setConfig(AnimalCategoriesComponent.SHOW_NAMES, checked ? 'Y' : 'N');
+  setPref(checked: boolean, type: string) {
+    this.settingsService.setConfig(type === 'name' ? AnimalCategoriesComponent.SHOW_NAMES : AnimalCategoriesComponent.SHOW_IMAGES, checked ? 'Y' : 'N');
   }
 }

@@ -2,7 +2,9 @@
 <span style="position: absolute; top: 10px; right: 10px;">
   <mat-icon (click)="init()" style="cursor: pointer; vertical-align: bottom;">restart_alt</mat-icon>
   <span>&nbsp;</span>
-  <mat-checkbox style="vertical-align: middle;" [(ngModel)]="showNames" (change)="setPref($event.checked)">Show Animal Names</mat-checkbox>
+  <mat-checkbox style="vertical-align: middle;" [(ngModel)]="showNames" (change)="setPref($event.checked, 'name')">Show Name</mat-checkbox>
+  <span>&nbsp;</span>
+  <mat-checkbox style="vertical-align: middle;" [(ngModel)]="showImage" (change)="setPref($event.checked, 'image')">Show Image</mat-checkbox>
 </span>
 <mat-grid-list fxLayout="row" fxLayoutAlign="center" [cols]="5" rowHeight="1:2">
   <mat-grid-tile colspan="2">
@@ -19,10 +21,13 @@
   <mat-grid-tile colspan="1">
     <span #choiceHolder cdkDropList [cdkDropListData]="animals" [cdkDropListConnectedTo]="[domesticHolder, wildHolder]">
       <mat-card *ngFor="let animal of animals.slice(0, 1); index as i" class="selection mat-elevation-z10">
-        <mat-card-content>
+        <mat-card-content *ngIf="showImage">
           <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'/assets/images/animals/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
         </mat-card-content>
-        <mat-card-footer *ngIf="showNames">
+        <mat-card-content *ngIf="!showImage">
+          <span [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag class="choice">{{animal | titlecase}}</span>
+        </mat-card-content>
+        <mat-card-footer *ngIf="showNames && showImage">
           {{animal | titlecase}}
         </mat-card-footer>
       </mat-card>
