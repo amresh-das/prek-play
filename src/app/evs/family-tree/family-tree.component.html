@@ -1,8 +1,9 @@
 <mat-radio-group aria-label="Select what to show" [(ngModel)]="show">
   <mat-radio-button value="1">Relationship</mat-radio-button>
   <mat-radio-button value="2">Name</mat-radio-button>
+  <mat-checkbox [(ngModel)]="showSecond" style="float: right;">Show All</mat-checkbox>
 
-  <mat-card *ngFor="let person of getFamilyData().slice(0, 1)">
+  <mat-card *ngFor="let person of getFamilyData().slice(0, showSecond ? 9999 : 1)">
     <div class="tree" id="FamilyTreeDiv-{{person.name}}" fxLayout="row" fxLayoutAlign="center">
       <ul>
         <ng-template

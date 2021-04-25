@@ -14,8 +14,9 @@ export class FamilyTreeComponent implements OnInit {
   people: Map<string, Person> = new Map<string, Person>();
   picDisplayIndices: Map<string, number> = new Map<string, number>();
   show: string = "1";
+  showSecond: Boolean = false;
 
-constructor(private familyService: FamilyService) {
+  constructor(private familyService: FamilyService) {
     forkJoin([this.familyService.getFamily(), this.familyService.getPeople()]).subscribe(results => {
       results[0].forEach(relation => this.relations.push(relation));
       results[1].forEach(person => this.cachePerson(person));
@@ -69,5 +70,4 @@ constructor(private familyService: FamilyService) {
     const index = this.picDisplayIndices.get(person.code);
     return index ? index : 0;
   }
-
 }
