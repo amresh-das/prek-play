@@ -1,6 +1,15 @@
 <mat-radio-group aria-label="Select what to show" [(ngModel)]="show">
   <mat-radio-button value="1">Relationship</mat-radio-button>
   <mat-radio-button value="2">Name</mat-radio-button>
+
+  <mat-card *ngFor="let person of getFamilyData()">
+    <div class="tree" id="FamilyTreeDiv-{{person.name}}" fxLayout="row" fxLayoutAlign="center">
+      <ng-template
+        [ngTemplateOutlet]="nodeTemplateRef"
+        [ngTemplateOutletContext]="{ $implicit: person }">
+      </ng-template>
+    </div>
+  </mat-card>
 </mat-radio-group>
 
 <ng-template #personTemplateRef let-person>
@@ -26,15 +35,6 @@
     </li>
   </ul>
 </ng-template>
-
-<mat-card *ngFor="let person of getFamilyData()">
-  <div class="tree" id="FamilyTreeDiv-{{person.name}}" fxLayout="row" fxLayoutAlign="center">
-    <ng-template
-      [ngTemplateOutlet]="nodeTemplateRef"
-      [ngTemplateOutletContext]="{ $implicit: person }">
-    </ng-template>
-  </div>
-</mat-card>
 
 <div class="tree" id="FamilyTreeDiv2">
   <ul>

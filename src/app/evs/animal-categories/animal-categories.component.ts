@@ -15,8 +15,8 @@ export class AnimalCategoriesComponent implements OnInit {
   resultDomestic: string[] = [];
   resultWild: string[] = [];
   choice: string | undefined;
-  @ViewChild('choiceHolder') choiceHolder: ElementRef<HTMLSpanElement>;
-  @ViewChild('choiceImg') choiceImg: ElementRef<HTMLImageElement>;
+  @ViewChild('domesticHolder') domesticHolder: ElementRef<HTMLSpanElement>;
+  @ViewChild('wildHolder') wildHolder: ElementRef<HTMLSpanElement>;
 
   constructor() {
     AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
@@ -27,14 +27,6 @@ export class AnimalCategoriesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  next() {
-    if (this.animals.length === 0) {
-      this.choice = undefined;
-    } else {
-      this.choice = this.animals.splice(1, 1)[0];
-    }
-  }
-
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -43,8 +35,10 @@ export class AnimalCategoriesComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-
     }
+
+    console.log(document.getElementById('domestic')?.getBoundingClientRect().width, document.getElementById('domestic')?.getBoundingClientRect().height,
+      document.getElementById('wild')?.getBoundingClientRect().width, document.getElementById('wild')?.getBoundingClientRect().height);
   }
 
   isDomesticAllowed(item: CdkDrag) {
