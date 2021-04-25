@@ -17,7 +17,7 @@
              (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
     </mat-chip-list>
   </mat-form-field>
-  <button mat-button color="primary" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
+  <button mat-button color="primary" (click)="deSelectAll()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Deselect">unpublished</mat-icon></button>
   <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
   <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
 </div>
