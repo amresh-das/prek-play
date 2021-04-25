@@ -20,5 +20,9 @@
   {"p1": "shreyansh", "relation":  "CHILD", "p2": "rajesh-kushwaha"},
   {"p1": "shreyansh", "relation":  "CHILD", "p2": "sandhya-kushwaha"},
   {"p1": "yash", "relation":  "CHILD", "p2": "rajesh-kushwaha"},
-  {"p1": "yash", "relation":  "CHILD", "p2": "sandhya-kushwaha"}
+  {"p1": "yash", "relation":  "CHILD", "p2": "sandhya-kushwaha"},
+  {"p1": "kanika", "relation":  "CHILD", "p2": "suresh-kushwaha"},
+  {"p1": "kanika", "relation":  "CHILD", "p2": "sharmila"},
+  {"p1": "kavya", "relation":  "CHILD", "p2": "suresh-kushwaha"},
+  {"p1": "kavya", "relation":  "CHILD", "p2": "sharmila"}
 ]

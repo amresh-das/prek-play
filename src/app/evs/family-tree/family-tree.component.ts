@@ -12,6 +12,7 @@ export class FamilyTreeComponent implements OnInit {
   relations: Related[] = [];
   people: Map<string, Person> = new Map<string, Person>();
   picDisplayIndices: Map<string, number> = new Map<string, number>();
+  show: string = "1";
 
   constructor(private familyService: FamilyService) {
     this.familyService.getFamily().subscribe(r => {
@@ -33,6 +34,7 @@ export class FamilyTreeComponent implements OnInit {
         personObj.gender = p.gender;
         personObj.nicknames = p.nicknames;
         personObj.fullName = p.name;
+        personObj.relationship = p.relationship;
       });
     }
   }

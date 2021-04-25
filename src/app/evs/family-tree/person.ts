@@ -2,6 +2,7 @@ export interface Person {
   name: string;
   fullName?: string;
   nicknames?: string[];
+  relationship?: string;
   gender?: string;
   pics?: [];
   spouse?: string;

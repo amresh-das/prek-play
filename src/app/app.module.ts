@@ -36,6 +36,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import { FamilyTreeComponent } from './evs/family-tree/family-tree.component';
 import { SeasonsComponent } from './evs/seasons/seasons.component';
 import { AnimalCategoriesComponent } from './evs/animal-categories/animal-categories.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { AnimalCategoriesComponent } from './evs/animal-categories/animal-catego
     MatChipsModule,
     MatSnackBarModule,
     MatCheckboxModule,
+    MatRadioModule,
     FlexLayoutModule,
     DragDropModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),

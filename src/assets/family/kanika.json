@@ -1,5 +1,6 @@
 {
   "name": "Kanika",
   "gender": "female",
-  "pics": ["pic1.png"]
+  "relationship": "Cousin Sister",
+  "pics": ["pic1.png", "pic2.png"]
 }

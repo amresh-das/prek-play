@@ -1,10 +1,15 @@
+<mat-radio-group aria-label="Select what to show" [(ngModel)]="show">
+  <mat-radio-button value="1">Relationship</mat-radio-button>
+  <mat-radio-button value="2">Name</mat-radio-button>
+</mat-radio-group>
+
 <ng-template #personTemplateRef let-person>
   <span *ngIf="person" [class]="person.gender">
     <mat-card>
       <mat-card-content *ngIf="person.pics">
         <img class="person-pic" src="/assets/family/images/{{person.name}}/{{person.pics[getPicIndex(person)]}}" alt="{{person.name}}">
       </mat-card-content>
-      <mat-card-footer>{{person.fullName}}</mat-card-footer>
+      <mat-card-footer>{{(this.show === "1" ? person.relationship : person.fullName) | titlecase}}</mat-card-footer>
     </mat-card>
   </span>
 </ng-template>
@@ -67,10 +72,14 @@
           </div>
           <ul>
             <li>
-              <div><span class="female">Kanika</span></div>
+              <div>
+                <ng-template ngFor [ngForOf]="[people.get('kanika')]" [ngForTemplate]="personTemplateRef"></ng-template>
+              </div>
             </li>
             <li>
-              <div><span class="female">Kavya</span></div>
+              <div>
+                <ng-template ngFor [ngForOf]="[people.get('kavya')]" [ngForTemplate]="personTemplateRef"></ng-template>
+              </div>
             </li>
           </ul>
         </li>
