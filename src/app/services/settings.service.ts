@@ -26,4 +26,8 @@ export class SettingsService {
     return item ? JSON.parse(item) : defaultVal;
   }
 
+  setConfig(key: string, value: string) {
+    localStorage.setItem(key, value);
+  }
+
 }

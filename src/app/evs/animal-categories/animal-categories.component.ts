@@ -1,30 +1,33 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Randomizer} from "../../services/randomizer";
 import {CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
   selector: 'app-animal-categories',
   templateUrl: './animal-categories.component.html',
   styleUrls: ['./animal-categories.component.scss']
 })
-export class AnimalCategoriesComponent implements OnInit {
+export class AnimalCategoriesComponent {
+  private static readonly SHOW_NAMES = 'animal.categories.show.names';
 
-  static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig'];
-  static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf'];
+  static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig', 'goat'];
+  static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf', 'monkey'];
   animals: string[] = [];
   resultDomestic: string[] = [];
   resultWild: string[] = [];
   choice: string | undefined;
-  @ViewChild('domesticHolder') domesticHolder: ElementRef<HTMLSpanElement>;
-  @ViewChild('wildHolder') wildHolder: ElementRef<HTMLSpanElement>;
+  showNames: Boolean = false;
 
-  constructor() {
+  constructor(private settingsService: SettingsService) {
+    this.init();
+    this.showNames = settingsService.getConfig(AnimalCategoriesComponent.SHOW_NAMES, 'N') === 'Y';
+  }
+
+  init() {
     AnimalCategoriesComponent.domesticAnimals.forEach(a => this.animals.push(a));
     AnimalCategoriesComponent.wildAnimals.forEach(a => this.animals.push(a));
     Randomizer.randomize(this.animals);
-  }
-
-  ngOnInit(): void {
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -47,5 +50,9 @@ export class AnimalCategoriesComponent implements OnInit {
 
   isWildAllowed(item: CdkDrag) {
     return AnimalCategoriesComponent.wildAnimals.indexOf(item.element.nativeElement.id) !== -1;
+  }
+
+  setPref(checked: boolean) {
+    this.settingsService.setConfig(AnimalCategoriesComponent.SHOW_NAMES, checked ? 'Y' : 'N');
   }
 }

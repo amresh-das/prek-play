@@ -1,4 +1,9 @@
 <h4>Which Animals are Domestic, Which are Wild?</h4>
+<span style="position: absolute; top: 10px; right: 10px;">
+  <mat-icon (click)="init()" style="cursor: pointer; vertical-align: bottom;">restart_alt</mat-icon>
+  <span>&nbsp;</span>
+  <mat-checkbox style="vertical-align: middle;" [(ngModel)]="showNames" (change)="setPref($event.checked)">Show Animal Names</mat-checkbox>
+</span>
 <mat-grid-list fxLayout="row" fxLayoutAlign="center" [cols]="5" rowHeight="1:2">
   <mat-grid-tile colspan="2">
     <span id="domestic" #domesticHolder="cdkDropList" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="resultDomestic" [cdkDropListEnterPredicate]="isDomesticAllowed">
@@ -15,9 +20,11 @@
     <span #choiceHolder cdkDropList [cdkDropListData]="animals" [cdkDropListConnectedTo]="[domesticHolder, wildHolder]">
       <mat-card *ngFor="let animal of animals.slice(0, 1); index as i" class="selection mat-elevation-z10">
         <mat-card-content>
-<!--          <span *ngIf="i != 0" class="other-choices">{{animal}}</span>-->
           <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'/assets/images/animals/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
         </mat-card-content>
+        <mat-card-footer *ngIf="showNames">
+          {{animal | titlecase}}
+        </mat-card-footer>
       </mat-card>
       <mat-card *ngIf="animals.length === 0">All Done!!!</mat-card>
     </span>
