@@ -18,13 +18,13 @@ export class AnimalCategoriesComponent {
   resultDomestic: string[] = [];
   resultWild: string[] = [];
   choice: string | undefined;
-  showNames: Boolean = false;
-  showImage: Boolean = false;
+  showNames: Boolean;
+  showImage: Boolean;
 
   constructor(private settingsService: SettingsService) {
     this.init();
     this.showNames = settingsService.getConfig(AnimalCategoriesComponent.SHOW_NAMES, 'N') === 'Y';
-    this.showImage = settingsService.getConfig(AnimalCategoriesComponent.SHOW_IMAGES, 'N') === 'Y';
+    this.showImage = settingsService.getConfig(AnimalCategoriesComponent.SHOW_IMAGES, 'Y') === 'Y';
   }
 
   init() {
