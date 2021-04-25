@@ -17,12 +17,16 @@
              (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
     </mat-chip-list>
   </mat-form-field>
+  <button mat-button color="primary" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
   <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
   <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
 </div>
 
 <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
-  <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'" (click)="word.resources?.length!=0 && showPic(word)">
-    <span>{{word.word | lowercase}}</span>
+  <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
+                 (dblclick)="word.resources?.length!=0 && showPic(word)">
+    <mat-checkbox (change)="select($event.checked, word)" [(ngModel)]="word.selected">
+      <span>{{word.word | lowercase}}</span>
+    </mat-checkbox>
   </mat-grid-tile>
 </mat-grid-list>

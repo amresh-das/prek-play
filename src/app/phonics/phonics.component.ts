@@ -19,6 +19,7 @@ export class PhonicsComponent implements OnInit {
   filters: string[] = [];
   selectable = true;
   removable = true;
+  selected: Word[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
@@ -59,7 +60,8 @@ export class PhonicsComponent implements OnInit {
   }
 
   showWordsToRead() {
-    const items = this.getFiltered().splice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 20));
+    const items = this.selected.length > 0 ? this.selected :
+      this.getFiltered().slice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 40));
     this.dialog.open(ReadWordComponent, {
       width: '100%',
       height: '50%',
@@ -92,5 +94,17 @@ export class PhonicsComponent implements OnInit {
     }
   }
 
+  deSelectAll() {
+    this.selected.forEach(w => w.selected = false);
+    this.selected.splice(0, this.selected.length);
+  }
+
+  select(checked: boolean, word: Word) {
+    if (checked) {
+      this.selected.push(word);
+    } else {
+      this.selected.splice(this.selected.indexOf(word), 1);
+    }
+  }
 }
 
