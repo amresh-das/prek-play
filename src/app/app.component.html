@@ -3,6 +3,10 @@
     <mat-icon class="app-menu">menu</mat-icon>
   </a>
   <mat-menu #menu="matMenu">
+    <a mat-menu-item (click)="navigateMenu('whiteboard', 'White Board')">
+      <mat-icon>draw</mat-icon>
+      <span>White Board</span>
+    </a>
     <a mat-menu-item (click)="navigateMenu('phonics', 'Learn Phonics')">
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>

@@ -37,6 +37,7 @@ import { FamilyTreeComponent } from './evs/family-tree/family-tree.component';
 import { SeasonsComponent } from './evs/seasons/seasons.component';
 import { AnimalCategoriesComponent } from './evs/animal-categories/animal-categories.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { WhiteBoardComponent } from './white-board/white-board.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatRadioModule} from "@angular/material/radio";
     SelectContextItemsComponent,
     FamilyTreeComponent,
     SeasonsComponent,
-    AnimalCategoriesComponent
+    AnimalCategoriesComponent,
+    WhiteBoardComponent
   ],
   imports: [
     BrowserModule,
