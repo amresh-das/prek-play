@@ -8,7 +8,7 @@ $custom-typography: mat-typography-config($font-family: $app-font);
 
 
 html, body { height: 100%; }
-body { margin: 2px; font-family: $app-font }
+body { margin: 2px; font-family: $app-font; overscroll-behavior-x: none;}
 
 .clickable {
   cursor: pointer;
