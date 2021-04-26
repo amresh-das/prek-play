@@ -3,6 +3,7 @@ import {FamilyService} from "../../services/family.service";
 import {Person, Related} from "./person";
 import {Randomizer} from "../../services/randomizer";
 import {forkJoin} from "rxjs";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
   selector: 'app-family-tree',
@@ -10,17 +11,19 @@ import {forkJoin} from "rxjs";
   styleUrls: ['./family-tree.component.scss']
 })
 export class FamilyTreeComponent implements OnInit {
+  private static readonly SHOW_ALL = 'family.tree.show.all';
   relations: Related[] = [];
   people: Map<string, Person> = new Map<string, Person>();
   picDisplayIndices: Map<string, number> = new Map<string, number>();
   show: string = "1";
   showSecond: Boolean = false;
 
-  constructor(private familyService: FamilyService) {
+  constructor(private familyService: FamilyService, private settingsService: SettingsService) {
     forkJoin([this.familyService.getFamily(), this.familyService.getPeople()]).subscribe(results => {
       results[0].forEach(relation => this.relations.push(relation));
       results[1].forEach(person => this.cachePerson(person));
     });
+    this.showSecond = settingsService.getConfig(FamilyTreeComponent.SHOW_ALL, 'N') === 'Y';
   }
 
   private cachePerson(person: Person) {
@@ -69,5 +72,9 @@ export class FamilyTreeComponent implements OnInit {
   getPicIndex(person: Person): number {
     const index = this.picDisplayIndices.get(person.code);
     return index ? index : 0;
+  }
+
+  updateSetting() {
+    this.settingsService.setConfig(FamilyTreeComponent.SHOW_ALL, this.showSecond ? 'Y' : 'N');
   }
 }

@@ -127,21 +127,21 @@
     "name": "Minni",
     "gender": "female",
     "relationship": "aunt",
-    "pics": []
+    "pics": ["minni.png"]
   },
   {
     "code": "sudhanshu",
     "name": "Sudhanshu Shekhar",
     "gender": "male",
     "relationship": "uncle",
-    "pics": []
+    "pics": ["sudhanshu.png"]
   },
   {
     "code": "tanu",
     "name": "Tanya Tanu",
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["tanu.png"]
   },
   {
     "code": "chiya",
@@ -149,83 +149,83 @@
     "nicknames": ["chiya"],
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["chiya.png"]
   },
   {
     "code": "neena",
     "name": "Neena",
     "gender": "female",
     "relationship": "aunt",
-    "pics": []
+    "pics": ["neena.png"]
   },
   {
     "code": "sanjay",
     "name": "Sanjay Chaudhari",
     "gender": "male",
     "relationship": "uncle",
-    "pics": []
+    "pics": ["sanjay.png"]
   },
   {
     "code": "akshat",
     "name": "Akshat",
     "gender": "male",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["akshat.png"]
   },
   {
     "code": "jiya",
     "name": "Jiya",
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["jiya.png"]
   },
   {
     "code": "ruby",
     "name": "Ruby",
     "gender": "female",
     "relationship": "aunt",
-    "pics": []
+    "pics": ["ruby.png"]
   },
   {
     "code": "subhash",
     "name": "Subhash Kumar",
     "gender": "male",
     "relationship": "uncle",
-    "pics": []
+    "pics": ["subhash.png"]
   },
   {
     "code": "abha",
     "name": "Abha",
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["abha.png"]
   },
   {
     "code": "sameer",
     "name": "Sameer Kumar",
     "gender": "male",
     "relationship": "uncle",
-    "pics": []
+    "pics": ["sameer.png"]
   },
   {
     "code": "anjali",
     "name": "Anjali",
     "gender": "female",
     "relationship": "aunt",
-    "pics": []
+    "pics": ["anjali.png"]
   },
   {
     "code": "anika",
     "name": "Anika",
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["anika.png"]
   },
   {
     "code": "amyra",
     "name": "Amyra",
     "gender": "female",
     "relationship": "cousin",
-    "pics": []
+    "pics": ["amyra.png"]
   }
 ]
