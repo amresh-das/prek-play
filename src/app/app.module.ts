@@ -38,6 +38,7 @@ import { SeasonsComponent } from './evs/seasons/seasons.component';
 import { AnimalCategoriesComponent } from './evs/animal-categories/animal-categories.component';
 import {MatRadioModule} from "@angular/material/radio";
 import { WhiteBoardComponent } from './white-board/white-board.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { WhiteBoardComponent } from './white-board/white-board.component';
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
   ],
-  providers: [],
+  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
