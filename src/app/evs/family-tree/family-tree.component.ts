@@ -16,14 +16,24 @@ export class FamilyTreeComponent implements OnInit {
   people: Map<string, Person> = new Map<string, Person>();
   picDisplayIndices: Map<string, number> = new Map<string, number>();
   show: string = "1";
-  showSecond: Boolean = false;
+  showSpouse: Boolean = false;
+  showCousins: Boolean = false;
 
   constructor(private familyService: FamilyService, private settingsService: SettingsService) {
     forkJoin([this.familyService.getFamily(), this.familyService.getPeople()]).subscribe(results => {
       results[0].forEach(relation => this.relations.push(relation));
       results[1].forEach(person => this.cachePerson(person));
     });
-    this.showSecond = settingsService.getConfig(FamilyTreeComponent.SHOW_ALL, 'N') === 'Y';
+    const showAllSettings = settingsService.getConfig(FamilyTreeComponent.SHOW_ALL);
+    if (showAllSettings) {
+      try {
+        const setting = JSON.parse(showAllSettings);
+        this.showSpouse = setting.showSpouse;
+        this.showCousins = setting.showCousins;
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
 
   private cachePerson(person: Person) {
@@ -75,6 +85,33 @@ export class FamilyTreeComponent implements OnInit {
   }
 
   updateSetting() {
-    this.settingsService.setConfig(FamilyTreeComponent.SHOW_ALL, this.showSecond ? 'Y' : 'N');
+    this.settingsService.setConfig(FamilyTreeComponent.SHOW_ALL, JSON.stringify({showSpouse: this.showSpouse, showCousins: this.showCousins}));
+  }
+
+  shouldShowKids(person: Person): boolean {
+    if (person.kids && person.kids.length > 0) {
+      if (this.showCousins) {
+        return true;
+      } else {
+        return person.kids[0].relationship !== 'cousin';
+      }
+    }
+    return false;
+  }
+
+  shouldShowSpouse(person: Person): boolean {
+    if (this.showSpouse) {
+      if (person.spouse !== undefined) {
+        return true;
+      }
+    } else {
+      if (person.spouse !== undefined) {
+        const spouse = this.people.get(person.spouse);
+        if (spouse !== undefined) {
+          return spouse.relationship?.indexOf('grand') !== -1;
+        }
+      }
+    }
+    return false;
   }
 }

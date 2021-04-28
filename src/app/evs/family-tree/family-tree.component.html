@@ -1,9 +1,12 @@
 <mat-radio-group aria-label="Select what to show" [(ngModel)]="show">
   <mat-radio-button value="1">Relationship</mat-radio-button>
   <mat-radio-button value="2">Name</mat-radio-button>
-  <mat-checkbox [(ngModel)]="showSecond" style="float: right;" (change)="updateSetting()">Show All</mat-checkbox>
+  <span style="float: right;">
+    <mat-checkbox [(ngModel)]="showSpouse" (change)="updateSetting()">Show Spouses&nbsp;</mat-checkbox>
+    <mat-checkbox [(ngModel)]="showCousins" (change)="updateSetting()">Show Cousins</mat-checkbox>
+  </span>
 
-  <mat-card *ngFor="let person of getFamilyData().slice(0, showSecond ? 9999 : 1)">
+  <mat-card *ngFor="let person of getFamilyData()">
     <div class="tree" id="FamilyTreeDiv-{{person.name}}" fxLayout="row" fxLayoutAlign="center">
       <ul>
         <ng-template
@@ -31,10 +34,10 @@
   <li>
     <div>
       <ng-template ngFor [ngForOf]="[person]" [ngForTemplate]="personTemplateRef"></ng-template>
-      <span class="spacer" *ngIf="person.spouse"></span>
-      <ng-template ngFor [ngForOf]="[people.get(person.spouse)]" [ngForTemplate]="personTemplateRef"></ng-template>
+      <span class="spacer" *ngIf="shouldShowSpouse(person)"></span>
+      <ng-template ngFor [ngForOf]="shouldShowSpouse(person) ? [people.get(person.spouse)] : []" [ngForTemplate]="personTemplateRef"></ng-template>
     </div>
-    <ul *ngIf="person.kids?.length > 0">
+    <ul *ngIf="shouldShowKids(person)">
       <ng-template ngFor [ngForOf]="person.kids" [ngForTemplate]="nodeTemplateRef"></ng-template>
     </ul>
   </li>

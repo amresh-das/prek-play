@@ -39,6 +39,7 @@ import { AnimalCategoriesComponent } from './evs/animal-categories/animal-catego
 import {MatRadioModule} from "@angular/material/radio";
 import { WhiteBoardComponent } from './white-board/white-board.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     MatSnackBarModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatExpansionModule,
     FlexLayoutModule,
     DragDropModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
