@@ -84,10 +84,6 @@ export class ReadWordComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  positionCanvas(event: Event) {
-    console.log(event);
-  }
-
   clearCanvas() {
     const canvas = this.wordCanvas.nativeElement;
     const ctx = canvas.getContext('2d');
