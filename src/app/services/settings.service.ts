@@ -11,7 +11,17 @@ export class SettingsService {
     return item ? item : defaultVal;
   }
 
+  getConfigOrDefault(key: string, defaultVal: string): string {
+    const item = localStorage.getItem(key);
+    return item ? item : defaultVal;
+  }
+
   getConfigInt(key: string, defaultVal?: number): number | undefined {
+    const item = localStorage.getItem(key);
+    return item ? Number.parseInt(item) : defaultVal;
+  }
+
+  getConfigIntOrDefault(key: string, defaultVal: number): number {
     const item = localStorage.getItem(key);
     return item ? Number.parseInt(item) : defaultVal;
   }
@@ -21,7 +31,17 @@ export class SettingsService {
     return item ? Number.parseFloat(item) : defaultVal;
   }
 
+  getConfigFloatOrDefault(key: string, defaultVal: number): number {
+    const item = localStorage.getItem(key);
+    return item ? Number.parseFloat(item) : defaultVal;
+  }
+
   getConfigObj(key: string, defaultVal?: any): any | undefined {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultVal;
+  }
+
+  getConfigObjOrDefault(key: string, defaultVal: any): any  {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultVal;
   }

@@ -187,7 +187,7 @@
   {"word": "deal", "resources" : [] },
   {"word": "load", "resources" : ["load1.gif", "load2.gif"] },
   {"word": "loan", "resources" : [] },
-  {"word": "road", "resources" : ["road1.jpg", "road2.jpg"] },
+  {"word": "road", "resources" : ["road1.jpg", "road2.jpg", "road3.jpg"] },
   {"word": "soap", "resources" : ["soap1.jpg", "soap2.jpg"] },
   {"word": "soak", "resources" : ["soak1.jpg", "soak2.jpg"] },
   {"word": "cope", "resources" : [] },
@@ -218,5 +218,8 @@
   {"word": "flute", "resources" : [] },
   {"word": "suit", "resources" : [] },
   {"word": "claim", "resources" : [] },
-  {"word": "seat", "resources" : ["seat1.png", "seat2.png", "seat3.png"] }
+  {"word": "seat", "resources" : ["seat1.png", "seat2.png", "seat3.png"] },
+  {"word": "toad", "resources" : ["toad.png"] },
+  {"word": "hope", "resources" : [] }
+
 ]

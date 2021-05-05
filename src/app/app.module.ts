@@ -40,6 +40,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import { WhiteBoardComponent } from './white-board/white-board.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatCheckboxModule,
     MatRadioModule,
     MatExpansionModule,
+    MatSliderModule,
     FlexLayoutModule,
     DragDropModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),

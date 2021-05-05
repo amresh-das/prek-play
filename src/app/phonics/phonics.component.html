@@ -18,6 +18,7 @@
     </mat-chip-list>
   </mat-form-field>
   <span class="actions">
+    <button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
     <button mat-button color="primary" (click)="deSelectAll()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Deselect">unpublished</mat-icon></button>
     <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
     <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>

@@ -9,6 +9,7 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 })
 export class WhiteBoardComponent implements AfterViewInit {
   color = "black";
+  lineSize = 3;
   isDrawn = false;
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   canvasRect: any;
@@ -23,7 +24,7 @@ export class WhiteBoardComponent implements AfterViewInit {
     this.canvasRect = this.canvas.nativeElement.getBoundingClientRect();
     // @ts-ignore
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.ctx.lineWidth = 3;
+    this.ctx.lineWidth = this.lineSize;
     this.ctx.lineCap = 'round';
     this.ctx.strokeStyle = '#000';
     this.captureMouseEvents(this.canvas.nativeElement);
@@ -100,11 +101,20 @@ export class WhiteBoardComponent implements AfterViewInit {
     if (!this.ctx) { return; }
     this.ctx.beginPath();
     this.ctx.strokeStyle = this.color;
+    this.ctx.lineWidth = this.lineSize;
 
     if (prevPos) {
       this.ctx.moveTo(prevPos.x, prevPos.y);
       this.ctx.lineTo(currentPos.x, currentPos.y);
       this.ctx.stroke();
     }
+  }
+
+  drawPoint(x: number, y: number) {
+    this.ctx.strokeStyle = this.color;
+    this.ctx.lineWidth = this.lineSize;
+    this.ctx.beginPath();
+    this.ctx.arc(x, y,1,0, 2 * Math.PI, true);
+    this.ctx.stroke();
   }
 }

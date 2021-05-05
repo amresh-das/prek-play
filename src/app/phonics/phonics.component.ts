@@ -20,9 +20,12 @@ export class PhonicsComponent implements OnInit {
   selectable = true;
   removable = true;
   selected: Word[] = [];
+  isFilterChanged: boolean = false;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
+  private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
+    this.filters = JSON.parse(settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_FILTER_VALUES, ''));
   }
 
   columnCount: number = 3;
@@ -79,6 +82,7 @@ export class PhonicsComponent implements OnInit {
 
   remove(filter: string) {
     this.filters.splice(this.filters.indexOf(filter), 1);
+    this.filterChanged();
   }
 
   addFilter(event: MatChipInputEvent) {
@@ -92,6 +96,7 @@ export class PhonicsComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+    this.filterChanged();
   }
 
   deSelectAll() {
@@ -105,6 +110,14 @@ export class PhonicsComponent implements OnInit {
     } else {
       this.selected.splice(this.selected.indexOf(word), 1);
     }
+  }
+
+  saveSearch() {
+    this.settingsService.setConfig(PhonicsComponent.PHONICS_FILTER_VALUES, JSON.stringify(this.filters));
+  }
+
+  filterChanged() {
+    this.isFilterChanged = true;
   }
 }
 

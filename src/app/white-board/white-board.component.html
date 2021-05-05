@@ -1,12 +1,16 @@
 <mat-toolbar-row>
-  <input type="color" [(ngModel)]="color">
-  <mat-icon style="color: #00ffaa;" (click)="setColor('#00ffaa')">circle</mat-icon>
+  <input type="color" [(ngModel)]="color" style="width: 20px;">
+  <mat-icon style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>
+  <mat-icon style="color: #00ff00;" (click)="setColor('#00ff00')">circle</mat-icon>
+  <mat-icon style="color: #00ffff;" (click)="setColor('#00ffff')">circle</mat-icon>
   <mat-icon style="color: #ff0000;" (click)="setColor('#ff0000')">circle</mat-icon>
+  <mat-icon style="color: #ffff00;" (click)="setColor('#ffff00')">circle</mat-icon>
   <mat-icon style="color: #0000ff;" (click)="setColor('#0000ff')">circle</mat-icon>
+  <mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="15"></mat-slider>
   <span class="spacer"></span>
   <mat-icon (click)="clearCanvas()">restart_alt</mat-icon>
 </mat-toolbar-row>
 
-<canvas [width]="window.innerWidth - 40" [height]="window.innerHeight - 200" #canvas class="whiteboard mat-elevation-z4">
+<canvas [width]="window.innerWidth - 40" [height]="window.innerHeight - 200" #canvas class="whiteboard mat-elevation-z4"
+        (mousedown)="drawPoint($event.offsetX, $event.offsetY)"></canvas>
 
-</canvas>
