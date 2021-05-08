@@ -26,13 +26,13 @@ export class SettingsComponent implements OnInit {
 
   save() {
     localStorage.setItem(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, this.phonicsShowWordsBatchCount + '');
-    this.snackBar.open('Your settings have been saved.');
+    this.snackBar.open('Your settings have been saved.', '', {duration: 3000});
   }
 
   reset() {
     this.phonicsShowWordsBatchCount = SettingsComponent.defaultPhonicsShowWordsBatchCount;
     localStorage.setItem(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, this.phonicsShowWordsBatchCount + '');
-    this.snackBar.open('Your settings have been reset to default.');
+    this.snackBar.open('Your settings have been reset to default.', '', {duration: 3000});
   }
 
 }

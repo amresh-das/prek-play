@@ -7,4 +7,14 @@
 
 .mat-icon {
   cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb {
+  background-color: blue;
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: blue;
 }

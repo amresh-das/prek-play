@@ -1,12 +1,14 @@
 <mat-toolbar-row>
   <input type="color" [(ngModel)]="color" style="width: 20px;">
-  <mat-icon style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>
-  <mat-icon style="color: #00ff00;" (click)="setColor('#00ff00')">circle</mat-icon>
-  <mat-icon style="color: #00ffff;" (click)="setColor('#00ffff')">circle</mat-icon>
-  <mat-icon style="color: #ff0000;" (click)="setColor('#ff0000')">circle</mat-icon>
-  <mat-icon style="color: #ffff00;" (click)="setColor('#ffff00')">circle</mat-icon>
-  <mat-icon style="color: #0000ff;" (click)="setColor('#0000ff')">circle</mat-icon>
-  <mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="15"></mat-slider>
+  <mat-icon style="color: #000000;" (click)="setColor('#000000')">border_color</mat-icon>
+  <mat-icon style="color: #FF0000;" (click)="setColor('#FF0000')">border_color</mat-icon>
+  <mat-icon style="color: #FFA500;" (click)="setColor('#FFA500')">border_color</mat-icon>
+  <mat-icon style="color: #FFFF00;" (click)="setColor('#FFFF00')">border_color</mat-icon>
+  <mat-icon style="color: #008000;" (click)="setColor('#008000')">border_color</mat-icon>
+  <mat-icon style="color: #0000FF;" (click)="setColor('#0000FF')">border_color</mat-icon>
+  <mat-icon style="color: #4B0082;" (click)="setColor('#4B0082')">border_color</mat-icon>
+  <mat-icon style="color: #8F00FF;" (click)="setColor('#8F00FF')">border_color</mat-icon>
+  <mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="15" style="color: {{color}};"></mat-slider>
   <span class="spacer"></span>
   <mat-icon (click)="clearCanvas()">restart_alt</mat-icon>
 </mat-toolbar-row>
