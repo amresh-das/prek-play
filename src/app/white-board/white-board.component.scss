@@ -1,4 +1,8 @@
+.whiteboard-container {
+}
+
 .whiteboard {
+  touch-action: none;
 }
 
 .spacer {
@@ -17,4 +21,13 @@
 
 ::ng-deep .mat-accent .mat-slider-track-fill {
   background-color: blue;
+}
+
+.clear-canvas-btn {
+  cursor: pointer;
+  font-size: large;
+  text-shadow: none;
+  position: absolute;
+  right: 2px;
+  top: 5px;
 }

@@ -64,7 +64,7 @@ export class WhiteBoardComponent implements AfterViewInit {
             x: evt2.clientX - this.canvasRect.left,
             y: evt2.clientY - this.canvasRect.top
           };
-          this.drawOnCanvas(prevPos, currentPos);
+          this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
         }
       });
   }
@@ -91,17 +91,17 @@ export class WhiteBoardComponent implements AfterViewInit {
             x: evt2.clientX - this.canvasRect.left,
             y: evt2.clientY - this.canvasRect.top
           };
-          this.drawOnCanvas(prevPos, currentPos);
+          this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
         }
       });
 
   }
 
-  private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }) {
+  private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }, color: any, size: number) {
     if (!this.ctx) { return; }
     this.ctx.beginPath();
-    this.ctx.strokeStyle = this.color;
-    this.ctx.lineWidth = this.lineSize;
+    this.ctx.strokeStyle = color;
+    this.ctx.lineWidth = size;
 
     if (prevPos) {
       this.ctx.moveTo(prevPos.x, prevPos.y);
@@ -110,11 +110,4 @@ export class WhiteBoardComponent implements AfterViewInit {
     }
   }
 
-  drawPoint(x: number, y: number) {
-    this.ctx.strokeStyle = this.color;
-    this.ctx.lineWidth = this.lineSize;
-    this.ctx.beginPath();
-    this.ctx.arc(x, y,1,0, 2 * Math.PI, true);
-    this.ctx.stroke();
-  }
 }

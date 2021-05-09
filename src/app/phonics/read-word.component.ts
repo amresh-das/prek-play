@@ -159,4 +159,12 @@ export class ReadWordComponent implements OnInit {
     this.isDrawing = false;
   }
 
+  getWidth() {
+    return window.screen.width;
+  }
+
+  getHeight() {
+    return window.screen.height;
+  }
+
 }

@@ -1,15 +1,15 @@
 <mat-icon tabindex="3" (click)="close()" style="float: right; top:-8px; right:-8px;">close</mat-icon>
 <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
 <mat-dialog-content>
-  <mat-grid-list cols="7" rowHeight="5:6" fxLayout="row" fxLayoutAlign="center">
+  <mat-grid-list cols="7" rowHeight="fit" fxLayout="row" fxLayoutAlign="center" style="height: 60vh">
     <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
       <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
     </mat-grid-tile>
-    <mat-grid-tile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
-      <span id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
+    <mat-grid-tile #wordTile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
+      <span #wordSpan id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
         {{getWord().word}}
       </span>
-      <canvas #wordCanvas id="wordCanvas"
+      <canvas #wordCanvas id="wordCanvas" [width]="getWidth() * .8" [height]="getHeight() * .6"
               (mousedown)="mouseDown($event)" (touchstart)="startTouch($event)"
               (mouseup)="stopDraw()" (mouseout)="stopDraw()" (touchcancel)="stopDraw()" (touchend)="stopDraw()"
               (mousemove)="mouseMove($event)" (touchmove)="touchMove($event)">
@@ -24,5 +24,5 @@
   </mat-grid-list>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button tabindex="1" mat-raised-button color="primary" (click)="!allDone() && showPic()" autofocus>Show</button>
+  <button tabindex="1" mat-raised-button color="primary" (click)="!allDone() && showPic()" autofocus [disabled]="getWord().resources?.length == 0">Show</button>
 </mat-dialog-actions>

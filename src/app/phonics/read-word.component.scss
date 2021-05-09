@@ -20,7 +20,7 @@
 
 .word-tile, .word-pic-tile {
   text-shadow: 2px 2px;
-  font-size: 6em;
+  font-size: 10em;
   letter-spacing: .2em;
   user-select: none;
 }
@@ -35,10 +35,10 @@
 
 #wordCanvas {
   position: absolute;
+  touch-action: none;
 }
 
 .clear-canvas-btn {
-  //position: absolute;
   cursor: pointer;
   font-size: medium;
   text-shadow: none;

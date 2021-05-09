@@ -66,8 +66,10 @@ export class PhonicsComponent implements OnInit {
     const items = this.selected.length > 0 ? this.selected :
       this.getFiltered().slice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 40));
     this.dialog.open(ReadWordComponent, {
+      maxWidth: '100%',
       width: '100%',
-      height: '50%',
+      height: '98%',
+      maxHeight: '98%',
       disableClose: true,
       hasBackdrop: true,
       data: {
