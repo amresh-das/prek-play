@@ -9,7 +9,7 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 })
 export class WhiteBoardComponent implements AfterViewInit {
   color = "black";
-  lineSize = 3;
+  lineSize = 8;
   isDrawn = false;
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   canvasRect: any;
@@ -57,12 +57,12 @@ export class WhiteBoardComponent implements AfterViewInit {
           const evt1: MouseEvent = res[0];
           const evt2: MouseEvent = res[1];
           const prevPos = {
-            x: evt1.clientX - this.canvasRect.left,
-            y: evt1.clientY - this.canvasRect.top
+            x: evt1.offsetX,
+            y: evt1.offsetY
           };
           const currentPos = {
-            x: evt2.clientX - this.canvasRect.left,
-            y: evt2.clientY - this.canvasRect.top
+            x: evt2.offsetX,
+            y: evt2.offsetY
           };
           this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
         }

@@ -1,22 +1,18 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened class="mat-elevation-z4">
-    <mat-list>
-      <mat-list-item>&nbsp;</mat-list-item>
-      <mat-list-item><input type="color" [(ngModel)]="color" style="width: 20px;"></mat-list-item>
-      <mat-list-item><mat-icon style="color: #000000;" (click)="setColor('#000000')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #FF0000;" (click)="setColor('#FF0000')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #FFA500;" (click)="setColor('#FFA500')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #FFFF00;" (click)="setColor('#FFFF00')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #008000;" (click)="setColor('#008000')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #0000FF;" (click)="setColor('#0000FF')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #4B0082;" (click)="setColor('#4B0082')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><mat-icon style="color: #8F00FF;" (click)="setColor('#8F00FF')">border_color</mat-icon></mat-list-item>
-      <mat-list-item><input type="number" [(ngModel)]="lineSize" min="1" max="25" style="width: 30px;"></mat-list-item>
-<!--      <mat-list-item><mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="25" style="color: {{color}};"></mat-slider></mat-list-item>-->
-    </mat-list>
+    <input class="color-selector" type="color" [(ngModel)]="color"><br/>
+    <mat-icon style="color: #000000;" (click)="setColor('#000000')">border_color</mat-icon><br/>
+    <mat-icon style="color: #8F00FF;" (click)="setColor('#8F00FF')">border_color</mat-icon><br/>
+    <mat-icon style="color: #4B0082;" (click)="setColor('#4B0082')">border_color</mat-icon><br/>
+    <mat-icon style="color: #0000FF;" (click)="setColor('#0000FF')">border_color</mat-icon><br/>
+    <mat-icon style="color: #008000;" (click)="setColor('#008000')">border_color</mat-icon><br/>
+    <mat-icon style="color: #FFFF00;" (click)="setColor('#FFFF00')">border_color</mat-icon><br/>
+    <mat-icon style="color: #FFA500;" (click)="setColor('#FFA500')">border_color</mat-icon><br/>
+    <mat-icon style="color: #FF0000;" (click)="setColor('#FF0000')">border_color</mat-icon><br/>
+       <mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="25" style="color:{{color}};" vertical invert></mat-slider>
   </mat-drawer>
   <mat-drawer-content>
     <mat-icon class="clear-canvas-btn" (click)="clearCanvas()">restart_alt</mat-icon>
-    <canvas [width]="window.innerWidth - 80" [height]="window.innerHeight - 100" #canvas class="whiteboard mat-elevation-z5"></canvas>
+    <canvas [width]="window.innerWidth - 60" [height]="window.innerHeight - 100" #canvas class="whiteboard mat-elevation-z5"></canvas>
   </mat-drawer-content>
 </mat-drawer-container>
