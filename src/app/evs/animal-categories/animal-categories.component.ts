@@ -13,7 +13,7 @@ export class AnimalCategoriesComponent {
   private static readonly SHOW_IMAGES = 'animal.categories.show.images';
 
   static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig', 'goat'];
-  static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'dear', 'zebra', 'wolf', 'monkey'];
+  static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'deer', 'zebra', 'wolf', 'monkey'];
   animals: string[] = [];
   resultDomestic: string[] = [];
   resultWild: string[] = [];
