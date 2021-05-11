@@ -25,7 +25,7 @@ export class PhonicsComponent implements OnInit {
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
-    this.filters = JSON.parse(settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_FILTER_VALUES, ''));
+    this.filters = JSON.parse(settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_FILTER_VALUES, '[]'));
   }
 
   columnCount: number = 3;
