@@ -33,6 +33,15 @@ export class WhiteBoardComponent implements AfterViewInit {
 
   setColor(color: any) {
     this.color = color;
+    this.colorChanged();
+  }
+
+  colorChanged() {
+    const element = document.getElementsByClassName("mat-slider-thumb").item(0);
+    if (element) {
+      element.setAttribute("style", "{background-color: " + this.color + "}");
+      console.log(element.getAttribute("style"));
+    }
   }
 
   clearCanvas() {

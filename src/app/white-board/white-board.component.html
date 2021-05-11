@@ -1,6 +1,6 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened class="mat-elevation-z4">
-    <input class="color-selector" type="color" [(ngModel)]="color"><br/>
+    <input class="color-selector" type="color" [(ngModel)]="color" (change)="colorChanged()"><br/>
     <mat-icon style="color: #000000;" (click)="setColor('#000000')">border_color</mat-icon><br/>
     <mat-icon style="color: #8F00FF;" (click)="setColor('#8F00FF')">border_color</mat-icon><br/>
     <mat-icon style="color: #4B0082;" (click)="setColor('#4B0082')">border_color</mat-icon><br/>
@@ -9,7 +9,7 @@
     <mat-icon style="color: #FFFF00;" (click)="setColor('#FFFF00')">border_color</mat-icon><br/>
     <mat-icon style="color: #FFA500;" (click)="setColor('#FFA500')">border_color</mat-icon><br/>
     <mat-icon style="color: #FF0000;" (click)="setColor('#FF0000')">border_color</mat-icon><br/>
-       <mat-slider aria-label="line size" [(ngModel)]="lineSize" min="1" max="25" style="color:{{color}};" vertical invert></mat-slider>
+    <mat-slider color="primary" aria-label="line size" [(ngModel)]="lineSize" min="1" max="25" vertical invert></mat-slider>
   </mat-drawer>
   <mat-drawer-content>
     <mat-icon class="clear-canvas-btn" (click)="clearCanvas()">restart_alt</mat-icon>

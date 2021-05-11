@@ -253,5 +253,23 @@
   {"word": "trial", "resources" : [] },
   {"word": "trike", "resources" : ["trike1.jpg", "trike2.jpg"] },
   {"word": "train", "resources" : ["rail2.jpg"] },
-  {"word": "tram", "resources" : ["tram.jpg"] }
+  {"word": "tram", "resources" : ["tram.jpg"] },
+  {"word": "bribe", "resources" : [] },
+  {"word": "brand", "resources" : [] },
+  {"word": "branch", "resources" : ["branch.jpg"] },
+  {"word": "broke", "resources" : [] },
+  {"word": "brunt", "resources" : [] },
+  {"word": "brunch", "resources" : [] },
+  {"word": "bride", "resources" : ["bride.png"] },
+  {"word": "brass", "resources" : ["brass.jpg"] },
+  {"word": "brim", "resources" : ["brim.jpg"] }
 ]
+
+
+
+
+
+
+
+
+
