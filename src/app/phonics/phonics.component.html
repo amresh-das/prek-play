@@ -22,9 +22,10 @@
   <mat-checkbox #showChecks>Show Checks</mat-checkbox>
   <span class="actions">
     <button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
-    <button mat-button color="primary" *ngIf="showChecks.checked" (click)="deSelectAll()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Deselect">unpublished</mat-icon></button>
+    <button mat-button color="primary" *ngIf="showChecks.checked && selected.length > 0" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
     <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
-    <button mat-button color="primary" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+    <button mat-button color="primary" *ngIf="!showChecks.checked" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+    <button mat-button color="primary" *ngIf="showChecks.checked" (click)="showWordsToRead()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Play">play_circle</mat-icon></button>
   </span>
 </div>
 
