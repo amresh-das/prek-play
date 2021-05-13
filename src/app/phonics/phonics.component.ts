@@ -126,6 +126,7 @@ export class PhonicsComponent implements OnInit {
 
   saveSearch() {
     this.settingsService.setConfig(PhonicsComponent.PHONICS_FILTER_VALUES, JSON.stringify(this.filters));
+    this.isFilterChanged = false;
   }
 
   filterChanged() {
