@@ -21,11 +21,18 @@ export class PhonicsComponent implements OnInit {
   removable = true;
   selected: Word[] = [];
   isFilterChanged: boolean = false;
+  vowels = 'aeiou';
+  vowelColor: any = '#000000';
+  consonantColor: any = '#666666';
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
+  private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
+  private static readonly PHONICS_COLOR_SCHEME_VOWELS = "phonics.color.scheme.vowels";
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
     this.filters = JSON.parse(settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_FILTER_VALUES, '[]'));
+    this.consonantColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_CONSONANT, '#666666');
+    this.vowelColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_VOWELS, '#000000');
   }
 
   columnCount: number = 3;
@@ -120,6 +127,11 @@ export class PhonicsComponent implements OnInit {
 
   filterChanged() {
     this.isFilterChanged = true;
+  }
+
+  saveColorScheme() {
+    this.settingsService.setConfig(PhonicsComponent.PHONICS_COLOR_SCHEME_VOWELS, this.vowelColor);
+    this.settingsService.setConfig(PhonicsComponent.PHONICS_COLOR_SCHEME_CONSONANT, this.consonantColor);
   }
 }
 

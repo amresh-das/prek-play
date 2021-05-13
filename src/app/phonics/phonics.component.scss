@@ -6,20 +6,29 @@
 
 :host ::ng-deep .mat-form-field {
   margin-top: 10px;
-  margin-right: 20px;
+  margin-right: 5px;
   font-size: 1em;
   color: darkblue;
   text-shadow: 1px 1px #3c0e5a;
 }
 
 .filter-chip-list {
-  width:80%;
+  width:70%;
 }
 
 .actions {
   float: right;
   padding-top: 2em;
   vertical-align: middle;
+}
+
+.color-picker {
+  width: 30px;
+  height: 33px;
+}
+
+.mat-button {
+  font-size: smaller;
 }
 
 .mat-chip {
@@ -32,10 +41,10 @@
 }
 
 .word-tile, .word-pic-tile {
+  color: #666666;
   border-radius: 10px;
-  text-shadow: 2px 2px;
+  text-shadow: 2px 1px;
   font-size: 2.5em;
-  letter-spacing: .2em;
 }
 
 .word-tile {
