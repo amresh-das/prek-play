@@ -18,11 +18,15 @@ export class ReadWordComponent implements OnInit {
   isDrawing = false;
   isDrawn = false;
   private readonly lineWidth = 10;
+  vowelColor: any;
+  consonantColor: any;
 
   @ViewChild('wordCanvas') wordCanvas: ElementRef<HTMLCanvasElement>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>) {
     this.words = this.data.items;
+    this.vowelColor = this.data.vowelColor;
+    this.consonantColor = this.data.consonantColor;
   }
 
   ngOnInit() {

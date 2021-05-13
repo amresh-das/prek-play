@@ -81,6 +81,9 @@ export class PhonicsComponent implements OnInit {
       hasBackdrop: true,
       data: {
         items: items,
+        vowelColor: this.vowelColor,
+        consonantColor: this.consonantColor,
+        vowels: this.vowels
       }
     });
   }

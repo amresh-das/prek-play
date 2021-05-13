@@ -7,7 +7,9 @@
     </mat-grid-tile>
     <mat-grid-tile #wordTile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
       <span #wordSpan id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
-        {{getWord().word}}
+        <span *ngFor="let char of getWord().word.split('')" [ngStyle]="{'color': (data.vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
+          {{char | lowercase}}
+        </span>
       </span>
       <canvas #wordCanvas id="wordCanvas" [width]="getWidth() * .8" [height]="getHeight() * .6"
               (mousedown)="mouseDown($event)" (touchstart)="startTouch($event)"
