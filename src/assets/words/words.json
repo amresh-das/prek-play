@@ -1,4 +1,24 @@
 [
+  {"word": "am", "resources" : [] },
+  {"word": "an", "resources" : [] },
+  {"word": "as", "resources" : [] },
+  {"word": "at", "resources" : [] },
+  {"word": "be", "resources" : [] },
+  {"word": "go", "resources" : [] },
+  {"word": "he", "resources" : [] },
+  {"word": "if", "resources" : [] },
+  {"word": "in", "resources" : [] },
+  {"word": "is", "resources" : [] },
+  {"word": "it", "resources" : [] },
+  {"word": "me", "resources" : [] },
+  {"word": "my", "resources" : [] },
+  {"word": "of", "resources" : [] },
+  {"word": "ok", "resources" : [] },
+  {"word": "or", "resources" : [] },
+  {"word": "ox", "resources" : ["ox.jpg"] },
+  {"word": "to", "resources" : [] },
+  {"word": "us", "resources" : [] },
+  {"word": "we", "resources" : [] },
   {"word": "ail", "resources" : [] },
   {"word": "ale", "resources" : [] },
   {"word": "oar", "resources" : ["oar1.jpg","oar2.jpg","oar3.jpg"] },
@@ -362,7 +382,6 @@
   {"word": "tap", "resources" : [] },
   {"word": "tape", "resources" : [] },
   {"word": "can", "resources" : [] },
-  {"word": "at", "resources" : [] },
   {"word": "ate", "resources" : [] }
 ]
 
