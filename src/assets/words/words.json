@@ -345,7 +345,25 @@
   {"word": "gap", "resources" : [] },
   {"word": "gape", "resources" : [] },
   {"word": "fin", "resources" : ["fin.jpg"] },
-  {"word": "fine", "resources" : [] }
+  {"word": "fine", "resources" : [] },
+  {"word": "bet", "resources" : [] },
+  {"word": "beat", "resources" : [] },
+  {"word": "hike", "resources" : [] },
+  {"word": "hop", "resources" : [] },
+  {"word": "peck", "resources" : [] },
+  {"word": "peak", "resources" : [] },
+  {"word": "us", "resources" : [] },
+  {"word": "use", "resources" : [] },
+  {"word": "pane", "resources" : [] },
+  {"word": "hid", "resources" : [] },
+  {"word": "hide", "resources" : [] },
+  {"word": "mop", "resources" : [] },
+  {"word": "mope", "resources" : [] },
+  {"word": "tap", "resources" : [] },
+  {"word": "tape", "resources" : [] },
+  {"word": "can", "resources" : [] },
+  {"word": "at", "resources" : [] },
+  {"word": "ate", "resources" : [] }
 ]
 
 
