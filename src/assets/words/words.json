@@ -334,7 +334,7 @@
   {"word": "ban", "resources" : [] },
   {"word": "bane", "resources" : [] },
   {"word": "skit", "resources" : [] },
-  {"word": "skate", "resources" : [] },
+  {"word": "skate", "resources" : ["skate.gif"] },
   {"word": "like", "resources" : [] },
   {"word": "tub", "resources" : ["tub.png"] },
   {"word": "tube", "resources" : [] },
