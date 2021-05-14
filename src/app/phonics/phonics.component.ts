@@ -39,7 +39,7 @@ export class PhonicsComponent implements OnInit {
   wordWidth: number = 220;
 
   ngOnInit(): void {
-    this.wordsService.getWords().subscribe((res) => this.words = res);
+    this.wordsService.getWords().subscribe((res) => this.words = res.sort((a, b) => a.word.localeCompare(b.word)));
     this.columnCount = window.innerWidth / this.wordWidth;
   }
 

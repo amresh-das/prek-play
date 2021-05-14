@@ -1,4 +1,8 @@
 [
+  {"word": "ail", "resources" : [] },
+  {"word": "ale", "resources" : [] },
+  {"word": "oar", "resources" : ["oar1.jpg","oar2.jpg","oar3.jpg"] },
+  {"word": "oats", "resources" : [] },
   {"word": "pan", "resources" : ["pan.png"] },
   {"word": "pin", "resources" : ["pin.jpg"] },
   {"word": "rub", "resources" : ["rub.gif"] },
