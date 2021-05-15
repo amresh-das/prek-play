@@ -20,7 +20,7 @@
   {"word": "us", "resources" : [] },
   {"word": "we", "resources" : [] },
   {"word": "ail", "resources" : [] },
-  {"word": "ale", "resources" : [] },
+  {"word": "ale", "resources" : ["ale.jpg"] },
   {"word": "oar", "resources" : ["oar1.jpg","oar2.jpg","oar3.jpg"] },
   {"word": "oats", "resources" : [] },
   {"word": "pan", "resources" : ["pan.png"] },
@@ -178,7 +178,7 @@
   {"word": "split", "resources" : ["split.gif"] },
   {"word": "bake", "resources" : ["bake.gif"] },
   {"word": "cake", "resources" : ["cake.jpg"] },
-  {"word": "cape", "resources" : [] },
+  {"word": "cape", "resources" : ["cape.jpg"] },
   {"word": "paste", "resources" : ["paste1.png", "paste2.png", "paste3.png"] },
   {"word": "lake", "resources" : ["lake1.jpg", "lake2.jpg"] },
   {"word": "slate", "resources" : ["slate.jpg"] },
@@ -368,7 +368,7 @@
   {"word": "fine", "resources" : [] },
   {"word": "bet", "resources" : [] },
   {"word": "beat", "resources" : [] },
-  {"word": "hike", "resources" : [] },
+  {"word": "hike", "resources" : ["hike.gif", "hike2.gif"] },
   {"word": "hop", "resources" : [] },
   {"word": "peck", "resources" : [] },
   {"word": "peak", "resources" : [] },
@@ -382,7 +382,7 @@
   {"word": "tap", "resources" : [] },
   {"word": "tape", "resources" : [] },
   {"word": "can", "resources" : [] },
-  {"word": "ate", "resources" : [] }
+  {"word": "ate", "resources" : ["ate.gif"] }
 ]
 
 
