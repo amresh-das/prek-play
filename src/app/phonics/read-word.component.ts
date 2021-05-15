@@ -1,27 +1,27 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Word} from "../model/word.model";
 import {WordPicComponent} from "./word.pic.component";
+import {fromEvent} from "rxjs";
+import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-read-word',
   templateUrl: './read-word.component.html',
   styleUrls: ['./read-word.component.scss']
 })
-export class ReadWordComponent implements OnInit {
+export class ReadWordComponent implements AfterViewInit {
   words: Word[];
   displayIndex = 0;
   editable = false;
-  drawColor = '#ff0000';
-  drawPosX: number = -1;
-  drawPosY: number = -1;
-  isDrawing = false;
+  color = '#ff0000';
+  lineSize = 8;
   isDrawn = false;
-  private readonly lineWidth = 10;
+  @ViewChild('wordCanvas') canvas: ElementRef<HTMLCanvasElement>;
+  ctx: CanvasRenderingContext2D;
+  canvasRect: any;
   vowelColor: any;
   consonantColor: any;
-
-  @ViewChild('wordCanvas') wordCanvas: ElementRef<HTMLCanvasElement>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>) {
     this.words = this.data.items;
@@ -29,7 +29,15 @@ export class ReadWordComponent implements OnInit {
     this.consonantColor = this.data.consonantColor;
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    this.canvasRect = this.canvas.nativeElement.getBoundingClientRect();
+    // @ts-ignore
+    this.ctx = this.canvas.nativeElement.getContext('2d');
+    this.ctx.lineWidth = this.lineSize;
+    this.ctx.lineCap = 'round';
+    this.ctx.strokeStyle = '#000';
+    this.captureMouseEvents(this.canvas.nativeElement);
+    this.captureTouchEvents(this.canvas.nativeElement);
     this.dialogRef.keydownEvents().subscribe((evt) => {
       if (evt.key === 'ArrowLeft') {
         this.prev();
@@ -59,10 +67,6 @@ export class ReadWordComponent implements OnInit {
     }
   }
 
-  toggleEditable() {
-    this.editable = !this.editable;
-  }
-
   allDone() : boolean {
     return this.displayIndex === this.words.length;
   }
@@ -89,7 +93,7 @@ export class ReadWordComponent implements OnInit {
   }
 
   clearCanvas() {
-    const canvas = this.wordCanvas.nativeElement;
+    const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (ctx) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -97,70 +101,74 @@ export class ReadWordComponent implements OnInit {
     this.isDrawn = false;
   }
 
-  mouseDown(event: MouseEvent) {
-    this.startDraw(event.offsetX, event.offsetY);
+  private captureMouseEvents(canvasEl: HTMLCanvasElement) {
+    fromEvent(canvasEl, 'mousedown')
+      .pipe(
+        switchMap((e) => {
+          return fromEvent(canvasEl, 'mousemove')
+            .pipe(
+              takeUntil(fromEvent(canvasEl, 'mouseup')),
+              pairwise()
+            )
+        })
+      )
+      .subscribe((res) => {
+        if (res[0] instanceof MouseEvent && res[1] instanceof MouseEvent) {
+          const evt1: MouseEvent = res[0];
+          const evt2: MouseEvent = res[1];
+          const prevPos = {
+            x: evt1.offsetX,
+            y: evt1.offsetY
+          };
+          const currentPos = {
+            x: evt2.offsetX,
+            y: evt2.offsetY
+          };
+          this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
+        }
+      });
   }
 
-  startTouch(event: TouchEvent) {
-    if (event.touches.length > 0) {
-      const touch = event.touches.item(0);
-      if (touch) {
-        const canvasRect = this.wordCanvas.nativeElement.getBoundingClientRect();
-        const x = touch.clientX - canvasRect.x;
-        const y = touch.clientY - canvasRect.y;
-        console.log(x, y);
-        this.startDraw(x, y);
-      }
+  private captureTouchEvents(canvasEl: HTMLCanvasElement) {
+    fromEvent(canvasEl, 'touchstart')
+      .pipe(
+        switchMap((e) => {
+          return fromEvent(canvasEl, 'touchmove')
+            .pipe(
+              takeUntil(fromEvent(canvasEl, 'touchend')),
+              pairwise()
+            )
+        })
+      )
+      .subscribe((res) => {
+        if (res[0] instanceof TouchEvent && res[1] instanceof TouchEvent) {
+          const evt1: Touch = (<TouchEvent>res[0]).touches[0];
+          const evt2: Touch = (<TouchEvent>res[1]).touches[0];
+          const prevPos = {
+            x: evt1.clientX - this.canvasRect.left,
+            y: evt1.clientY - this.canvasRect.top
+          };
+          const currentPos = {
+            x: evt2.clientX - this.canvasRect.left,
+            y: evt2.clientY - this.canvasRect.top
+          };
+          this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
+        }
+      });
+
+  }
+
+  private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }, color: any, size: number) {
+    if (!this.ctx) { return; }
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = color;
+    this.ctx.lineWidth = size;
+
+    if (prevPos) {
+      this.ctx.moveTo(prevPos.x, prevPos.y);
+      this.ctx.lineTo(currentPos.x, currentPos.y);
+      this.ctx.stroke();
     }
-  }
-
-  mouseMove(event: MouseEvent) {
-    this.drawLine(event.offsetX, event.offsetY);
-  }
-
-  touchMove(event: TouchEvent) {
-    for (let i = 0; i < event.touches.length; i++) {
-      const touch = event.touches.item(i);
-      if (touch) {
-        const canvasRect = this.wordCanvas.nativeElement.getBoundingClientRect();
-        const x = touch.clientX - canvasRect.x;
-        const y = touch.clientY - canvasRect.y;
-        this.drawLine(x, y);
-      }
-    }
-  }
-
-  startDraw(x: number, y: number) {
-    this.drawPosX = x;
-    this.drawPosY = y;
-    const ctx = this.wordCanvas.nativeElement.getContext('2d');
-    if (ctx) {
-      ctx.fillStyle = this.drawColor;
-      ctx.beginPath();
-      ctx.arc(x, y, 3, 0, 2 * Math.PI, true);
-      ctx.fill();
-    }
-    this.isDrawing = true;
-  }
-
-  drawLine(x: number, y: number) {
-    const ctx = this.wordCanvas.nativeElement.getContext('2d');
-    if (this.isDrawing && ctx) {
-      ctx.lineCap = 'round';
-      ctx.lineWidth = this.lineWidth;
-      this.isDrawn = true;
-      ctx.strokeStyle = this.drawColor;
-      ctx.beginPath();
-      ctx.moveTo(this.drawPosX, this.drawPosY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-    }
-    this.drawPosX = x;
-    this.drawPosY = y;
-  }
-
-  stopDraw() {
-    this.isDrawing = false;
   }
 
   getWidth() {

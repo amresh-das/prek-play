@@ -11,14 +11,11 @@
           {{char | lowercase}}
         </span>
       </span>
-      <canvas #wordCanvas id="wordCanvas" [width]="getWidth() * .8" [height]="getHeight() * .6"
-              (mousedown)="mouseDown($event)" (touchstart)="startTouch($event)"
-              (mouseup)="stopDraw()" (mouseout)="stopDraw()" (touchcancel)="stopDraw()" (touchend)="stopDraw()"
-              (mousemove)="mouseMove($event)" (touchmove)="touchMove($event)">
+      <canvas #wordCanvas id="wordCanvas" [width]="getWidth() * .8" [height]="getHeight() * .6">
       </canvas>
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
-      <mat-icon *ngIf="isDrawn" (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
-      <input tabindex="2" class="color-picker" type="color" [(ngModel)]="drawColor">
+      <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
+      <input tabindex="2" class="color-picker" type="color" [(ngModel)]="color">
     </mat-grid-tile>
     <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
       <mat-icon *ngIf="displayIndex<words.length-1">arrow_right</mat-icon>
