@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {fromEvent} from "rxjs";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {fromEvent, Subscription} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 
 @Component({
@@ -7,28 +7,31 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
   templateUrl: './white-board.component.html',
   styleUrls: ['./white-board.component.scss']
 })
-export class WhiteBoardComponent implements AfterViewInit {
+export class WhiteBoardComponent implements AfterViewInit, OnDestroy {
   color = "black";
   lineSize = 8;
   isDrawn = false;
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
-  canvasRect: any;
   window: any;
   ctx: CanvasRenderingContext2D;
+  subscriptions: Subscription[] = [];
 
   constructor() {
     this.window = window;
   }
 
   ngAfterViewInit(): void {
-    this.canvasRect = this.canvas.nativeElement.getBoundingClientRect();
     // @ts-ignore
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.ctx.lineWidth = this.lineSize;
     this.ctx.lineCap = 'round';
     this.ctx.strokeStyle = '#000';
-    this.captureMouseEvents(this.canvas.nativeElement);
-    this.captureTouchEvents(this.canvas.nativeElement);
+    this.subscriptions.push(this.captureMouseEvents(this.canvas.nativeElement));
+    this.subscriptions.push(this.captureTouchEvents(this.canvas.nativeElement));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   setColor(color: any) {
@@ -49,8 +52,8 @@ export class WhiteBoardComponent implements AfterViewInit {
     this.isDrawn = false;
   }
 
-  private captureMouseEvents(canvasEl: HTMLCanvasElement) {
-    fromEvent(canvasEl, 'mousedown')
+  private captureMouseEvents(canvasEl: HTMLCanvasElement): Subscription {
+    return fromEvent(canvasEl, 'mousedown')
       .pipe(
         switchMap((e) => {
           return fromEvent(canvasEl, 'mousemove')
@@ -76,8 +79,8 @@ export class WhiteBoardComponent implements AfterViewInit {
         }
       });
   }
-  private captureTouchEvents(canvasEl: HTMLCanvasElement) {
-    fromEvent(canvasEl, 'touchstart')
+  private captureTouchEvents(canvasEl: HTMLCanvasElement): Subscription {
+    return fromEvent(canvasEl, 'touchstart')
       .pipe(
         switchMap((e) => {
           return fromEvent(canvasEl, 'touchmove')
@@ -91,22 +94,25 @@ export class WhiteBoardComponent implements AfterViewInit {
         if (res[0] instanceof TouchEvent && res[1] instanceof TouchEvent) {
           const evt1: Touch = (<TouchEvent>res[0]).touches[0];
           const evt2: Touch = (<TouchEvent>res[1]).touches[0];
+          const canvasRect = this.canvas.nativeElement.getBoundingClientRect();
           const prevPos = {
-            x: evt1.clientX - this.canvasRect.left,
-            y: evt1.clientY - this.canvasRect.top
+            x: evt1.clientX - canvasRect.left,
+            y: evt1.clientY - canvasRect.top
           };
           const currentPos = {
-            x: evt2.clientX - this.canvasRect.left,
-            y: evt2.clientY - this.canvasRect.top
+            x: evt2.clientX - canvasRect.left,
+            y: evt2.clientY - canvasRect.top
           };
           this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
         }
       });
-
   }
 
   private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }, color: any, size: number) {
-    if (!this.ctx) { return; }
+    if (!this.ctx) {
+      // @ts-ignore
+      this.ctx = this.canvas.nativeElement.getContext('2d');
+    }
     this.ctx.beginPath();
     this.ctx.strokeStyle = color;
     this.ctx.lineWidth = size;

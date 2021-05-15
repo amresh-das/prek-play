@@ -6,13 +6,14 @@
     <mat-icon style="color: #4B0082;" (click)="setColor('#4B0082')">border_color</mat-icon><br/>
     <mat-icon style="color: #0000FF;" (click)="setColor('#0000FF')">border_color</mat-icon><br/>
     <mat-icon style="color: #008000;" (click)="setColor('#008000')">border_color</mat-icon><br/>
+    <mat-icon style="color: #00FF00;" (click)="setColor('#00FF00')">border_color</mat-icon><br/>
     <mat-icon style="color: #FFFF00;" (click)="setColor('#FFFF00')">border_color</mat-icon><br/>
     <mat-icon style="color: #FFA500;" (click)="setColor('#FFA500')">border_color</mat-icon><br/>
     <mat-icon style="color: #FF0000;" (click)="setColor('#FF0000')">border_color</mat-icon><br/>
     <mat-slider color="primary" aria-label="line size" [(ngModel)]="lineSize" min="1" max="25" vertical invert></mat-slider>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-icon class="clear-canvas-btn" (click)="clearCanvas()">restart_alt</mat-icon>
+    <mat-icon class="clear-canvas-btn" (click)="clearCanvas()">clear</mat-icon>
     <canvas [width]="window.innerWidth - 60" [height]="window.innerHeight - 100" #canvas class="whiteboard mat-elevation-z5"></canvas>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -44,9 +44,6 @@ export class AnimalCategoriesComponent {
         event.previousIndex,
         event.currentIndex);
     }
-
-    console.log(document.getElementById('domestic')?.getBoundingClientRect().width, document.getElementById('domestic')?.getBoundingClientRect().height,
-      document.getElementById('wild')?.getBoundingClientRect().width, document.getElementById('wild')?.getBoundingClientRect().height);
   }
 
   isDomesticAllowed(item: CdkDrag) {

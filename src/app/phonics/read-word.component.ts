@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, ElementRef, Inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnDestroy, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Word} from "../model/word.model";
 import {WordPicComponent} from "./word.pic.component";
-import {fromEvent} from "rxjs";
+import {fromEvent, Subscription} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 import {SettingsService} from "../services/settings.service";
 
@@ -11,7 +11,7 @@ import {SettingsService} from "../services/settings.service";
   templateUrl: './read-word.component.html',
   styleUrls: ['./read-word.component.scss']
 })
-export class ReadWordComponent implements AfterViewInit {
+export class ReadWordComponent implements AfterViewInit, OnDestroy {
   words: Word[];
   displayIndex = 0;
   editable = false;
@@ -20,9 +20,9 @@ export class ReadWordComponent implements AfterViewInit {
   isDrawn = false;
   @ViewChild('wordCanvas') canvas: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D;
-  canvasRect: any;
   vowelColor: any;
   consonantColor: any;
+  subscriptions: Subscription[] = [];
   private static readonly READ_WORD_DRAW_COLOR = "read.word.draw.color";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>, private settingsService: SettingsService) {
@@ -33,14 +33,13 @@ export class ReadWordComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.canvasRect = this.canvas.nativeElement.getBoundingClientRect();
     // @ts-ignore
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.ctx.lineWidth = this.lineSize;
     this.ctx.lineCap = 'round';
     this.ctx.strokeStyle = '#000';
-    this.captureMouseEvents(this.canvas.nativeElement);
-    this.captureTouchEvents(this.canvas.nativeElement);
+    this.subscriptions.push(this.captureMouseEvents(this.canvas.nativeElement));
+    this.subscriptions.push(this.captureTouchEvents(this.canvas.nativeElement));
     this.dialogRef.keydownEvents().subscribe((evt) => {
       if (evt.key === 'ArrowLeft') {
         this.prev();
@@ -52,6 +51,10 @@ export class ReadWordComponent implements AfterViewInit {
         this.showPic();
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
   next() {
@@ -104,8 +107,8 @@ export class ReadWordComponent implements AfterViewInit {
     this.isDrawn = false;
   }
 
-  private captureMouseEvents(canvasEl: HTMLCanvasElement) {
-    fromEvent(canvasEl, 'mousedown')
+  private captureMouseEvents(canvasEl: HTMLCanvasElement): Subscription {
+    return fromEvent(canvasEl, 'mousedown')
       .pipe(
         switchMap((e) => {
           return fromEvent(canvasEl, 'mousemove')
@@ -133,7 +136,7 @@ export class ReadWordComponent implements AfterViewInit {
   }
 
   private captureTouchEvents(canvasEl: HTMLCanvasElement) {
-    fromEvent(canvasEl, 'touchstart')
+    return fromEvent(canvasEl, 'touchstart')
       .pipe(
         switchMap((e) => {
           return fromEvent(canvasEl, 'touchmove')
@@ -147,22 +150,25 @@ export class ReadWordComponent implements AfterViewInit {
         if (res[0] instanceof TouchEvent && res[1] instanceof TouchEvent) {
           const evt1: Touch = (<TouchEvent>res[0]).touches[0];
           const evt2: Touch = (<TouchEvent>res[1]).touches[0];
+          const canvasRect = this.canvas.nativeElement.getBoundingClientRect();
           const prevPos = {
-            x: evt1.clientX - this.canvasRect.left,
-            y: evt1.clientY - this.canvasRect.top
+            x: evt1.clientX - canvasRect.left,
+            y: evt1.clientY - canvasRect.top
           };
           const currentPos = {
-            x: evt2.clientX - this.canvasRect.left,
-            y: evt2.clientY - this.canvasRect.top
+            x: evt2.clientX - canvasRect.left,
+            y: evt2.clientY - canvasRect.top
           };
           this.drawOnCanvas(prevPos, currentPos, this.color, this.lineSize);
         }
       });
-
   }
 
   private drawOnCanvas(prevPos: { x: number, y: number }, currentPos: { x: number, y: number }, color: any, size: number) {
-    if (!this.ctx) { return; }
+    if (!this.ctx) {
+      // @ts-ignore
+      this.ctx = this.canvas.nativeElement.getContext('2d');
+    }
     this.ctx.beginPath();
     this.ctx.strokeStyle = color;
     this.ctx.lineWidth = size;
