@@ -4,6 +4,7 @@ import {Word} from "../model/word.model";
 import {WordPicComponent} from "./word.pic.component";
 import {fromEvent} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
+import {SettingsService} from "../services/settings.service";
 
 @Component({
   selector: 'app-read-word',
@@ -14,7 +15,7 @@ export class ReadWordComponent implements AfterViewInit {
   words: Word[];
   displayIndex = 0;
   editable = false;
-  color = '#ff0000';
+  color: any;
   lineSize = 8;
   isDrawn = false;
   @ViewChild('wordCanvas') canvas: ElementRef<HTMLCanvasElement>;
@@ -22,11 +23,13 @@ export class ReadWordComponent implements AfterViewInit {
   canvasRect: any;
   vowelColor: any;
   consonantColor: any;
+  private static readonly READ_WORD_DRAW_COLOR = "read.word.draw.color";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>, private settingsService: SettingsService) {
     this.words = this.data.items;
     this.vowelColor = this.data.vowelColor;
     this.consonantColor = this.data.consonantColor;
+    this.color = this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_DRAW_COLOR, '#ff0000');
   }
 
   ngAfterViewInit(): void {
@@ -181,5 +184,10 @@ export class ReadWordComponent implements AfterViewInit {
 
   setColor(color: any) {
     this.color = color;
+    this.updateColorSelection();
+  }
+
+  updateColorSelection() {
+    this.settingsService.setConfig(ReadWordComponent.READ_WORD_DRAW_COLOR, this.color);
   }
 }

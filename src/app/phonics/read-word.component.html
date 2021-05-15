@@ -24,7 +24,7 @@
         <mat-icon class="color-picker" style="color: #FFFF00;" (click)="setColor('#FFFF00')">circle</mat-icon>
         <mat-icon class="color-picker" style="color: #FFA500;" (click)="setColor('#FFA500')">circle</mat-icon>
         <mat-icon class="color-picker" style="color: #FF0000;" (click)="setColor('#FF0000')">circle</mat-icon>
-        <input tabindex="2" type="color" [(ngModel)]="color">
+        <input tabindex="2" type="color" (change)="updateColorSelection()" [(ngModel)]="color">
       </span>
     </mat-grid-tile>
     <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
