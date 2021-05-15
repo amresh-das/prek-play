@@ -179,4 +179,7 @@ export class ReadWordComponent implements AfterViewInit {
     return window.screen.height;
   }
 
+  setColor(color: any) {
+    this.color = color;
+  }
 }

@@ -47,8 +47,14 @@
   top: 5px;
 }
 
-.color-picker {
+.color-controls {
   position: absolute;
   bottom: 2px;
   right: 2px;
+}
+
+.color-picker {
+  padding-right: 3px;
+  text-shadow: none;
+  cursor: pointer;
 }
