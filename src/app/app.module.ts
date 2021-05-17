@@ -41,6 +41,7 @@ import { WhiteBoardComponent } from './white-board/white-board.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSliderModule} from "@angular/material/slider";
+import { VowelsComponent } from './phonics/vowels.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatSliderModule} from "@angular/material/slider";
     FamilyTreeComponent,
     SeasonsComponent,
     AnimalCategoriesComponent,
-    WhiteBoardComponent
+    WhiteBoardComponent,
+    VowelsComponent
   ],
   imports: [
     BrowserModule,

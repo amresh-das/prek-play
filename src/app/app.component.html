@@ -7,13 +7,23 @@
       <mat-icon>draw</mat-icon>
       <span>White Board</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('phonics', 'Learn Phonics')">
+    <a mat-menu-item (click)="navigateMenu('phonics', 'Learn Phonics')" [matMenuTriggerFor]="phonicsSubMenu">
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
     </a>
     <a mat-menu-item [matMenuTriggerFor]="evsMenu">
       <mat-icon>public</mat-icon>
       <span>Environmental Studies</span>
+    </a>
+  </mat-menu>
+  <mat-menu #phonicsSubMenu="matMenu">
+    <a mat-menu-item (click)="navigateMenu('vowels', 'Identify Vowels')">
+      <span style="font-size: 0.8em">aeiou&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>Vowels</span>
+    </a>
+    <a mat-menu-item (click)="navigateMenu('phonics', 'Read Words')">
+      <mat-icon>text_snippet</mat-icon>
+      <span>Words</span>
     </a>
   </mat-menu>
   <mat-menu #evsMenu="matMenu">
