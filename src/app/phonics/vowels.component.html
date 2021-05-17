@@ -13,7 +13,7 @@
                  [colspan]="5" style="background-color: lightgray; border-radius: 20px;">
     <span class="vowel-container" *ngIf="getVowelCount(); let count; else allDone">Find {{count}} Vowel{{count > 1 ? 's' : ''}}</span>
     <ng-template #allDone>
-      <span class="vowel-container success">Found all the
+      <span class="vowel-container success">Found all the Vowels -
         <span style="color: black; padding: 2px;">a</span>
         <span style="color: black; padding: 2px;">e</span>
         <span style="color: black; padding: 2px;">i</span>
