@@ -1,0 +1,31 @@
+.choices {
+  font-size: 6em;
+  text-shadow: 2px 1px;
+  border-radius: 10px;
+}
+
+.vowel-container, .consonant-container {
+  height: 100%;
+  width: 100%;
+  color: gray;
+  opacity: 60%;
+  font-size: 4em;
+  text-shadow: 2px 2px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 4em;
+  z-index: 0;
+}
+
+.consonant-container {
+}
+
+.cdk-drag-preview {
+  font-size: 6em;
+  text-shadow: 2px 1px;
+}
+
+.success {
+  color: white;
+  background-color: forestgreen;
+}

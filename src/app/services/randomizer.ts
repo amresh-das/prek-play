@@ -1,4 +1,6 @@
 export class Randomizer {
+  private static readonly CHARS = 'abcdefghijklmnopqrstuvwxyz';
+  private static readonly COLORCHARS = '0123456789ABCDEF';
 
   public static randomize(array: any[]) {
     if (!array) return;
@@ -24,4 +26,20 @@ export class Randomizer {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
+  public static randomString(length?: number): string {
+    const count = length ? length : Randomizer.randomInt(10);
+    let result = '';
+    for (let i = 0; i < count; i++) {
+      result = result + Randomizer.CHARS.charAt(Randomizer.randomInt(Randomizer.CHARS.length));
+    }
+    return result;
+  }
+
+  public static randomColor() {
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color = color + Randomizer.COLORCHARS[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 }
