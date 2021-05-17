@@ -24,7 +24,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input type="number" min="1" max="15" matInput [(ngModel)]="columns" (change)="prep()">Letters Per Row
+      <input type="number" min="1" max="20" matInput [(ngModel)]="columns" (change)="prep()">Letters Per Row
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile cdkDropList #consonants="cdkDropList" [cdkDropListData]="consonantSelection"
