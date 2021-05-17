@@ -16,15 +16,15 @@
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
       <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
       <span class="color-controls">
-        <mat-icon class="color-picker" style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #8F00FF;" (click)="setColor('#8F00FF')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #4B0082;" (click)="setColor('#4B0082')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #0000FF;" (click)="setColor('#0000FF')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #008000;" (click)="setColor('#008000')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #00FF00;" (click)="setColor('#00FF00')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #FFFF00;" (click)="setColor('#FFFF00')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #FFA500;" (click)="setColor('#FFA500')">circle</mat-icon>
-        <mat-icon class="color-picker" style="color: #FF0000;" (click)="setColor('#FF0000')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #8F00FF;" (click)="setColor('#8F00FF')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #4B0082;" (click)="setColor('#4B0082')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #0000FF;" (click)="setColor('#0000FF')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #008000;" (click)="setColor('#008000')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #00FF00;" (click)="setColor('#00FF00')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #FFFF00;" (click)="setColor('#FFFF00')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #FFA500;" (click)="setColor('#FFA500')">circle</mat-icon>
+        <mat-icon mat-ripple class="color-picker" style="color: #FF0000;" (click)="setColor('#FF0000')">circle</mat-icon>
         <input tabindex="2" type="color" (change)="updateColorSelection()" [(ngModel)]="color">
       </span>
     </mat-grid-tile>

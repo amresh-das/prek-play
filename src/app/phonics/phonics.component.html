@@ -1,52 +1,46 @@
-<mat-tab-group >
-  <mat-tab label="One Vowel">
-    <div>
-      <span class="app-spacer"></span>
-      <mat-form-field class="filter-chip-list" appearance="outline">
-        <mat-label>
-          <mat-icon>search</mat-icon>
-          Filter Syllables
-        </mat-label>
-        <mat-chip-list #chipList aria-label="Syllables">
-          <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
-            {{filter}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input matInput placeholder="Separate each syllable with comma/enter/space"
-                 [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 matChipInputAddOnBlur="true"
-                 (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
-        </mat-chip-list>
-      </mat-form-field>
-      <input class="color-picker" type="color" [(ngModel)]="consonantColor" (change)="saveColorScheme()">
-      <input class="color-picker" type="color" [(ngModel)]="vowelColor" (change)="saveColorScheme()">
-      <mat-checkbox #showChecks>Show Checks</mat-checkbox>
-      <span class="actions">
-    <button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
-    <button mat-button color="primary" *ngIf="showChecks.checked && selected.length > 0" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
-    <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
-    <button mat-button color="primary" *ngIf="!showChecks.checked" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
-    <button mat-button color="primary" *ngIf="showChecks.checked" (click)="showWordsToRead()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Play">play_circle</mat-icon></button>
-  </span>
-    </div>
+<div>
+  <span class="app-spacer"></span>
+  <mat-form-field class="filter-chip-list" appearance="outline">
+    <mat-label>
+      <mat-icon>search</mat-icon>
+      Filter Syllables
+    </mat-label>
+    <mat-chip-list #chipList aria-label="Syllables">
+      <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (removed)="remove(filter)">
+        {{filter}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input matInput placeholder="Separate each syllable with comma/enter/space"
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             matChipInputAddOnBlur="true"
+             (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
+    </mat-chip-list>
+  </mat-form-field>
+  <input class="color-picker" type="color" [(ngModel)]="consonantColor" (change)="saveColorScheme()">
+  <input class="color-picker" type="color" [(ngModel)]="vowelColor" (change)="saveColorScheme()">
+  <mat-checkbox #showChecks>Show Checks</mat-checkbox>
+  <span class="actions">
+<button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
+<button mat-button color="primary" *ngIf="showChecks.checked && selected.length > 0" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
+<button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
+<button mat-button color="primary" *ngIf="!showChecks.checked" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+<button mat-button color="primary" *ngIf="showChecks.checked" (click)="showWordsToRead()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Play">play_circle</mat-icon></button>
+</span>
+</div>
 
-    <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
-      <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
-                     (dblclick)="word.resources?.length!=0 && showPic(word)">
-        <mat-checkbox *ngIf="showChecks.checked" (change)="select($event.checked, word)" [(ngModel)]="word.selected" class="unselectable">
-          <span *ngFor="let char of word.word.split('')" [ngStyle]="{'color': (vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
-            {{char | lowercase}}
-          </span>
-        </mat-checkbox>
-        <span *ngIf="!showChecks.checked" class="unselectable">
-          <span *ngFor="let char of word.word.split('')" [ngStyle]="{'color': (vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
-            {{char | lowercase}}
-          </span>
-        </span>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-tab>
-  <mat-tab label="Two Vowels"></mat-tab>
-  <mat-tab label="Similar Spelling"></mat-tab>
-</mat-tab-group>
+<mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
+  <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
+                 (dblclick)="word.resources?.length!=0 && showPic(word)">
+    <mat-checkbox *ngIf="showChecks.checked" (change)="select($event.checked, word)" [(ngModel)]="word.selected" class="unselectable">
+      <span *ngFor="let char of word.word.split('')" [ngStyle]="{'color': (vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
+        {{char | lowercase}}
+      </span>
+    </mat-checkbox>
+    <span *ngIf="!showChecks.checked" class="unselectable">
+      <span *ngFor="let char of word.word.split('')" [ngStyle]="{'color': (vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
+        {{char | lowercase}}
+      </span>
+    </span>
+  </mat-grid-tile>
+</mat-grid-list>

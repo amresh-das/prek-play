@@ -16,7 +16,7 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
   displayIndex = 0;
   editable = false;
   color: any;
-  lineSize = 8;
+  lineSize = 10;
   isDrawn = false;
   @ViewChild('wordCanvas') canvas: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D;
