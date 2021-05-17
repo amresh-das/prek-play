@@ -1,7 +1,6 @@
 .choices {
   font-size: 6em;
   text-shadow: 2px 1px;
-  border-radius: 10px;
 }
 
 .vowel-container, .consonant-container {
@@ -9,11 +8,10 @@
   width: 100%;
   color: gray;
   opacity: 60%;
-  font-size: 4em;
-  text-shadow: 2px 2px;
+  font-size: 2em;
+  text-shadow: 1px 2px;
   border-radius: 10px;
-  text-align: center;
-  padding-top: 4em;
+  padding-top: 35px;
   z-index: 0;
 }
 
@@ -21,11 +19,16 @@
 }
 
 .cdk-drag-preview {
-  font-size: 6em;
+  font-size: 15em;
   text-shadow: 2px 1px;
 }
 
 .success {
   color: white;
   background-color: forestgreen;
+}
+
+.selected {
+  background-color: white;
+  width: 20px;
 }

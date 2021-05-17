@@ -64,7 +64,7 @@ export class VowelsComponent {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        999999);
     }
   }
 }
