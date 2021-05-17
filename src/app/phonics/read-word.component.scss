@@ -49,12 +49,14 @@
 
 .color-controls {
   position: absolute;
-  bottom: 2px;
+  bottom: 3px;
   right: 2px;
 }
 
 .color-picker {
+  padding-left: 3px;
   padding-right: 3px;
   text-shadow: none;
   cursor: pointer;
 }
+
