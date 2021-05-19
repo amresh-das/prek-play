@@ -24,7 +24,7 @@ export class PhonicsComponent implements OnInit {
   vowels = 'aeiou';
   vowelColor: any = '#000000';
   consonantColor: any = '#666666';
-  hiddenWords = ['bar', 'be', 'trial'];
+  hiddenWords = ['bar', 'be', 'trial', 'bare', 'branch', 'brass', 'car', 'class', 'fort', 'he', 'mar', 'ok', 'to', 'war', ''];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
