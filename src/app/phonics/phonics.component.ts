@@ -51,10 +51,10 @@ export class PhonicsComponent implements OnInit {
 
   getFiltered(): Word[] {
     if (this.filters.length == 0) {
-      return this.words;
+      return this.words.filter(w => this.hiddenWords.indexOf(w.word) === -1);
     } else {
       return this.words
-        .filter(w => this.hiddenWords.indexOf(w.word) > -1)
+        .filter(w => this.hiddenWords.indexOf(w.word) === -1)
         .filter(w => this.filters.find(f => {
           const regex = new RegExp(f, 'ig');
           return w.word.match(regex);
