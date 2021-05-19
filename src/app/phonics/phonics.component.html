@@ -10,7 +10,7 @@
         {{filter}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
-      <input matInput placeholder="Separate each syllable with comma/enter/space"
+      <input matInput type="search" placeholder="Separate each syllable with comma/enter/space"
              [matChipInputFor]="chipList"
              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
              matChipInputAddOnBlur="true"
