@@ -24,6 +24,7 @@ export class PhonicsComponent implements OnInit {
   vowels = 'aeiou';
   vowelColor: any = '#000000';
   consonantColor: any = '#666666';
+  hiddenWords = ['bar', 'be', 'trial'];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
@@ -52,9 +53,11 @@ export class PhonicsComponent implements OnInit {
     if (this.filters.length == 0) {
       return this.words;
     } else {
-      return this.words.filter(w => this.filters.find(f => {
-        const regex = new RegExp(f, 'ig');
-        return w.word.match(regex);
+      return this.words
+        .filter(w => this.hiddenWords.indexOf(w.word) > -1)
+        .filter(w => this.filters.find(f => {
+          const regex = new RegExp(f, 'ig');
+          return w.word.match(regex);
       }));
     }
   }

@@ -21,11 +21,7 @@
     </span>
     <ng-template #allDone>
       <span class="vowel-container success">Found all the Vowels -
-        <span style="color: black; padding: 2px;">a</span>
-        <span style="color: black; padding: 2px;">e</span>
-        <span style="color: black; padding: 2px;">i</span>
-        <span style="color: black; padding: 2px;">o</span>
-        <span style="color: black; padding: 2px;">u</span>
+                <span *ngFor="let v of VOWELS.split('')" style="color: black; padding: 2px;">{{v}}</span>
       </span>
     </ng-template>
   </mat-grid-tile>

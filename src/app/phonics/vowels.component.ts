@@ -17,40 +17,40 @@ export class VowelsComponent {
   vowelSelection: string[];
   consonantSelection: string[];
 
-  private static readonly VOWELS = 'aeiou';
-  private static readonly VOWELS_COL_COUNT = 'vowels.column.count';
+  readonly VOWELS = 'aeiouāēīōū';
+  private readonly VOWELS_COL_COUNT = 'vowels.column.count';
 
   constructor(private settingsService: SettingsService) {
-    this.columns = Number.parseInt(settingsService.getConfigOrDefault(VowelsComponent.VOWELS_COL_COUNT, '4'));
+    this.columns = Number.parseInt(settingsService.getConfigOrDefault(this.VOWELS_COL_COUNT, '4'));
     this.prep();
   }
 
   prep() {
-    this.choices = VowelsComponent.VOWELS.split('');
+    this.choices = this.VOWELS.split('');
     this.vowelSelection = [];
     this.consonantSelection = [];
-    for (let i = 5; i < this.columns * this.rows; i++) {
+    for (let i = this.VOWELS.length; i < this.columns * this.rows; i++) {
       const option = Randomizer.randomString(1);
       this.choices.push(option);
       let color = Randomizer.randomColor();
       this.choiceColor = (color === '#FFFFFF' ? '#000000' : color);
     }
     Randomizer.randomize(this.choices);
-    this.settingsService.setConfig(VowelsComponent.VOWELS_COL_COUNT, this.columns + '');
+    this.settingsService.setConfig(this.VOWELS_COL_COUNT, this.columns + '');
   }
 
   isVowel(item: CdkDrag) {
     const letter = item.element.nativeElement.id.substring(7);
-    return 'aeiou'.indexOf(letter) > -1;
+    return 'aeiouāēīōū'.indexOf(letter) > -1;
   }
 
   isConsonant(item: CdkDrag) {
     const letter = item.element.nativeElement.id.substring(7);
-    return 'aeiou'.indexOf(letter) == -1;
+    return 'aeiouāēīōū'.indexOf(letter) == -1;
   }
 
   getVowelCount() {
-    return this.choices.filter(c => VowelsComponent.VOWELS.indexOf(c) > -1).length;
+    return this.choices.filter(c => this.VOWELS.indexOf(c) > -1).length;
   }
 
   getFoundCount(letter: string) {
