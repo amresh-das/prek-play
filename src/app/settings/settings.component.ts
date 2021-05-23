@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   constructor(private location: Location, private snackBar: MatSnackBar) {
     const config = localStorage.getItem(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT);
     this.phonicsShowWordsBatchCount = config ? Number.parseInt(config) : SettingsComponent.defaultPhonicsShowWordsBatchCount;
-    this.phonicsHiddenWords = this.getHiddenWords();
+    this.phonicsHiddenWords = this.getHiddenWords().sort();
   }
 
   ngOnInit(): void {
