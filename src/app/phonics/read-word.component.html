@@ -14,7 +14,10 @@
       <canvas #wordCanvas id="wordCanvas" [width]="getWidth() * .8" [height]="getHeight() * .6">
       </canvas>
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
-      <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
+      <span class="word-controls">
+        <mat-icon (click)="hideWord(getWord().word)">visibility_off</mat-icon>
+        <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
+      </span>
       <span class="color-controls">
         <mat-icon mat-ripple class="color-picker" style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>
         <mat-icon mat-ripple class="color-picker" style="color: #8F00FF;" (click)="setColor('#8F00FF')">circle</mat-icon>

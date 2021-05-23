@@ -59,3 +59,11 @@
 .unselectable {
   user-select: none;
 }
+
+.word-controls {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  cursor: pointer;
+  font-size: medium;
+}

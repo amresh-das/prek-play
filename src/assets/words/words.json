@@ -379,14 +379,25 @@
   {"word": "tap", "resources" : ["tap.gif","tap.jpg"] },
   {"word": "tape", "resources" : ["tape.jpg"] },
   {"word": "can", "resources" : ["can.png"] },
-  {"word": "ate", "resources" : ["ate.gif"] }
+  {"word": "ate", "resources" : ["ate.gif"] },
+  {"word": "scan", "resources" : [] },
+  {"word": "scam", "resources" : [] },
+  {"word": "scold", "resources" : [] },
+  {"word": "scrap", "resources" : [] },
+  {"word": "scoop", "resources" : [] },
+  {"word": "scalp", "resources" : [] },
+  {"word": "scope", "resources" : [] },
+  {"word": "scotch", "resources" : [] },
+  {"word": "scare", "resources" : [] },
+  {"word": "score", "resources" : [] },
+  {"word": "screen", "resources" : [] },
+  {"word": "scream", "resources" : [] },
+  {"word": "ski", "resources" : [] },
+  {"word": "sky", "resources" : [] },
+  {"word": "skill", "resources" : [] },
+  {"word": "skull", "resources" : [] },
+  {"word": "skin", "resources" : [] },
+  {"word": "skid", "resources" : [] },
+  {"word": "skit", "resources" : [] }
 ]
-
-
-
-
-
-
-
-
 

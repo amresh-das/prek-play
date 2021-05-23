@@ -1,0 +1,7 @@
+  {"word": "sl", "resources" : [] },
+  {"word": "sm", "resources" : [] },
+  {"word": "sn", "resources" : [] },
+  {"word": "sn", "resources" : [] },
+  {"word": "sp", "resources" : [] },
+  {"word": "squ", "resources" : [] },
+  {"word": "st", "resources" : [] }

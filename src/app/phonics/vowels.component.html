@@ -4,12 +4,12 @@
 </span>
 <mat-grid-list cdkDropList #letters="cdkDropList" [cdkDropListData]="choices"
                [cdkDropListConnectedTo]="[vowels, consonants]"
-               [cols]="columns" rowHeight="fit" style="height: 55vh">
+               [cols]="columns" rowHeight="fit" style="height: 65vh">
   <mat-grid-tile *ngFor="let choice of choices; let i = index">
       <span id="choice_{{choice}}" class="choices" cdkDrag [ngStyle]="{'color': (choiceColor)}">{{choice}}</span>
   </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list [cols]="9" rowHeight="fit" style="height: 20vh">
+<mat-grid-list [cols]="9" rowHeight="fit" style="height: 15vh">
   <mat-grid-tile cdkDropList #vowels="cdkDropList" [cdkDropListData]="vowelSelection"
                  [cdkDropListConnectedTo]="letters"
                  (cdkDropListDropped)="drop($event)"

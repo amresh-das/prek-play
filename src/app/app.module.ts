@@ -42,6 +42,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSliderModule} from "@angular/material/slider";
 import { VowelsComponent } from './phonics/vowels.component';
+import { CanvasComponent } from './shared/canvas/canvas.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { VowelsComponent } from './phonics/vowels.component';
     SeasonsComponent,
     AnimalCategoriesComponent,
     WhiteBoardComponent,
-    VowelsComponent
+    VowelsComponent,
+    CanvasComponent
   ],
   imports: [
     BrowserModule,

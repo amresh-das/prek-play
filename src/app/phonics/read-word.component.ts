@@ -5,6 +5,7 @@ import {WordPicComponent} from "./word.pic.component";
 import {fromEvent, Subscription} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 import {SettingsService} from "../services/settings.service";
+import {PhonicsComponent} from "./phonics.component";
 
 @Component({
   selector: 'app-read-word',
@@ -195,5 +196,11 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
 
   updateColorSelection() {
     this.settingsService.setConfig(ReadWordComponent.READ_WORD_DRAW_COLOR, this.color);
+  }
+
+  hideWord(word: string) {
+    const hidden: string[] = JSON.parse(this.settingsService.getConfigOrDefault('phonics.hidden.words', '[]'));
+    hidden.push(word);
+    this.settingsService.setConfig('phonics.hidden.words', JSON.stringify(hidden));
   }
 }

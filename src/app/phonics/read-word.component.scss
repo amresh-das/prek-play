@@ -38,19 +38,19 @@
   touch-action: none;
 }
 
-.clear-canvas-btn {
+.color-controls {
+  position: absolute;
+  bottom: 3px;
+  right: 2px;
+}
+
+.word-controls {
   cursor: pointer;
   font-size: medium;
   text-shadow: none;
   position: absolute;
   right: 2px;
   top: 5px;
-}
-
-.color-controls {
-  position: absolute;
-  bottom: 3px;
-  right: 2px;
 }
 
 .color-picker {
