@@ -199,8 +199,8 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
   }
 
   hideWord(word: string) {
-    const hidden: string[] = JSON.parse(this.settingsService.getConfigOrDefault('phonics.hidden.words', '[]'));
+    const hidden: string[] = JSON.parse(this.settingsService.getConfigOrDefault(SettingsService.PHONICS_HIDDEN_WORDS, '[]'));
     hidden.push(word);
-    this.settingsService.setConfig('phonics.hidden.words', JSON.stringify(hidden));
+    this.settingsService.setConfig(SettingsService.PHONICS_HIDDEN_WORDS, JSON.stringify(hidden));
   }
 }

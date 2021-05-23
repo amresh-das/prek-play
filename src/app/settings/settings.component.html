@@ -6,6 +6,15 @@
         <mat-label>How many words to Show on Play: </mat-label>
         <input matInput type="number" [(ngModel)]="phonicsShowWordsBatchCount">
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Hidden Words: </mat-label>
+        <mat-chip-list>
+          <mat-chip *ngFor="let word of phonicsHiddenWords">
+            {{word}}
+            <mat-icon matChipRemove (click)="restoreWord(word)">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
     </div>
     <button mat-raised-button color="primary" (click)="save()">Save</button>
     <button mat-raised-button color="warn" (click)="reset()">Reset</button>
