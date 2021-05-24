@@ -25,6 +25,7 @@ export class PhonicsComponent implements OnInit {
   vowelColor: any = '#000000';
   consonantColor: any = '#666666';
   hiddenWords: string[];
+  wordFontSize: string;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
@@ -35,6 +36,7 @@ export class PhonicsComponent implements OnInit {
     this.consonantColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_CONSONANT, '#666666');
     this.vowelColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_VOWELS, '#000000');
     this.hiddenWords = JSON.parse(this.settingsService.getConfigOrDefault(SettingsService.PHONICS_HIDDEN_WORDS, '[]'));
+    this.wordFontSize = settingsService.getConfigOrDefault(SettingsService.PHONICS_WORDS_FONT_SIZE, '2.5') + 'em';
   }
 
   columnCount: number = 3;

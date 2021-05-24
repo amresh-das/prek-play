@@ -7,6 +7,10 @@
         <input matInput type="number" [(ngModel)]="phonicsShowWordsBatchCount">
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Specify Word Letter Size: </mat-label>
+        <input matInput type="number" [(ngModel)]="phonicsWordFontSize">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Hidden Words: </mat-label>
         <mat-chip-list>
           <mat-chip *ngFor="let word of phonicsHiddenWords">
