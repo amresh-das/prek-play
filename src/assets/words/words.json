@@ -296,7 +296,7 @@
   {"word": "rip", "resources" : ["rip.gif"] },
   {"word": "bit", "resources" : [] },
   {"word": "rob", "resources" : [] },
-  {"word": "sit", "resources" : [] },
+  {"word": "sit", "resources" : ["sit.gif"] },
   {"word": "pot", "resources" : ["pot.jpg"] },
   {"word": "pout", "resources" : ["pout1.gif"] },
   {"word": "bat", "resources" : ["bat.jpg","bat2.jpg"] },
