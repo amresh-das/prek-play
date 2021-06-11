@@ -5,7 +5,7 @@
     <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
       <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
     </mat-grid-tile>
-    <mat-grid-tile #wordTile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" (dblclick)="!allDone() && showPic()">
+    <mat-grid-tile #wordTile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" [ngStyle]="{'font-size': fontSize + 'em'}" (dblclick)="!allDone() && showPic()">
       <span #wordSpan id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
         <span *ngFor="let char of getWord().word.split('')" [ngStyle]="{'color': (data.vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
           {{char | lowercase}}
@@ -15,6 +15,8 @@
       </canvas>
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
       <span class="word-controls">
+        <mat-icon *ngIf="!showTextSizeInput" (click)="toggleTextSizeInput()">format_size</mat-icon>
+        <mat-slider *ngIf="showTextSizeInput" (change)="updateFontSize()" min="1" max="15" [step]="0.1" [(ngModel)]="fontSize"></mat-slider>
         <mat-icon (click)="hideWord(getWord().word)">visibility_off</mat-icon>
         <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
       </span>

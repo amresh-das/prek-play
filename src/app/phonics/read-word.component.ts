@@ -5,7 +5,7 @@ import {WordPicComponent} from "./word.pic.component";
 import {fromEvent, Subscription} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 import {SettingsService} from "../services/settings.service";
-import {PhonicsComponent} from "./phonics.component";
+
 
 @Component({
   selector: 'app-read-word',
@@ -19,18 +19,22 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
   color: any;
   lineSize = 10;
   isDrawn = false;
+  fontSize = 10;
+  showTextSizeInput = false;
   @ViewChild('wordCanvas') canvas: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D;
   vowelColor: any;
   consonantColor: any;
   subscriptions: Subscription[] = [];
   private static readonly READ_WORD_DRAW_COLOR = "read.word.draw.color";
+  private static readonly READ_WORD_FONT_SIZE = "read.word.font.size";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>, private settingsService: SettingsService) {
     this.words = this.data.items;
     this.vowelColor = this.data.vowelColor;
     this.consonantColor = this.data.consonantColor;
     this.color = this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_DRAW_COLOR, '#ff0000');
+    this.fontSize = Number.parseFloat(this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_FONT_SIZE, '10'));
   }
 
   ngAfterViewInit(): void {
@@ -202,5 +206,14 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
     const hidden: string[] = JSON.parse(this.settingsService.getConfigOrDefault(SettingsService.PHONICS_HIDDEN_WORDS, '[]'));
     hidden.push(word);
     this.settingsService.setConfig(SettingsService.PHONICS_HIDDEN_WORDS, JSON.stringify(hidden));
+  }
+
+  toggleTextSizeInput() {
+    this.showTextSizeInput = !this.showTextSizeInput;
+  }
+
+  updateFontSize() {
+    this.settingsService.setConfig(ReadWordComponent.READ_WORD_FONT_SIZE, this.fontSize + '');
+    this.showTextSizeInput = false;
   }
 }
