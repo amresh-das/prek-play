@@ -479,7 +479,7 @@
   {"word": "switch", "resources" : ["switch.jpg"] },
   {"word": "tweet", "resources" : ["tweet.gif"] },
   {"word": "twin", "resources" : ["twin1.jpg","twin2.jpg"] },
-  {"word": "twig", "resources" : ["stick.png"] },
+  {"word": "twig", "resources" : ["twig.png"] },
   {"word": "twelve", "resources" : ["twelve.png"] },
   {"word": "twist", "resources" : ["twist.gif"] },
   {"word": "twinkle", "resources" : ["twinkle.gif"] },
