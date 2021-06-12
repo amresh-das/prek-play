@@ -489,7 +489,7 @@
   {"word": "stroll", "resources" : ["walk.gif"] },
   {"word": "street", "resources" : ["road1.jpg", "road2.jpg", "road3.png"] },
   {"word": "strain", "resources" : [] },
-  {"word": "stroke", "resources" : ["stroke.gif"] },
+  {"word": "stroke", "resources" : [] },
   {"word": "stream", "resources" : ["stream.jpg"] },
   {"word": "strom", "resources" : [] },
   {"word": "stretch", "resources" : ["stretch.gif"] },
