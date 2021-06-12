@@ -83,7 +83,6 @@
   {"word": "sack", "resources" : ["sack.png"] },
   {"word": "tack", "resources" : [] },
   {"word": "mock", "resources" : [] },
-  {"word": "wack", "resources" : [] },
   {"word": "back", "resources" : [] },
   {"word": "buck", "resources" : ["buck.png"] },
   {"word": "cock", "resources" : ["cock.png"] },
