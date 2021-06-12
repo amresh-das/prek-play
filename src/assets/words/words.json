@@ -455,7 +455,7 @@
   {"word": "gust", "resources" : ["gust.gif"] },
   {"word": "fast", "resources" : ["fast.gif"] },
   {"word": "mast", "resources" : ["mast.jpg"] },
-  {"word": "fist", "resources" : ["fist.jpg"] },
+  {"word": "fist", "resources" : ["fist.jpeg"] },
   {"word": "best", "resources" : [] },
   {"word": "dust", "resources" : ["dust.gif"] },
   {"word": "last", "resources" : [] },
