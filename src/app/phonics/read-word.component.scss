@@ -1,5 +1,10 @@
 @import "../../app-style.scss";
 
+mat-dialog-content {
+  user-select: none;
+  touch-action: none;
+}
+
 .nav-item {
   border: none;
   font-size: xxx-large;
