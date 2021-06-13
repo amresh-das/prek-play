@@ -37,7 +37,6 @@
     </mat-chip-list>
   </mat-card-content>
 </mat-card>
-[{{filters | json}}]
 <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
   <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
                  (dblclick)="word.resources?.length!=0 && showPic(word)" [ngStyle]="{'font-size': wordFontSize}">
