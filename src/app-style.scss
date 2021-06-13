@@ -5,4 +5,5 @@ $tab-gradient: linear-gradient(140deg, #e8d9f3 0%, #b399cd 50%, #e8d9f3 75%);
 
 .clickable {
   cursor: pointer;
+  user-select: none;
 }

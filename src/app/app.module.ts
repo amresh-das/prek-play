@@ -88,6 +88,7 @@ import { CanvasComponent } from './shared/canvas/canvas.component';
     MatSliderModule,
     FlexLayoutModule,
     DragDropModule,
+    MatExpansionModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     FormsModule
   ],

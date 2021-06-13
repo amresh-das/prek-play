@@ -26,6 +26,9 @@ export class PhonicsComponent implements OnInit {
   consonantColor: any = '#666666';
   hiddenWords: string[];
   wordFontSize: string;
+  controlVisibility = false;
+  blends = ['oo', 'ee', 'ck', 'ch', 'sh', 'th', 'bl', 'cl', 'fl', 'sl', 'gl', 'pl', 'dr', 'gr', 'cr', 'fr', 'br', 'tr', 'pr',
+    'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey'];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
@@ -105,14 +108,20 @@ export class PhonicsComponent implements OnInit {
 
   addFilter(event: MatChipInputEvent) {
     const input = event.input;
-    const value = event.value.trim();
+    if (input) {
+      input.value = '';
+    }
+    this.addFilterValue(event.value.trim());
+  }
+
+  addFilterValue(value: string) {
     if (value.length > 0) {
       const plainTxtSegments = value.split('*');
       const filterRegexPattern = plainTxtSegments.map(s => (s.endsWith('.') ? s : s + '.')).join('*');
-      this.filters.push(filterRegexPattern.slice(0, filterRegexPattern.length - 1));
-    }
-    if (input) {
-      input.value = '';
+      let item = filterRegexPattern.slice(0, filterRegexPattern.length - 1);
+      if (this.filters.indexOf(item) === -1) {
+        this.filters.push(item);
+      }
     }
     this.filterChanged();
   }
@@ -147,6 +156,10 @@ export class PhonicsComponent implements OnInit {
   hideWord(word: string) {
     this.hiddenWords.push(word);
     this.settingsService.setConfig(SettingsService.PHONICS_HIDDEN_WORDS, JSON.stringify(this.hiddenWords));
+  }
+
+  showControls() {
+    this.controlVisibility = !this.controlVisibility;
   }
 }
 

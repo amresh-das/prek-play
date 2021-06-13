@@ -1,5 +1,4 @@
 <div>
-  <span class="app-spacer"></span>
   <mat-form-field class="filter-chip-list" appearance="outline">
     <mat-label>
       <mat-icon>search</mat-icon>
@@ -17,18 +16,28 @@
              (matChipInputTokenEnd)="addFilter($event)" autocomplete="off">
     </mat-chip-list>
   </mat-form-field>
+  <mat-icon class="clickable" *ngIf="!controlVisibility" (click)="showControls()">manage_search</mat-icon>
+  <mat-icon class="clickable" *ngIf="controlVisibility" (click)="showControls()">search_off</mat-icon>
   <input class="color-picker" type="color" [(ngModel)]="consonantColor" (change)="saveColorScheme()">
   <input class="color-picker" type="color" [(ngModel)]="vowelColor" (change)="saveColorScheme()">
   <mat-checkbox #showChecks>Show Checks</mat-checkbox>
   <span class="actions">
-<button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
-<button mat-button color="primary" *ngIf="showChecks.checked && selected.length > 0" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
-<button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
-<button mat-button color="primary" *ngIf="!showChecks.checked" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
-<button mat-button color="primary" *ngIf="showChecks.checked" (click)="showWordsToRead()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Play">play_circle</mat-icon></button>
-</span>
+    <button mat-button color="primary" (click)="saveSearch()" *ngIf="isFilterChanged"><mat-icon aria-label="Save Search">saved_search</mat-icon></button>
+    <button mat-button color="primary" *ngIf="showChecks.checked && selected.length > 0" (click)="deSelectAll()"><mat-icon aria-label="Deselect">unpublished</mat-icon></button>
+    <button mat-button color="primary" (click)="shuffleAll()"><mat-icon aria-label="Shuffle">shuffle</mat-icon></button>
+    <button mat-button color="primary" *ngIf="!showChecks.checked" (click)="showWordsToRead()"><mat-icon aria-label="Play">play_circle</mat-icon></button>
+    <button mat-button color="primary" *ngIf="showChecks.checked" (click)="showWordsToRead()"><mat-icon matBadge="{{selected.length > 0 ? selected.length : ''}}" aria-label="Play">play_circle</mat-icon></button>
+  </span>
 </div>
-
+<mat-card *ngIf="controlVisibility">
+  <mat-card-header>Select Blends to Show</mat-card-header>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngFor="let blend of blends" [value]="blend" (click)="addFilterValue(blend)">{{blend}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+[{{filters | json}}]
 <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
   <mat-grid-tile matRipple *ngFor="let word of getFiltered()" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
                  (dblclick)="word.resources?.length!=0 && showPic(word)" [ngStyle]="{'font-size': wordFontSize}">
