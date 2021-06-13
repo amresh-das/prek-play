@@ -445,7 +445,7 @@
   {"word": "smooth", "resources" : ["smooth.gif"] },
   {"word": "smock", "resources" : ["smock.jpg"] },
   {"word": "squid", "resources" : ["squid.gif"] },
-  {"word": "squash", "resources" : ["squash.jpg"] },
+  {"word": "squash", "resources" : ["squash.png"] },
   {"word": "squat", "resources" : ["squat.gif"] },
   {"word": "stock", "resources" : [] },
   {"word": "stack", "resources" : ["stack.png", "stack2.jpg"] },
