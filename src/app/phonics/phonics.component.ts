@@ -68,17 +68,7 @@ export class PhonicsComponent implements OnInit {
     }
   }
 
-  showPic(word: Word) {
-    let dialogWidth = window.innerWidth < window.innerHeight ? '80%' : '40%';
-    this.dialog.open(WordPicComponent, {
-      width: dialogWidth,
-      data: {
-        item: word,
-      }
-    });
-  }
-
-  showWordsToRead() {
+  showWordsToRead(index?: number) {
     const items = this.selected.length > 0 ? this.selected :
       this.getFiltered().slice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 40));
     this.dialog.open(ReadWordComponent, {
@@ -90,6 +80,7 @@ export class PhonicsComponent implements OnInit {
       hasBackdrop: true,
       data: {
         items: items,
+        index: index ? index : 0,
         vowelColor: this.vowelColor,
         consonantColor: this.consonantColor,
         vowels: this.vowels

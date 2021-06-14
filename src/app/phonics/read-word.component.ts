@@ -31,6 +31,7 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<ReadWordComponent>, private settingsService: SettingsService) {
     this.words = this.data.items;
+    this.displayIndex = this.data.index;
     this.vowelColor = this.data.vowelColor;
     this.consonantColor = this.data.consonantColor;
     this.color = this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_DRAW_COLOR, '#ff0000');
