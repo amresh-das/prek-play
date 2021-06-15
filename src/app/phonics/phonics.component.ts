@@ -2,7 +2,6 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {WordsService} from "../services/words.service";
 import {Word} from "../model/word.model";
 import {MatDialog} from "@angular/material/dialog";
-import {WordPicComponent} from "./word.pic.component";
 import {ReadWordComponent} from "./read-word.component";
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
@@ -28,7 +27,7 @@ export class PhonicsComponent implements OnInit {
   wordFontSize: string;
   controlVisibility = false;
   blends = ['oo', 'ee', 'ck', 'ch', 'sh', 'th', 'bl', 'cl', 'fl', 'sl', 'gl', 'pl', 'dr', 'gr', 'cr', 'fr', 'br', 'tr', 'pr',
-    'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey'];
+    'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey', 'ow'];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
