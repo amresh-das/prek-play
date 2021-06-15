@@ -1,4 +1,5 @@
-<mat-icon tabindex="3" (click)="close()" style="float: right; top:-8px; right:-8px;">close</mat-icon>
+<mat-icon tabindex="3" (click)="close()" style="float: right; top:-8px; right:-8px;"
+          xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">close</mat-icon>
 <h1>Read Words ({{this.words.length - this.displayIndex -1}} more to go)</h1>
 <mat-dialog-content>
   <mat-grid-list cols="7" rowHeight="fit" fxLayout="row" fxLayoutAlign="center" style="height: 60vh">
@@ -15,10 +16,10 @@
       </canvas>
       <p *ngIf="allDone()">All Done! <mat-icon>mood</mat-icon><mat-icon>thumb_up</mat-icon></p>
       <span class="word-controls">
-        <mat-icon *ngIf="!showTextSizeInput" (click)="toggleTextSizeInput()">format_size</mat-icon>
+        <button mat-button mat-ripple color="primary" class="word-control-item" (click)="toggleTextSizeInput()"><mat-icon *ngIf="!showTextSizeInput">format_size</mat-icon></button>
         <mat-slider *ngIf="showTextSizeInput" (change)="updateFontSize()" min="1" max="15" [step]="0.1" [(ngModel)]="fontSize"></mat-slider>
-        <mat-icon (click)="hideWord(getWord().word)">visibility_off</mat-icon>
-        <mat-icon (click)="clearCanvas()" class="clear-canvas-btn">clear</mat-icon>
+        <button mat-button mat-ripple color="primary" class="word-control-item" (click)="hideWord(getWord().word)"><mat-icon>visibility_off</mat-icon></button>
+        <button mat-button mat-ripple color="primary" class="word-control-item" (click)="clearCanvas()"><mat-icon class="clear-canvas-btn">clear</mat-icon></button>
       </span>
       <span class="color-controls">
         <mat-icon mat-ripple class="color-picker" style="color: #000000;" (click)="setColor('#000000')">circle</mat-icon>

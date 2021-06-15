@@ -11,6 +11,10 @@
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
     </a>
+    <a mat-menu-item [matMenuTriggerFor]="mathsMenu">
+      <mat-icon>calculate</mat-icon>
+      <span>Maths</span>
+    </a>
     <a mat-menu-item [matMenuTriggerFor]="evsMenu">
       <mat-icon>public</mat-icon>
       <span>Environmental Studies</span>
@@ -38,6 +42,16 @@
     <a mat-menu-item (click)="navigateMenu('animal-categories', 'Domestic & Wild Animals')">
       <mat-icon>pets</mat-icon>
       <span>Domestic & Wild Animals</span>
+    </a>
+  </mat-menu>
+  <mat-menu #mathsMenu="matMenu">
+    <a mat-menu-item (click)="navigateMenu('maths/addition', 'Addition')">
+      <mat-icon>add</mat-icon>
+      <span>Addition</span>
+    </a>
+    <a mat-menu-item (click)="navigateMenu('maths/subtraction', 'Subtraction')">
+      <mat-icon>remove</mat-icon>
+      <span>Subtraction</span>
     </a>
   </mat-menu>
   <span class="app-title">Pre-K Play<span *ngIf="subtitle"> - {{subtitle}}</span></span>

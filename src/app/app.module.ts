@@ -43,6 +43,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSliderModule} from "@angular/material/slider";
 import { VowelsComponent } from './phonics/vowels.component';
 import { CanvasComponent } from './shared/canvas/canvas.component';
+import { AddComponent } from './maths/add/add.component';
+import { SubtractComponent } from './maths/subtract/subtract.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { CanvasComponent } from './shared/canvas/canvas.component';
     AnimalCategoriesComponent,
     WhiteBoardComponent,
     VowelsComponent,
-    CanvasComponent
+    CanvasComponent,
+    AddComponent,
+    SubtractComponent
   ],
   imports: [
     BrowserModule,

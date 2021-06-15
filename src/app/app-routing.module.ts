@@ -7,6 +7,8 @@ import {FamilyTreeComponent} from "./evs/family-tree/family-tree.component";
 import {AnimalCategoriesComponent} from "./evs/animal-categories/animal-categories.component";
 import {WhiteBoardComponent} from "./white-board/white-board.component";
 import {VowelsComponent} from "./phonics/vowels.component";
+import {AddComponent} from "./maths/add/add.component";
+import {SubtractComponent} from "./maths/subtract/subtract.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/phonics', pathMatch: 'full' },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'seasons', component: SeasonsComponent },
   { path: 'family', component: FamilyTreeComponent },
   { path: 'animal-categories', component: AnimalCategoriesComponent },
+  { path: 'maths/addition', component: AddComponent },
+  { path: 'maths/subtraction', component: SubtractComponent },
   { path: 'settings', component: SettingsComponent }
 ];
 
