@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {SettingsService} from "../../services/settings.service";
 import {Randomizer} from "../../services/randomizer";
 
@@ -7,13 +7,14 @@ import {Randomizer} from "../../services/randomizer";
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, AfterViewInit {
   num1: number;
   num2: number;
-  sum: number;
+  sum: string;
   maxSum: number;
   color: any;
   borderColor: any;
+  @ViewChild('answer') answer: ElementRef<HTMLInputElement>;
 
   used: string[];
 
@@ -21,10 +22,14 @@ export class AddComponent implements OnInit {
   constructor(private settingsService: SettingsService) {
     this.maxSum = Number.parseInt(settingsService.getConfigOrDefault(AddComponent.ADDITION_MAX_SUM_VALUE, '12'));
     this.used = [];
-    this.nextProblem();
   }
 
   ngOnInit(): void {
+    this.nextProblem();
+  }
+
+  ngAfterViewInit(): void {
+    this.answer.nativeElement.focus();
   }
 
   nextProblem() {
@@ -32,7 +37,10 @@ export class AddComponent implements OnInit {
     this.borderColor = Randomizer.randomColor(['#ffffff', this.color]);
     this.num1 = Randomizer.randomInt(this.maxSum, 1);
     this.num2 = Randomizer.randomInt(this.maxSum - this.num1, 1);
-    this.sum = this.num1 + this.num2;
+    this.sum = '';
+    if (this.answer) {
+      this.answer.nativeElement.focus();
+    }
   }
 
 }

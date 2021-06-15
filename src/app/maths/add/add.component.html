@@ -12,19 +12,19 @@
       <mat-grid-tile>
         <span style="font-size: 8em;">&nbsp;</span>
         <mat-form-field>
-          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num1">
+          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num1" readonly>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
         <span><mat-icon style="font-size: 6em;">add</mat-icon></span>
         <mat-form-field>
-          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num2">
+          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num2" readonly>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile class="answer-block" [ngStyle]="{'border-color': borderColor}">
         <span style="font-size: 8em;">&nbsp;</span>
         <mat-form-field>
-          <input matInput class="math-result" type="number" autocomplete="off">
+          <input #answer matInput class="math-result" [ngStyle]="{'color':color}" autocomplete="off" maxlength="3" [(ngModel)]="sum">
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
