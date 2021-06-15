@@ -1,1 +1,32 @@
-<p>add works!</p>
+<h2>
+  <span>Learn Addition</span>
+  <span class="actions">
+    <button mat-button color="primary" (click)="nextProblem()">
+      <mat-icon aria-label="Nex Problem" class="clickable">navigate_next</mat-icon>
+    </button>
+  </span>
+</h2>
+<mat-card>
+  <mat-card-content>
+    <mat-grid-list [cols]="1" rowHeight="fit" style="height: 75vh;">
+      <mat-grid-tile>
+        <span style="font-size: 8em;">&nbsp;</span>
+        <mat-form-field>
+          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num1">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span><mat-icon style="font-size: 6em;">add</mat-icon></span>
+        <mat-form-field>
+          <input matInput class="math-operand" type="number" [ngStyle]="{'color':color}" [(ngModel)]="num2">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile class="answer-block" [ngStyle]="{'border-color': borderColor}">
+        <span style="font-size: 8em;">&nbsp;</span>
+        <mat-form-field>
+          <input matInput class="math-result" type="number" autocomplete="off">
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

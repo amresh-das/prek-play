@@ -35,11 +35,15 @@ export class Randomizer {
     return result;
   }
 
-  public static randomColor() {
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color = color + Randomizer.COLORCHARS[Math.floor(Math.random() * 16)];
-    }
+  public static randomColor(except?: any[]) {
+    let color;
+    do {
+      color = '#';
+      for (let i = 0; i < 6; i++) {
+        color = color + Randomizer.COLORCHARS[Math.floor(Math.random() * 16)];
+      }
+      console.log(color, except?.indexOf(color));
+    } while (except && except.indexOf(color) != -1);
     return color;
   }
 }

@@ -1,0 +1,26 @@
+@import "../../../app-style.scss";
+
+.actions {
+  font-size: 1.5em;
+  float: right;
+  vertical-align: middle;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.math-operand {
+  font-size: 10em;
+  text-align: right;
+}
+
+.math-result {
+  font-size: 10em;
+  text-align: right;
+}
+
+.answer-block {
+  border-width: 3px;
+  border-style: double;
+  border-radius: 10px;
+  background-color: lightgray;
+}
