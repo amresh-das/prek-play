@@ -155,7 +155,7 @@
   {"word": "cliff", "resources" : ["cliff1.png", "cliff2.png"] },
   {"word": "clash", "resources" : [] },
   {"word": "flap", "resources" : ["flap1.gif", "flap2.gif", "flap3.gif"] },
-  {"word": "fly", "resources" : ["fly1.png", "fly2.gif"] },
+  {"word": "fly", "resources" : ["fly1.png","fly2.gif"] },
   {"word": "flop", "resources" : [] },
   {"word": "flock", "resources" : ["flock.gif"] },
   {"word": "flash", "resources" : ["flash.gif"] },
@@ -567,7 +567,16 @@
   {"word": "hollow", "resources" : ["hollow.jpg"]},
   {"word": "pillow", "resources" : ["pillow.jpg"]},
   {"word": "window", "resources" : ["window.jpg"]},
-  {"word": "yellow", "resources" : ["yellow.png"]}
-
+  {"word": "yellow", "resources" : ["yellow.png"]},
+  {"word": "stew", "resources" : ["stew.jpg"]},
+  {"word": "chew", "resources" : ["chew.gif","chew2.gif"]},
+  {"word": "dew", "resources" : ["dew1.jpg","dew2.jpg"]},
+  {"word": "new", "resources" : ["newold.jpg"]},
+  {"word": "blew", "resources" : ["blow.gif"]},
+  {"word": "drew", "resources" : ["draw.gif"]},
+  {"word": "few", "resources" : ["fewmany.png"]},
+  {"word": "flew", "resources" : ["fly2.gif"]},
+  {"word": "grew", "resources" : ["grow.gif"]},
+  {"word": "brew", "resources" : ["brew.gif"]}
 ]
 

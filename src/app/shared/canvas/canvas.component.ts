@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
 import {fromEvent, Subscription} from "rxjs";
 import {pairwise, switchMap, takeUntil} from "rxjs/operators";
 
@@ -8,6 +8,7 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
   styleUrls: ['./canvas.component.scss']
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
+  @Input("parentElement") parentElement: ElementRef<HTMLElement>;
   color = "black";
   lineSize = 8;
   isDrawn = false;
@@ -29,7 +30,6 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.push(this.captureMouseEvents(this.canvas.nativeElement));
     this.subscriptions.push(this.captureTouchEvents(this.canvas.nativeElement));
   }
-
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
