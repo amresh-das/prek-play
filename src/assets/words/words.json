@@ -585,7 +585,7 @@
   {"word": "applaud", "resources" : []},
   {"word": "haunt", "resources" : ["haunt.gif"]},
   {"word": "launch", "resources" : []},
-  {"word": "raw", "resources" : []},
+  {"word": "raw", "resources" : ["raw-cooked.jpg"]},
   {"word": "prawn", "resources" : ["prawn.jpg"]},
   {"word": "straw", "resources" : ["straw.jpg"]},
   {"word": "hawk", "resources" : ["hawk.jpg"]}
