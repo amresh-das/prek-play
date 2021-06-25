@@ -561,7 +561,7 @@
   {"word": "show", "resources" : []},
   {"word": "snow", "resources" : ["snow.gif"]},
   {"word": "arrow", "resources" : ["arrow.jpg"]},
-  {"word": "below", "resources" : []},
+  {"word": "below", "resources" : ["abovebelow.jpg"]},
   {"word": "fellow", "resources" : []},
   {"word": "follow", "resources" : ["follow.gif"]},
   {"word": "hollow", "resources" : ["hollow.jpg"]},
@@ -577,6 +577,17 @@
   {"word": "few", "resources" : ["fewmany.png"]},
   {"word": "flew", "resources" : ["fly2.gif"]},
   {"word": "grew", "resources" : ["grow.gif"]},
-  {"word": "brew", "resources" : ["brew.gif"]}
+  {"word": "brew", "resources" : ["brew.gif"]},
+  {"word": "auto", "resources" : ["autorick.jpg"]},
+  {"word": "audit", "resources" : []},
+  {"word": "audio", "resources" : []},
+  {"word": "august", "resources" : []},
+  {"word": "applaud", "resources" : []},
+  {"word": "haunt", "resources" : ["haunt.gif"]},
+  {"word": "launch", "resources" : []},
+  {"word": "raw", "resources" : []},
+  {"word": "pawn", "resources" : []},
+  {"word": "straw", "resources" : ["straw.jpg"]},
+  {"word": "hawk", "resources" : ["hawk.jpg"]}
 ]
 
