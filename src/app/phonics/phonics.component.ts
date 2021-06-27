@@ -25,6 +25,7 @@ export class PhonicsComponent implements OnInit {
   consonantColor: any = '#666666';
   hiddenWords: string[];
   wordFontSize: string;
+  wordShadow: string;
   controlVisibility = false;
   blends = ['oo', 'ee', 'ck', 'ch', 'sh', 'th', 'bl', 'cl', 'fl', 'sl', 'gl', 'pl', 'dr', 'gr', 'cr', 'fr', 'br', 'tr', 'pr',
     'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey', 'ow', 'ew', 'au', 'aw', 'al'];
@@ -38,7 +39,9 @@ export class PhonicsComponent implements OnInit {
     this.consonantColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_CONSONANT, '#666666');
     this.vowelColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_VOWELS, '#000000');
     this.hiddenWords = JSON.parse(this.settingsService.getConfigOrDefault(SettingsService.PHONICS_HIDDEN_WORDS, '[]'));
-    this.wordFontSize = settingsService.getConfigOrDefault(SettingsService.PHONICS_WORDS_FONT_SIZE, '2.5') + 'em';
+    const fontSize = settingsService.getConfigOrDefault(SettingsService.PHONICS_WORDS_FONT_SIZE, '2.5');
+    this.wordFontSize = fontSize + 'em';
+    this.wordShadow = Number.parseFloat(fontSize) > 1.0 ? '2px 1px' : 'none';
   }
 
   columnCount: number = 3;

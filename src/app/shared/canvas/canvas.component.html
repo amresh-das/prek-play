@@ -1,4 +1,4 @@
-<canvas #canvas id="wordCanvas" width="100%" height="100%">
+<canvas #canvas id="wordCanvas" [width]="width" height="[height]" [ngStyle]="{'position': position, 'left': left, 'top': top}"]>
 </canvas>
 <span class="canvas-controls">
   <button mat-button mat-ripple color="primary" class="canvas-control-item" (click)="clearCanvas()">

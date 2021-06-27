@@ -39,7 +39,7 @@
 </mat-card>
 <mat-grid-list cols="{{columnCount}}" rowHeight="2:1">
   <mat-grid-tile matRipple *ngFor="let word of getFiltered(); let idx = index;" [ngClass]="(word.resources?.length==0)?' word-tile':'word-pic-tile'"
-                 (dblclick)="showWordsToRead(idx)" [ngStyle]="{'font-size': wordFontSize}">
+                 (dblclick)="showWordsToRead(idx)" [ngStyle]="{'font-size': wordFontSize, 'text-shadow': wordShadow}">
     <mat-checkbox *ngIf="showChecks.checked" (change)="select($event.checked, word)" [(ngModel)]="word.selected" class="unselectable">
       <span *ngFor="let char of word.word.split('')" [ngStyle]="{'color': (vowels.indexOf(char) === -1) ? consonantColor : vowelColor}">
         {{char | lowercase}}

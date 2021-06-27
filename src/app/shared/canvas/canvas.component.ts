@@ -8,7 +8,10 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
   styleUrls: ['./canvas.component.scss']
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
-  @Input("parentElement") parentElement: ElementRef<HTMLElement>;
+  @Input("width") width: number;
+  @Input("height") height: number;
+  @Input("left") left: number;
+  @Input("top") top: number;
   color = "black";
   lineSize = 8;
   isDrawn = false;
@@ -16,6 +19,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
   window: any;
   ctx: CanvasRenderingContext2D;
   subscriptions: Subscription[] = [];
+  position: 'absolute';
 
   constructor() {
     this.window = window;
