@@ -611,6 +611,7 @@
   {"word": "walk", "resources" : ["walk.gif"]},
   {"word": "wall", "resources" : ["wall.jpg"]},
   {"word": "hall", "resources" : ["hall.jpg"]},
-  {"word": "mall", "resources" : ["mall.jpg"]}
+  {"word": "mall", "resources" : ["mall.jpg"]},
+  {"word": "all", "resources" : []}
 ]
 
