@@ -606,6 +606,11 @@
   {"word": "spawn", "resources" : []},
   {"word": "yawn", "resources" : ["yawn.gif"]},
   {"word": "crawl", "resources" : ["crawl.gif"]},
-  {"word": "shawl", "resources" : ["shawl.jpg"]}
+  {"word": "shawl", "resources" : ["shawl.jpg"]},
+  {"word": "talk", "resources" : ["talk.gif"]},
+  {"word": "walk", "resources" : ["walk.gif"]},
+  {"word": "wall", "resources" : ["wall.jpg"]},
+  {"word": "hall", "resources" : ["hall.jpg"]},
+  {"word": "mall", "resources" : ["mall.jpg"]}
 ]
 
