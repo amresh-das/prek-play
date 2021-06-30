@@ -89,7 +89,7 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
 
   showPic() {
     if (this.getWord()?.resources?.length) {
-      let dialogWidth = window.innerWidth < window.innerHeight ? '80%' : '40%';
+      let dialogWidth = window.innerWidth < window.innerHeight ? '85%' : '50%';
       const dialogRef = this.dialog.open(WordPicComponent, {
         width: dialogWidth,
         hasBackdrop: true,
