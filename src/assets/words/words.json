@@ -642,7 +642,6 @@
   {"word": "wheat", "resources" : ["wheat1.jpg","wheat2.jpg"]},
   {"word": "whack", "resources" : ["whack.gif"]},
   {"word": "whole", "resources" : []},
-  {"word": "whose", "resources" : []},
   {"word": "whose", "resources" : []}
 ]
 
