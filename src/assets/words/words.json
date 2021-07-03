@@ -623,9 +623,26 @@
   {"word": "nephew", "resources" : ["nephew.png"]},
   {"word": "orphan", "resources" : []},
   {"word": "phoenix", "resources" : ["phoenix.jpg"]},
-  {"word": "photographer", "resources" : ["photographer.jpg"]},
   {"word": "sphere", "resources" : ["sphere.gif"]},
   {"word": "telephone", "resources" : ["phone.jpg"]},
-  {"word": "trophy", "resources" : ["phoenix.jpg"]}
+  {"word": "trophy", "resources" : ["trophy.jpg"]},
+  {"word": "what", "resources" : []},
+  {"word": "when", "resources" : []},
+  {"word": "who", "resources" : []},
+  {"word": "why", "resources" : []},
+  {"word": "where", "resources" : []},
+  {"word": "while", "resources" : []},
+  {"word": "whim", "resources" : []},
+  {"word": "whip", "resources" : ["lash.png"]},
+  {"word": "wheel", "resources" : ["wheel.jpg"]},
+  {"word": "whisper", "resources" : ["whisper.gif"]},
+  {"word": "white", "resources" : ["white.png"]},
+  {"word": "whistle", "resources" : ["whistle.jpg"]},
+  {"word": "whale", "resources" : ["whale.jpg"]},
+  {"word": "wheat", "resources" : ["wheat1.jpg","wheat2.jpg"]},
+  {"word": "whack", "resources" : ["whack.gif"]},
+  {"word": "whole", "resources" : []},
+  {"word": "whose", "resources" : []},
+  {"word": "whose", "resources" : []}
 ]
 
