@@ -612,6 +612,20 @@
   {"word": "wall", "resources" : ["wall.jpg"]},
   {"word": "hall", "resources" : ["hall.jpg"]},
   {"word": "mall", "resources" : ["mall.jpg"]},
-  {"word": "all", "resources" : []}
+  {"word": "all", "resources" : []},
+  {"word": "phone", "resources" : ["phone.jpg"]},
+  {"word": "photo", "resources" : []},
+  {"word": "graph", "resources" : ["graph.png"]},
+  {"word": "phantom", "resources" : ["phantom.jpg"]},
+  {"word": "alphabet", "resources" : ["alphabet.jpg"]},
+  {"word": "dolphin", "resources" : ["dolphin.jpg"]},
+  {"word": "elephant", "resources" : ["elephant.jpg"]},
+  {"word": "nephew", "resources" : ["nephew.png"]},
+  {"word": "orphan", "resources" : []},
+  {"word": "phoenix", "resources" : ["phoenix.jpg"]},
+  {"word": "photographer", "resources" : ["photographer.jpg"]},
+  {"word": "sphere", "resources" : ["sphere.gif"]},
+  {"word": "telephone", "resources" : ["phone.jpg"]},
+  {"word": "trophy", "resources" : ["phoenix.jpg"]}
 ]
 
