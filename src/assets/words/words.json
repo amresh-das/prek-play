@@ -633,7 +633,7 @@
   {"word": "where", "resources" : []},
   {"word": "while", "resources" : []},
   {"word": "whim", "resources" : []},
-  {"word": "whip", "resources" : ["lash.png"]},
+  {"word": "whip", "resources" : ["whip.gif","lash.png"]},
   {"word": "wheel", "resources" : ["wheel.jpg"]},
   {"word": "whisper", "resources" : ["whisper.gif"]},
   {"word": "white", "resources" : ["white.png"]},
