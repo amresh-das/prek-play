@@ -626,6 +626,7 @@
   {"word": "sphere", "resources" : ["sphere.gif"]},
   {"word": "telephone", "resources" : ["phone.jpg"]},
   {"word": "trophy", "resources" : ["trophy.jpg"]},
+  {"word": "phrase", "resources" : []},
   {"word": "what", "resources" : []},
   {"word": "when", "resources" : []},
   {"word": "who", "resources" : []},
@@ -642,6 +643,23 @@
   {"word": "wheat", "resources" : ["wheat1.jpg","wheat2.jpg"]},
   {"word": "whack", "resources" : ["whack.gif"]},
   {"word": "whole", "resources" : []},
-  {"word": "whose", "resources" : []}
+  {"word": "whose", "resources" : []},
+  {"word": "light", "resources" : ["lightdark.jpg",""]},
+  {"word": "tight", "resources" : ["loosetight.jpg"]},
+  {"word": "bright", "resources" : ["brightdark.jpg"]},
+  {"word": "might", "resources" : []},
+  {"word": "night", "resources" : ["daynight.jpg"]},
+  {"word": "fight", "resources" : ["fight.gif"]},
+  {"word": "right", "resources" : ["leftright.jpg"]},
+  {"word": "delight", "resources" : ["delight.jpg","delight2.jpg"]},
+  {"word": "knight", "resources" : ["knight.jpg"]},
+  {"word": "weight", "resources" : []},
+  {"word": "ding", "resources" : []},
+  {"word": "king", "resources" : ["kingqueen.jpg"]},
+  {"word": "sing", "resources" : []},
+  {"word": "wing", "resources" : ["wings.jpg"]},
+  {"word": "ring", "resources" : ["ring.jpg"]},
+  {"word": "bling", "resources" : ["bling.gif"]},
+  {"word": "bring", "resources" : ["bring.gif"]}
 ]
 
