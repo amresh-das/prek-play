@@ -643,7 +643,7 @@
   {"word": "whack", "resources" : ["whack.gif"]},
   {"word": "whole", "resources" : []},
   {"word": "whose", "resources" : []},
-  {"word": "light", "resources" : ["lightdark.jpg",""]},
+  {"word": "light", "resources" : ["lightdark.jpg"]},
   {"word": "tight", "resources" : ["loosetight.jpg"]},
   {"word": "bright", "resources" : ["brightdark.jpg"]},
   {"word": "might", "resources" : []},
