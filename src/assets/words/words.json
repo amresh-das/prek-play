@@ -662,6 +662,7 @@
   {"word": "bring", "resources" : ["bring.gif"]},
   {"word": "swing", "resources" : ["swing.gif"]},
   {"word": "sling", "resources" : ["sling.gif"]},
-  {"word": "sting", "resources" : ["sting.gif"]}
+  {"word": "sting", "resources" : ["sting.gif"]},
+  {"word": "cling", "resources" : ["cling.gif"]}
 ]
 
