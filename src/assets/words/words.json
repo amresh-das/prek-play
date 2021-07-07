@@ -653,7 +653,7 @@
   {"word": "right", "resources" : ["leftright.jpg"]},
   {"word": "delight", "resources" : ["delight.jpg","delight2.jpg"]},
   {"word": "knight", "resources" : ["knight.jpg"]},
-  {"word": "weight", "resources" : []},
+  {"word": "height", "resources" : []},
   {"word": "ding", "resources" : []},
   {"word": "king", "resources" : ["kingqueen.jpeg"]},
   {"word": "sing", "resources" : []},
