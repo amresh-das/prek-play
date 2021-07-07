@@ -465,7 +465,6 @@
   {"word": "west", "resources" : [] },
   {"word": "wrist", "resources" : ["wrist.jpg"] },
   {"word": "swag", "resources" : [] },
-  {"word": "swing", "resources" : ["swing.gif"] },
   {"word": "swim", "resources" : ["swim.gif"] },
   {"word": "swam", "resources" : ["swim.gif"] },
   {"word": "sweet", "resources" : ["sweets.jpg"] },
@@ -660,6 +659,9 @@
   {"word": "wing", "resources" : ["wings.jpg"]},
   {"word": "ring", "resources" : ["ring.jpg"]},
   {"word": "bling", "resources" : ["bling.gif"]},
-  {"word": "bring", "resources" : ["bring.gif"]}
+  {"word": "bring", "resources" : ["bring.gif"]},
+  {"word": "swing", "resources" : ["swing.gif"]},
+  {"word": "sling", "resources" : ["sling.gif"]},
+  {"word": "sting", "resources" : ["sting.gif"]}
 ]
 
