@@ -674,7 +674,7 @@
   {"word": "mound", "resources" : ["mound.jpg"]},
   {"word": "sound", "resources" : ["growl.wav"]},
   {"word": "hour", "resources" : ["clock.png"]},
-  {"word": "loud", "resources" : ["neigh.mp4"]},
+  {"word": "loud", "resources" : ["neigh.mp3"]},
   {"word": "about", "resources" : []},
   {"word": "stout", "resources" : ["stout.png"]},
   {"word": "mouth", "resources" : ["mouth.png"]},
