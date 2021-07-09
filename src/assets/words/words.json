@@ -692,6 +692,10 @@
   {"word": "trousers", "resources" : ["trouser.png"]},
   {"word": "bound", "resources" : ["bound.jpg"]},
   {"word": "hound", "resources" : ["hound.jpg"]},
-  {"word": "round", "resources" : ["round.png"]}
+  {"word": "round", "resources" : ["round.png"]},
+  {"word": "our", "resources" : []},
+  {"word": "flour", "resources" : ["flour.jpg"]},
+  {"word": "proud", "resources" : []},
+  {"word": "mouse", "resources" : []}
 ]
 
