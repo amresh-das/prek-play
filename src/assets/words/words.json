@@ -696,6 +696,6 @@
   {"word": "our", "resources" : []},
   {"word": "flour", "resources" : ["flour.jpg"]},
   {"word": "proud", "resources" : []},
-  {"word": "mouse", "resources" : []}
+  {"word": "mouse", "resources" : ["mouse.png"]}
 ]
 
