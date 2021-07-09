@@ -4,7 +4,7 @@
 <mat-dialog-content>
   <mat-grid-list cols="7" rowHeight="fit" fxLayout="row" fxLayoutAlign="center" style="height: 60vh">
     <mat-grid-tile mat-ripple class="nav-left-item nav-item" (click)="prev()">
-      <mat-icon *ngIf="displayIndex>0">arrow_left</mat-icon>
+      <mat-icon *ngIf="displayIndex>0" class="nav-item-icon">arrow_left</mat-icon>
     </mat-grid-tile>
     <mat-grid-tile #wordTile colspan="5" [ngClass]="(getWord().resources?.length==0)?' word-tile':'word-pic-tile'" [ngStyle]="{'font-size': fontSize + 'em'}" (dblclick)="!allDone() && showPic()">
       <span #wordSpan id="wordSpan" *ngIf="!allDone()" [ngClass]="{'word-with-pic':getWord()?.resources?.length}">
@@ -35,7 +35,7 @@
       </span>
     </mat-grid-tile>
     <mat-grid-tile mat-ripple class="nav-right-item nav-item" (click)="next()">
-      <mat-icon *ngIf="displayIndex<words.length-1">arrow_right</mat-icon>
+      <mat-icon *ngIf="displayIndex<words.length-1" class="nav-item-icon">arrow_right</mat-icon>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-dialog-content>
