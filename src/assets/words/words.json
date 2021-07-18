@@ -724,7 +724,7 @@
   {"word": "fleece", "resources" : ["fleece.jpg"]},
   {"word": "choice", "resources" : ["choice.jpg"]},
   {"word": "chance", "resources" : []},
-  {"word": "ambulance", "resources" : ["ambulance.jpg"]},
+  {"word": "ambulance", "resources" : ["ambulance.png"]},
   {"word": "grocery", "resources" : ["grocery.jpg"]}
 ]
 
