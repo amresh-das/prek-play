@@ -723,6 +723,8 @@
   {"word": "price", "resources" : ["price.jpg"]},
   {"word": "fleece", "resources" : ["fleece.jpg"]},
   {"word": "choice", "resources" : ["choice.jpg"]},
-  {"word": "chance", "resources" : []}
+  {"word": "chance", "resources" : []},
+  {"word": "ambulance", "resources" : ["ambulance.jpg"]},
+  {"word": "grocery", "resources" : ["grocery.jpg"]}
 ]
 
