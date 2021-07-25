@@ -342,7 +342,6 @@
   {"word": "kit", "resources" : ["kit.jpg"] },
   {"word": "stick", "resources" : ["stick.png"] },
   {"word": "stoke", "resources" : [] },
-  {"word": "car", "resources" : ["car.png"] },
   {"word": "care", "resources" : [] },
   {"word": "mat", "resources" : ["mat.png"] },
   {"word": "mate", "resources" : [] },
@@ -758,6 +757,22 @@
   {"word": "hinge", "resources" : ["hinge.jpg"]},
   {"word": "cringe", "resources" : ["cringe.gif"]},
   {"word": "age", "resources" : ["age.png"]},
-  {"word": "strange", "resources" : []}
+  {"word": "strange", "resources" : []},
+  {"word": "car", "resources" : ["car.png"] },
+  {"word": "far", "resources" : ["far.jpg"]},
+  {"word": "bar", "resources" : ["bar.jpg"]},
+  {"word": "hard", "resources" : ["softhard.jpg"]},
+  {"word": "farm", "resources" : ["farm.png"]},
+  {"word": "yard", "resources" : ["measure.jpg"]},
+  {"word": "her", "resources" : ["girl.png"]},
+  {"word": "herb", "resources" : ["herb.png"]},
+  {"word": "term", "resources" : []},
+  {"word": "father", "resources" : ["father.jpg"]},
+  {"word": "mother", "resources" : ["mother.jpg"]},
+  {"word": "sister", "resources" : ["brosis.jpg","sisbro.jpg"]},
+  {"word": "brother", "resources" : ["brosis.jpg","sisbro.jpg"]},
+  {"word": "perk", "resources" : []},
+  {"word": "fern", "resources" : ["fern.jpg"]},
+  {"word": "nerve", "resources" : ["nerves.webp"]}
 ]
 

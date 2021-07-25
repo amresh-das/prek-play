@@ -30,7 +30,7 @@ export class WordPicComponent {
   }
 
   resourceType(): string {
-    const imageRegex = new RegExp('((gif)|(jpeg)|(jpg)|(png))$');
+    const imageRegex = new RegExp('((gif)|(jpeg)|(jpg)|(png)|(webp))$');
     const audioRegex = new RegExp('((mp3)|(wav))$');
     const res = this.resources[this.displayIndex];
     return imageRegex.test(res) ? 'image' : audioRegex.test(res) ? 'audio' : 'video';
