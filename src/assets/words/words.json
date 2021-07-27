@@ -807,7 +807,7 @@
   {"word": "bury", "resources" : ["bury.gif"]},
   {"word": "blur", "resources" : ["blur.gif"]},
   {"word": "curl", "resources" : ["curl.jpg"]},
-  {"word": "lemur", "resources" : ["lemur.jpg"]},
+  {"word": "lemur", "resources" : ["lemur.webp"]},
   {"word": "burst", "resources" : ["burst.gif"]},
   {"word": "nurse", "resources" : ["nurse.jpg"]},
   {"word": "curve", "resources" : ["curve.gif"]},
