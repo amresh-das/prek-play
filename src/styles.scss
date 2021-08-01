@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 $app-font: 'Google Sans, Verdana, sans-serif';
 
-$custom-typography: mat-typography-config($font-family: $app-font);
-@include mat-core($custom-typography);
+$custom-typography: mat.define-typography-config($font-family: $app-font);
+@include mat.core($custom-typography);
 
 
 html, body { height: 100%; }
