@@ -812,6 +812,17 @@
   {"word": "nurse", "resources" : ["nurse.jpg"]},
   {"word": "curve", "resources" : ["curve.gif"]},
   {"word": "burnt", "resources" : ["burnt.gif"]},
-  {"word": "churn", "resources" : ["churn.gif"]}
+  {"word": "churn", "resources" : ["churn.gif"]},
+  {"word": "cherry", "resources" : ["cherry.jpg"]},
+  {"word": "merry", "resources" : ["merry.png"]},
+  {"word": "berry", "resources" : ["berry.jpg"]},
+  {"word": "loudly", "resources" : ["horns.mp3"]},
+  {"word": "proudly", "resources" : ["proud.png"]},
+  {"word": "lovely", "resources" : ["tulips.png"]},
+  {"word": "fairy", "resources" : ["fairy.jpg"]},
+  {"word": "dairy", "resources" : ["dairy.jpg"]},
+  {"word": "hungry", "resources" : ["hungry.jpg"]},
+  {"word": "sticky", "resources" : ["sticky.gif"]},
+  {"word": "muddy", "resources" : ["muddy.jpg"]}
 ]
 
