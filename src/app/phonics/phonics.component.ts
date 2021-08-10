@@ -1,12 +1,12 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {WordsService} from "../services/words.service";
-import {Word} from "../model/word.model";
-import {MatDialog} from "@angular/material/dialog";
-import {ReadWordComponent} from "./read-word.component";
+import {WordsService} from '../services/words.service';
+import {Word} from '../model/word.model';
+import {MatDialog} from '@angular/material/dialog';
+import {ReadWordComponent} from './read-word.component';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {COMMA, ENTER, SPACE} from "@angular/cdk/keycodes";
-import {Randomizer} from "../services/randomizer";
-import {SettingsService} from "../services/settings.service";
+import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
+import {Randomizer} from '../services/randomizer';
+import {SettingsService} from '../services/settings.service';
 
 @Component({
   selector: 'app-phonics',
@@ -29,12 +29,12 @@ export class PhonicsComponent implements OnInit {
   controlVisibility = false;
   blends = ['oo', 'ee', 'ck', 'ch', 'sh', 'th', 'bl', 'cl', 'fl', 'sl', 'gl', 'pl', 'dr', 'gr', 'cr', 'fr', 'br', 'tr', 'pr',
     'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey', 'ow', 'ew', 'au', 'aw', 'al', 'ph', 'wh',
-    'igh', 'ing', 'ou', 'ce', 'se', 'ge', 'ar', 'er', 'ir', 'ur', 'or'];
+    'igh', 'ing', 'ou', 'ce', 'se', 'ge', 'ar', 'er', 'ir', 'ur', 'or', 'dge', 'cy', 'ci'];
   blendsTodo = ['ar', 'er', 'ir'];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
-  private static readonly PHONICS_FILTER_VALUES = "phonics.filter.values"
-  private static readonly PHONICS_COLOR_SCHEME_CONSONANT = "phonics.color.scheme.consonants";
-  private static readonly PHONICS_COLOR_SCHEME_VOWELS = "phonics.color.scheme.vowels";
+  private static readonly PHONICS_FILTER_VALUES = 'phonics.filter.values';
+  private static readonly PHONICS_COLOR_SCHEME_CONSONANT = 'phonics.color.scheme.consonants';
+  private static readonly PHONICS_COLOR_SCHEME_VOWELS = 'phonics.color.scheme.vowels';
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
     this.filters = JSON.parse(settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_FILTER_VALUES, '[]'));

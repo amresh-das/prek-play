@@ -12,14 +12,14 @@ export class AnimalCategoriesComponent {
   private static readonly SHOW_NAMES = 'animal.categories.show.names';
   private static readonly SHOW_IMAGES = 'animal.categories.show.images';
 
-  static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'cat', 'dog', 'horse', 'pig', 'goat'];
+  static domesticAnimals: string[] = ['cow', 'hen', 'sheep', 'horse', 'pig', 'goat'];
   static wildAnimals: string[] = ['lion', 'tiger', 'bear', 'elephant', 'deer', 'zebra', 'wolf', 'monkey'];
   animals: string[] = [];
   resultDomestic: string[] = [];
   resultWild: string[] = [];
   choice: string | undefined;
-  showNames: Boolean;
-  showImage: Boolean;
+  showNames: boolean;
+  showImage: boolean;
 
   constructor(private settingsService: SettingsService) {
     this.init();
