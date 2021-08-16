@@ -859,6 +859,12 @@
   {"word": "engine", "resources" : ["engine.jpg","engine.gif"]},
   {"word": "image", "resources" : ["image.jpg"]},
   {"word": "imagine", "resources" : ["imagine.gif"]},
-  {"word": "tragic", "resources" : ["tragic.gif"]}
+  {"word": "tragic", "resources" : ["tragic.gif"]},
+  {"word": "gyrocopter ", "resources" : ["gyrocopter.gif"]},
+  {"word": "gymnast ", "resources" : ["gymnast.gif","gymnast2.gif","gymnast3.gif"]},
+  {"word": "gyrate ", "resources" : ["gyrate.gif"]},
+  {"word": "gypsy ", "resources" : ["gypsy.jpg"]},
+  {"word": "gyro", "resources" : ["gyro.gif"]},
+  {"word": "gym", "resources" : ["gym.gif"]}
 ]
 
