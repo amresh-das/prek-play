@@ -865,6 +865,19 @@
   {"word": "gyrate ", "resources" : ["gyrate.gif"]},
   {"word": "gypsy ", "resources" : ["gypsy.jpg"]},
   {"word": "gyro", "resources" : ["gyro.gif"]},
-  {"word": "gym", "resources" : ["gym.gif"]}
+  {"word": "gym", "resources" : ["gym.gif"]},
+  {"word": "stationary", "resources" : ["stationary.jpg"]},
+  {"word": "vibration", "resources" : ["vibration.webp"]},
+  {"word": "addition", "resources" : ["addition.gif"]},
+  {"word": "caution", "resources" : ["caution.gif"]},
+  {"word": "celebration", "resources" : ["celebration.gif"]},
+  {"word": "motion", "resources" : ["motion1.gif","action.gif","walk.gif"]},
+  {"word": "position", "resources" : ["position1.jpg","position2.jpg","position3.jpg"]},
+  {"word": "station", "resources" : ["trainstation.jpg","trainstation2.jpg","firestation.jpg","policestation.webp"]},
+  {"word": "option", "resources" : ["choice.jpg"]},
+  {"word": "lotion", "resources" : ["lotion.png"]},
+  {"word": "emotion", "resources" : ["emotion.png"]},
+  {"word": "nation", "resources" : ["nation.jpg"]},
+  {"word": "action", "resources" : ["action.gif"]}
 ]
 
