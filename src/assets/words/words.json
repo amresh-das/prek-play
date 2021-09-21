@@ -878,6 +878,12 @@
   {"word": "lotion", "resources" : ["lotion.png"]},
   {"word": "emotion", "resources" : ["emotion.png"]},
   {"word": "nation", "resources" : ["nation.jpg"]},
-  {"word": "action", "resources" : ["action.gif"]}
+  {"word": "action", "resources" : ["action.gif"]},
+  {"word": "physician", "resources" : ["physician.gif"]},
+  {"word": "technician", "resources" : ["technician.gif"]},
+  {"word": "beautician", "resources" : ["beautician.gif"]},
+  {"word": "optician", "resources" : ["optician.gif"]},
+  {"word": "musician", "resources" : ["musician.gif"]},
+  {"word": "magician", "resources" : ["magician.gif"]}
 ]
 
