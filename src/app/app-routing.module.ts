@@ -9,6 +9,7 @@ import {WhiteBoardComponent} from "./white-board/white-board.component";
 import {VowelsComponent} from "./phonics/vowels.component";
 import {AddComponent} from "./maths/add/add.component";
 import {SubtractComponent} from "./maths/subtract/subtract.component";
+import {ClockComponent} from "./evs/clock/clock.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/phonics', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'vowels', component: VowelsComponent },
   { path: 'seasons', component: SeasonsComponent },
   { path: 'family', component: FamilyTreeComponent },
+  { path: 'clock', component: ClockComponent },
   { path: 'animal-categories', component: AnimalCategoriesComponent },
   { path: 'maths/addition', component: AddComponent },
   { path: 'maths/subtraction', component: SubtractComponent },

@@ -45,6 +45,7 @@ import { VowelsComponent } from './phonics/vowels.component';
 import { CanvasComponent } from './shared/canvas/canvas.component';
 import { AddComponent } from './maths/add/add.component';
 import { SubtractComponent } from './maths/subtract/subtract.component';
+import {ClockComponent} from "./evs/clock/clock.component";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { SubtractComponent } from './maths/subtract/subtract.component';
     VowelsComponent,
     CanvasComponent,
     AddComponent,
-    SubtractComponent
+    SubtractComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,

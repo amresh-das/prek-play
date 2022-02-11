@@ -43,6 +43,10 @@
       <mat-icon>pets</mat-icon>
       <span>Domestic & Wild Animals</span>
     </a>
+    <a mat-menu-item (click)="navigateMenu('clock', 'Clock')">
+      <mat-icon>schedule</mat-icon>
+      <span>Clock</span>
+    </a>
   </mat-menu>
   <mat-menu #mathsMenu="matMenu">
     <a mat-menu-item (click)="navigateMenu('maths/addition', 'Addition')">
