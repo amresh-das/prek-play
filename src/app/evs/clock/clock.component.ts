@@ -10,7 +10,6 @@ export class ClockComponent implements OnInit {
 
   hh: number = 12;
   mm: number = 0;
-  is24HourClock = false;
   svgSize: number;
   tickMargin: number = 10;
   clockRadius: number;
@@ -126,5 +125,14 @@ export class ClockComponent implements OnInit {
     const hourDegree = ClockComponent.getDeg(this.hh % 12, 12);
     const minuteDegree = ClockComponent.getDeg(this.mm % 60, 720);
     return "rotate(" + (hourDegree + minuteDegree) + ")";
+  }
+
+  normalizeTime() {
+    const hrs = Math.floor(this.mm / 60);
+    this.mm = this.mm == 0 ? 0 : this.mm > 0 ? this.mm % 60 : 60 + this.mm;
+    this.hh = (this.hh + hrs) % 12;
+    if (this.hh === 0) {
+      this.hh = 12;
+    }
   }
 }

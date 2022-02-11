@@ -1,36 +1,45 @@
-<mat-card>
-  <mat-form-field>
-    <input matInput type="number" [(ngModel)]="hh" [max]="is24HourClock ? 23 : 12" [min]="is24HourClock ? 0 : 1">
-  </mat-form-field>
-  :
-  <mat-form-field>
-    <input matInput type="number" [(ngModel)]="mm" max="59" min="0">
-  </mat-form-field>
-</mat-card>
-<svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize">
-  <defs>
-    <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop class="left-face" offset="0%"/>
-      <stop class="left-face" offset="49.8%"/>
-      <stop class="right-face" offset="50.2%"/>
-      <stop class="right-face" offset="100%"/>
-    </linearGradient>
-  </defs>
-  <circle class="circle" cx="50%" cy="50%" stroke="green" stroke-width="4" fill="url(#clockgradient)" [attr.r]="clockRadius"/>
-  <circle cx="50%" cy="50%" r="1%" stroke="black" stroke-width="1" fill="black" />
-  <line class="quad-marker" x1="0%" y1="50%" x2="100%" y2="50%"/>
-  <line class="quad-marker" x1="50%" y1="0%" x2="50%" y2="100%"/>
-  <rect *ngFor="let tick of getTicks(60);" class="rect tick" x="50%" y="50%"
-        [attr.width]="getTickWidth(tick)"
-        [attr.height]="getTickHeight(tick)"
-        [attr.transform]="getTickTransform(tick)"/>
-  <text *ngFor="let tick of getTicks(60)" class="text clock-numbers"
-        [attr.x]="getX(tick, 60)"
-        [attr.y]="getY(tick, 60)"
-        [attr.font-size]="getTextSize(tick)"
-        [attr.transform]="getTextTransform(tick)">
-    {{getTickHourValue(tick)}}
-  </text>
-  <polygon class="polygon minute-hand" [attr.points]="getMinuteHandPoints()" [attr.transform]="getMinuteTransform()"/>
-  <polygon class="polygon hour-hand" [attr.points]="getHourHandPoints()" [attr.transform]="getHourTransform()"/>
-</svg>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize">
+      <defs>
+        <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop class="left-face" offset="0%"/>
+          <stop class="left-face" offset="49.8%"/>
+          <stop class="right-face" offset="50.2%"/>
+          <stop class="right-face" offset="100%"/>
+        </linearGradient>
+      </defs>
+      <circle class="circle" cx="50%" cy="50%" stroke="green" stroke-width="4" fill="url(#clockgradient)" [attr.r]="clockRadius"/>
+      <circle cx="50%" cy="50%" r="1%" stroke="black" stroke-width="1" fill="black" />
+      <line class="quad-marker" x1="0%" y1="50%" x2="100%" y2="50%"/>
+      <line class="quad-marker" x1="50%" y1="0%" x2="50%" y2="100%"/>
+      <rect *ngFor="let tick of getTicks(60);" class="rect tick" x="50%" y="50%"
+            [attr.width]="getTickWidth(tick)"
+            [attr.height]="getTickHeight(tick)"
+            [attr.transform]="getTickTransform(tick)"/>
+      <text *ngFor="let tick of getTicks(60)" class="text clock-numbers"
+            [attr.x]="getX(tick, 60)"
+            [attr.y]="getY(tick, 60)"
+            [attr.font-size]="getTextSize(tick)"
+            [attr.transform]="getTextTransform(tick)">
+        {{getTickHourValue(tick)}}
+      </text>
+      <polygon class="polygon minute-hand" [attr.points]="getMinuteHandPoints()" [attr.transform]="getMinuteTransform()"/>
+      <polygon class="polygon hour-hand" [attr.points]="getHourHandPoints()" [attr.transform]="getHourTransform()"/>
+    </svg>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-form-field>
+        <mat-label>Hours</mat-label>
+        <input matInput type="number" [(ngModel)]="hh" style="font-size: xxx-large" (change)="normalizeTime()">
+      </mat-form-field>
+      :
+      <mat-form-field>
+        <mat-label>Minutes</mat-label>
+        <input matInput type="number" [(ngModel)]="mm" style="font-size: xxx-large" (change)="normalizeTime()">
+      </mat-form-field>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
