@@ -54,10 +54,6 @@ export class ClockComponent implements OnInit {
     return (i % 5 == 0 ? 35 : 15) * 0.002 * this.clockRadius;
   }
 
-  getTickStyle(i: number): string {
-    return "fill:black;stroke-width:1;transform-origin:50% 50%;";
-  }
-
   getTickTransform(i: number): string {
     return "rotate(" + i * 6 + "),translate(-3,-" + (this.clockRadius - this.tickMargin) + ")";
   }
@@ -89,7 +85,7 @@ export class ClockComponent implements OnInit {
   }
 
   getTextTransform(i: number): string {
-    const xDev = this.clockRadius * 0.021 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? 0.8 : 0.25 : i >= 50 ? 1.9 : i < 5 ? 2.5 : 1);
+    const xDev = this.clockRadius * 0.029 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? 0.8 : 0.25 : i >= 50 ? 1.9 : i < 5 ? 2.0 : 1);
     const yDev = this.clockRadius * 0.024 * (!ClockComponent.isHourMarker(i) ? 0.25 : 1);
     return "translate(-" + xDev + "," + yDev + ")";
   }
