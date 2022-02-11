@@ -47,11 +47,11 @@ export class ClockComponent implements OnInit {
   }
 
   getTickWidth(i: number): number {
-    return i % 5 == 0 ? 6 : 3;
+    return (i % 5 == 0 ? 6 : 3) * 0.002 * this.clockRadius;
   }
 
   getTickHeight(i: number): number {
-    return i % 5 == 0 ? 35 : 15;
+    return (i % 5 == 0 ? 35 : 15) * 0.002 * this.clockRadius;
   }
 
   getTickStyle(i: number): string {
