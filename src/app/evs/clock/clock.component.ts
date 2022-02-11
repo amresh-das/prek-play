@@ -59,21 +59,21 @@ export class ClockComponent implements OnInit {
   }
 
   getX(i: number, total: number): number {
-    const deg = ClockComponent.getDeg(i, total);
+    const deg = 270 + ClockComponent.getDeg(i, total);
     const radius = this.clockRadius * (ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : this.minuteRadiusModifier);
     const deviation = 0;
     return deviation + this.clockCenter.x + radius * Math.cos(deg * (Math.PI / 180));
   }
 
   getY(i: number, total: number): number {
-    const deg = ClockComponent.getDeg(i, total);
+    const deg = 270 + ClockComponent.getDeg(i, total);
     const radius = this.clockRadius * (ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : this.minuteRadiusModifier);
     const deviation = 0;
     return deviation + this.clockCenter.y + radius * Math.sin(deg * (Math.PI / 180));
   }
 
   private static getDeg(n: number, total: number): number {
-    return 270 + (n * 360 / total);
+    return n * 360 / total;
   }
 
   getTickHourValue(tick: number): number {
@@ -92,5 +92,39 @@ export class ClockComponent implements OnInit {
 
   private static isHourMarker(tick: number): boolean {
     return tick % 5 == 0;
+  }
+
+  getHourHandPoints(): string {
+    const points = [];
+    const radius = this.clockRadius;
+    points.push({x: this.clockCenter.x, y: this.clockCenter.y - radius * .7});
+    points.push({x: this.clockCenter.x + 30, y: this.clockCenter.y - radius * .6});
+    points.push({x: this.clockCenter.x + 2, y: this.clockCenter.y - 2});
+    points.push({x: this.clockCenter.x, y: this.clockCenter.y});
+    points.push({x: this.clockCenter.x - 2, y: this.clockCenter.y - 2});
+    points.push({x: this.clockCenter.x - 30, y: this.clockCenter.y - radius * .6});
+    return points.map(p => p.x + "," + p.y).join(" ");
+  }
+
+  getMinuteHandPoints(): string {
+    const points = [];
+    const radius = this.clockRadius;
+    points.push({x: this.clockCenter.x, y: this.clockCenter.y - radius * .99});
+    points.push({x: this.clockCenter.x + 25, y: this.clockCenter.y - radius * .91});
+    points.push({x: this.clockCenter.x + 2, y: this.clockCenter.y - 2});
+    points.push({x: this.clockCenter.x, y: this.clockCenter.y});
+    points.push({x: this.clockCenter.x - 2, y: this.clockCenter.y - 2});
+    points.push({x: this.clockCenter.x - 25, y: this.clockCenter.y - radius * .91});
+    return points.map(p => p.x + "," + p.y).join(" ");
+  }
+
+  getMinuteTransform(): string {
+    return "rotate(" + ClockComponent.getDeg(this.mm % 60, 60) + ")";
+  }
+
+  getHourTransform() {
+    const hourDegree = ClockComponent.getDeg(this.hh % 12, 12);
+    const minuteDegree = ClockComponent.getDeg(this.mm % 60, 720);
+    return "rotate(" + (hourDegree + minuteDegree) + ")";
   }
 }

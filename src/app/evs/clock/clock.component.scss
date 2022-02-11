@@ -1,0 +1,40 @@
+.minute-hand {
+  fill:rgba(255,10,0,0.65);
+  stroke:rgba(255,0,0,0.76);
+  stroke-width:3;
+  transform-origin:50% 50%;
+}
+
+.hour-hand {
+  fill:rgba(255,10,0,0.65);
+  stroke:rgba(255,0,0,0.76);
+  stroke-width:3;
+  transform-origin:50% 50%;
+}
+
+.clock-numbers {
+  fill:black;
+  stroke:#000000;
+}
+
+.tick {
+  fill:black;
+  stroke-width:1;
+  transform-origin:50% 50%;
+}
+
+.quad-marker {
+  stroke:gray;
+  stroke-width:2;
+  stroke-opacity: 30%
+}
+
+.left-face {
+  stop-color:#aeefae;
+  stop-opacity:1;
+}
+
+.right-face {
+  stop-color:lightyellow;
+  stop-opacity:1;
+}
