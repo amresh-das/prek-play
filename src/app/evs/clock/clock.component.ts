@@ -51,7 +51,7 @@ export class ClockComponent implements OnInit {
   }
 
   getTickHeight(i: number): number {
-    return (i % 5 == 0 ? 35 : 15) * 0.002 * this.clockRadius;
+    return (i % 5 == 0 ? 40 : 15) * 0.002 * this.clockRadius;
   }
 
   getTickTransform(i: number): string {
