@@ -89,7 +89,7 @@ export class ClockComponent implements OnInit {
   }
 
   getTextTransform(i: number): string {
-    const xDev = this.clockRadius * 0.021 * (!ClockComponent.isHourMarker(i) ? 0.25 : i >= 50 ? 1.9 : i < 5 ? 2.5 : 1);
+    const xDev = this.clockRadius * 0.021 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? 0.8 : 0.25 : i >= 50 ? 1.9 : i < 5 ? 2.5 : 1);
     const yDev = this.clockRadius * 0.024 * (!ClockComponent.isHourMarker(i) ? 0.25 : 1);
     return "translate(-" + xDev + "," + yDev + ")";
   }
