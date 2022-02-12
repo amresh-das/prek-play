@@ -41,8 +41,13 @@ export class ClockComponent implements OnInit {
     return ClockComponent.getSvgSize() * .45;
   }
 
-  getTicks(n: number): number[] {
-    return Array.from(Array(n).keys());
+  getTicks(n: number, incrementBy?: number): number[] {
+    const arr = [];
+    if (!incrementBy) incrementBy = 1;
+    for (let i = 0; i < n; i++) {
+      arr.push(i * incrementBy);
+    }
+    return arr;
   }
 
   getTickWidth(i: number): number {
@@ -84,8 +89,12 @@ export class ClockComponent implements OnInit {
   }
 
   getTextTransform(i: number): string {
-    const xDev = this.clockRadius * 0.029 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? 0.8 : 0.25 : i >= 50 ? 1.9 : i < 5 ? 2.0 : 1);
-    const yDev = this.clockRadius * 0.024 * (!ClockComponent.isHourMarker(i) ? 0.25 : 1);
+    const modifierFor12Major = 2.16;
+    const modifierFor10And11Major = 1.9;
+    const modifierFor10To12Minor = 0.8;
+    const modifierForAllMinor = 0.25;
+    const xDev = this.clockRadius * 0.029 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? modifierFor10To12Minor : modifierForAllMinor : i >= 50 ? modifierFor10And11Major : i < 5 ? modifierFor12Major : 1);
+    const yDev = this.clockRadius * 0.024 * (!ClockComponent.isHourMarker(i) ? modifierForAllMinor : 1);
     return "translate(-" + xDev + "," + yDev + ")";
   }
 

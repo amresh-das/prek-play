@@ -17,7 +17,14 @@
             [attr.width]="getTickWidth(tick)"
             [attr.height]="getTickHeight(tick)"
             [attr.transform]="getTickTransform(tick)"/>
-      <text *ngFor="let tick of getTicks(60)" class="text clock-numbers"
+      <text *ngFor="let tick of getTicks(60, 1)" class="text clock-numbers"
+            [attr.x]="getX(tick, 60)"
+            [attr.y]="getY(tick, 60)"
+            [attr.font-size]="getTextSize(tick)"
+            [attr.transform]="getTextTransform(tick)">
+        {{getTickHourValue(tick)}}
+      </text>
+      <text *ngFor="let tick of getTicks(4, 15)" class="text clock-numbers"
             [attr.x]="getX(tick, 60)"
             [attr.y]="getY(tick, 60)"
             [attr.font-size]="getTextSize(tick)"
