@@ -35,7 +35,7 @@ export class ReadWordComponent implements AfterViewInit, OnDestroy {
     this.vowelColor = this.data.vowelColor;
     this.consonantColor = this.data.consonantColor;
     this.color = this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_DRAW_COLOR, '#ff0000');
-    this.fontSize = Number.parseFloat(this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_FONT_SIZE, '10'));
+    this.fontSize = Number.parseFloat(this.settingsService.getConfigOrDefault(ReadWordComponent.READ_WORD_FONT_SIZE, '5'));
   }
 
   ngAfterViewInit(): void {

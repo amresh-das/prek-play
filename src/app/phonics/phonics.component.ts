@@ -41,7 +41,7 @@ export class PhonicsComponent implements OnInit {
     this.consonantColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_CONSONANT, '#666666');
     this.vowelColor = settingsService.getConfigOrDefault(PhonicsComponent.PHONICS_COLOR_SCHEME_VOWELS, '#000000');
     this.hiddenWords = JSON.parse(this.settingsService.getConfigOrDefault(SettingsService.PHONICS_HIDDEN_WORDS, '[]'));
-    const fontSize = settingsService.getConfigOrDefault(SettingsService.PHONICS_WORDS_FONT_SIZE, '2.5');
+    const fontSize = settingsService.getConfigOrDefault(SettingsService.PHONICS_WORDS_FONT_SIZE, '1.3');
     this.wordFontSize = fontSize + 'em';
     this.wordShadow = Number.parseFloat(fontSize) > 1.0 ? '2px 1px' : 'none';
   }
@@ -74,7 +74,7 @@ export class PhonicsComponent implements OnInit {
 
   showWordsToRead(index?: number) {
     const items = this.selected.length > 0 ? this.selected :
-      this.getFiltered().slice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 40));
+      this.getFiltered().slice(0, this.settingsService.getConfigInt(SettingsService.PHONICS_SHOW_WORDS_BATCH_COUNT, 999));
     this.dialog.open(ReadWordComponent, {
       maxWidth: '100%',
       width: '100%',
