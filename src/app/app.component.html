@@ -58,7 +58,8 @@
       <span>Subtraction</span>
     </a>
   </mat-menu>
-  <span class="app-title">Pre-K Play<span *ngIf="subtitle"> - {{subtitle}}</span></span>
+  &nbsp;
+  <span class="app-title"><span class="app-alt-title">|alt|</span><span class="app-l-title">learner</span><span *ngIf="subtitle"> - {{subtitle}}</span></span>
   <span class="app-spacer"></span>
   <button mat-button (click)="navigateMenu('settings', 'Configure Settings')">
     <mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon>

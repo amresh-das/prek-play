@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'prek-play';
+  title = '[alt] learner';
   subtitle: string;
 
   constructor(private router: Router) {

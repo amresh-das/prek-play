@@ -1,5 +1,18 @@
+.app-alt-title {
+  font-family: monospace;
+  color: black;
+  text-shadow: 1px 1px 2px white;
+  text-decoration-line: overline underline;
+}
+
+.app-l-title {
+  font-family: monospace;
+  text-shadow: #ffffff 1px 0 1px;
+}
+
 .app-title {
   font-weight: bolder;
+  font-size: 1.5em;
 }
 
 .app-menu {

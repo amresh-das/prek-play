@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Word.PicComponent } from './word.pic.component';
+import { WordPicComponent } from './word.pic.component';
 
-describe('Word.PicComponent', () => {
-  let component: Word.PicComponent;
-  let fixture: ComponentFixture<Word.PicComponent>;
+describe('WordPicComponent', () => {
+  let component: WordPicComponent;
+  let fixture: ComponentFixture<WordPicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Word.PicComponent ]
+      declarations: [ WordPicComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Word.PicComponent);
+    fixture = TestBed.createComponent(WordPicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
