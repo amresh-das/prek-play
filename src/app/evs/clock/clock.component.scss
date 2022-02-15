@@ -1,10 +1,11 @@
 .minute-hand {
-  fill:rgba(255,10,0,0.65);
-  stroke:rgba(255,10,0,0.68);
+  fill:rgba(255,10,0,0.70);
+  stroke:rgba(255,10,0,0.70);
   stroke-width:1;
   transform-origin:50% 50%;
   -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
   filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
+  z-index: 10;
 }
 
 .hour-hand {
@@ -14,6 +15,7 @@
   transform-origin:50% 50%;
   -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
   filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
+  z-index: 20;
 }
 
 .clock-numbers {
@@ -43,4 +45,9 @@
 .right-face {
   stop-color:lightyellow;
   stop-opacity:1;
+}
+
+.time-box {
+  font-size: xxx-large;
+  text-shadow: 1px 1px 2px black;
 }

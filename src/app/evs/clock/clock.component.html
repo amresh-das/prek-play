@@ -24,27 +24,27 @@
             [attr.transform]="getTextTransform(tick)">
         {{getTickHourValue(tick)}}
       </text>
-      <text *ngFor="let tick of getTicks(4, 15)" class="text clock-numbers"
-            [attr.x]="getX(tick, 60)"
-            [attr.y]="getY(tick, 60)"
+      <text [id]="'quad' + tick" *ngFor="let tick of getTicks(60, 1)" class="text clock-numbers"
+            [attr.x]="getX(tick, 60, .28)"
+            [attr.y]="getY(tick, 60, .28)"
             [attr.font-size]="getTextSize(tick)"
-            [attr.transform]="getTextTransform(tick)">
-        {{getTickHourValue(tick)}}
+            [attr.transform]="getTextTransform(tick, true)">
+        {{tick}}
       </text>
       <polygon class="polygon minute-hand" [attr.points]="getMinuteHandPoints()" [attr.transform]="getMinuteTransform()"/>
       <polygon class="polygon hour-hand" [attr.points]="getHourHandPoints()" [attr.transform]="getHourTransform()"/>
     </svg>
   </mat-grid-tile>
   <mat-grid-tile>
-    <mat-card>
+    <mat-card class="time-box">
       <mat-form-field>
         <mat-label>Hours</mat-label>
-        <input matInput type="number" [(ngModel)]="hh" style="font-size: xxx-large" (change)="normalizeTime()">
+        <input matInput type="number" [(ngModel)]="hh" (change)="normalizeTime()">
       </mat-form-field>
       :
       <mat-form-field>
         <mat-label>Minutes</mat-label>
-        <input matInput type="number" [(ngModel)]="mm" style="font-size: xxx-large" (change)="normalizeTime()">
+        <input matInput type="number" [(ngModel)]="mm" (change)="normalizeTime()">
       </mat-form-field>
     </mat-card>
   </mat-grid-tile>
