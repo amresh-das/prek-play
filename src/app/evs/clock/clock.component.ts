@@ -1,5 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Point} from "@angular/cdk/drag-drop";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
   selector: 'app-clock',
@@ -8,23 +9,44 @@ import {Point} from "@angular/cdk/drag-drop";
 })
 export class ClockComponent implements OnInit {
 
+  private static readonly SVG_SIZE_PERCENT = .92;
+  private static readonly CLOCK_RADIUS_PERCENT = .33;
+  private static readonly CLOCK_OPTIONS_KEY = 'clock.options';
+
   hh: number = 12;
   mm: number = 0;
   svgSize: number;
   tickMargin: number = 10;
   clockRadius: number;
   clockCenter: Point;
+  clockOptions = {
+    show1HourMarkers: true,
+    show5HourMarkers: true,
+    show15MinuteMarkers: true,
+    show5MinuteMarkers: true,
+    show1MinuteMarkers: true,
+    showHourHand: true,
+    showMinuteHand: true,
+    showOClock: true,
+    showQuarterPast: true,
+    showHalfPast: true,
+    showQuarterTo: true,
+    showTimeText: true
+  }
+
   private readonly hourRadiusModifier = 0.80;
   private readonly majorMarkerTextSizeToRadius = 0.09;
   private readonly minorMarkerTextSizeToRadius = 0.035;
 
-  constructor() {
+  constructor(private settingsService: SettingsService) {
   }
 
   ngOnInit(): void {
     this.svgSize = ClockComponent.getSvgSize();
     this.clockRadius = ClockComponent.getClockRadius();
     this.clockCenter = {x: this.svgSize / 2, y: this.svgSize / 2};
+    this.clockOptions = this.settingsService.getConfigObj(ClockComponent.CLOCK_OPTIONS_KEY, this.clockOptions);
+    this.refreshTime();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -35,18 +57,32 @@ export class ClockComponent implements OnInit {
   }
 
   static getSvgSize() {
-    return Math.min(window.innerWidth, window.innerHeight) * .75;
+    return Math.min(window.innerWidth, window.innerHeight) * this.SVG_SIZE_PERCENT;
   }
 
   static getClockRadius() {
-    return ClockComponent.getSvgSize() * .40;
+    return ClockComponent.getSvgSize() * this.CLOCK_RADIUS_PERCENT;
   }
 
-  getTicks(n: number, incrementBy?: number): number[] {
+  getHourTicks(): number[] {
+    const hours = this.getTicks(60);
+    const hourMarkersAt5 = hours.filter(h => this.clockOptions.show5HourMarkers && h % 5 === 0);
+    const hourMarkersAt1 = this.clockOptions.show1HourMarkers ? hours : [];
+    return hourMarkersAt5.concat(hourMarkersAt1).sort();
+  }
+
+  getMinuteTicks(): number[] {
+    const minutes = this.getTicks(60);
+    const minuteMarkersAt15 = minutes.filter(m => this.clockOptions.show15MinuteMarkers && m % 15 === 0);
+    const minuteMarkersAt5 = minutes.filter(m => this.clockOptions.show5MinuteMarkers && m % 5 === 0);
+    const minuteMarkersAt1 = this.clockOptions.show1MinuteMarkers ? minutes : [];
+    return minuteMarkersAt15.concat(minuteMarkersAt5).concat(minuteMarkersAt1).sort();
+  }
+
+  getTicks(n: number): number[] {
     const arr = [];
-    if (!incrementBy) incrementBy = 1;
     for (let i = 0; i < n; i++) {
-      arr.push(i * incrementBy);
+      arr.push(i);
     }
     return arr;
   }
@@ -125,7 +161,11 @@ export class ClockComponent implements OnInit {
     const digits = i > 9 ? 2 : 1;
     const isMajor = i % 5 === 0;
     let xOffset: number = 1, yOffset: number = 1;
-    if (position === Position.LEFT) {
+    if (position == Position.TOP) {
+      yOffset = 2;
+    } else if (position == Position.BOTTOM) {
+      yOffset = .2;
+    } else if (position === Position.LEFT) {
       xOffset = .9;
       yOffset = .6;
     } else if (position === Position.RIGHT) {
@@ -209,6 +249,16 @@ export class ClockComponent implements OnInit {
     if (this.hh === 0) {
       this.hh = 12;
     }
+  }
+
+  refreshTime() {
+    const now = new Date();
+    this.hh = now.getHours() % 12;
+    this.mm = now.getMinutes();
+  }
+
+  saveClockOptions() {
+    this.settingsService.setConfig(ClockComponent.CLOCK_OPTIONS_KEY, JSON.stringify(this.clockOptions));
   }
 }
 

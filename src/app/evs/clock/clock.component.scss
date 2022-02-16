@@ -1,6 +1,6 @@
 .minute-hand {
-  fill:rgba(255,10,0,0.70);
-  stroke:rgba(255,10,0,0.70);
+  fill:rgba(255,10,0,0.60);
+  stroke:rgba(255,10,0,0.62);
   stroke-width:1;
   transform-origin:50% 50%;
   -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
@@ -9,8 +9,8 @@
 }
 
 .hour-hand {
-  fill:rgba(255,10,0,0.65);
-  stroke:rgba(255,10,0,0.68);
+  fill:rgba(255,10,0,0.60);
+  stroke:rgba(255,10,0,0.62);
   stroke-width:1;
   transform-origin:50% 50%;
   -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
@@ -49,5 +49,44 @@
 
 .time-box {
   font-size: xxx-large;
+  text-shadow: 1px 1px 2px black;
+}
+
+.refresh-time {
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.mat-card-header {
+  font-weight: bolder;
+  font-size: x-large;
+  text-shadow: 1px 1px 2px black;
+}
+
+.time-label {
+  font-size: xx-large;
+}
+
+.quarter-past-label {
+  font-size: xxx-large;
+  fill: yellow;
+  text-shadow: 1px 1px 2px black;
+}
+
+.half-past-label {
+  font-size: xxx-large;
+  fill: darkgray;
+  text-shadow: 1px 1px 2px black;
+}
+
+.quarter-to-label {
+  font-size: xxx-large;
+  fill: lightgreen;
+  text-shadow: 1px 1px 2px black;
+}
+
+.o-clock-label {
+  font-size: xxx-large;
+  fill: darkgray;
   text-shadow: 1px 1px 2px black;
 }
