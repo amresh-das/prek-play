@@ -23,12 +23,14 @@
   stroke:#000000;
   -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
   filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
+  user-select: none;
 }
 
 .tick {
   fill:black;
   stroke-width:1;
   transform-origin:50% 50%;
+  user-select: none;
 }
 
 .quad-marker {
@@ -70,23 +72,40 @@
 .quarter-past-label {
   font-size: xxx-large;
   fill: yellow;
-  text-shadow: 1px 1px 2px black;
+  stroke: darkgoldenrod;
+  text-shadow: 1px 1px 4px black;
+  user-select: none;
 }
 
 .half-past-label {
   font-size: xxx-large;
   fill: darkgray;
-  text-shadow: 1px 1px 2px black;
+  stroke: black;
+  text-shadow: 1px 1px 4px black;
+  user-select: none;
 }
 
 .quarter-to-label {
   font-size: xxx-large;
   fill: lightgreen;
-  text-shadow: 1px 1px 2px black;
+  stroke: green;
+  text-shadow: 1px 1px 4px black;
+  user-select: none;
 }
 
 .o-clock-label {
   font-size: xxx-large;
   fill: darkgray;
-  text-shadow: 1px 1px 2px black;
+  stroke: black;
+  text-shadow: 1px 1px 4px black;
+  user-select: none;
+}
+
+.clock-options {
+  width: 30vw;
+}
+
+.clock-options-header {
+  font-size: xx-large;
+  height: 1.3em
 }
