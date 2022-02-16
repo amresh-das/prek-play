@@ -15,7 +15,6 @@ export class ClockComponent implements OnInit {
   clockRadius: number;
   clockCenter: Point;
   private readonly hourRadiusModifier = 0.80;
-  private readonly minuteRadiusModifier = 0.92;
   private readonly majorMarkerTextSizeToRadius = 0.09;
   private readonly minorMarkerTextSizeToRadius = 0.035;
 
@@ -64,18 +63,20 @@ export class ClockComponent implements OnInit {
     return "rotate(" + i * 6 + "),translate(-3,-" + (this.clockRadius - this.tickMargin) + ")";
   }
 
-  getX(i: number, total: number, offsetPercent?: number): number {
+  getX(i: number, total: number, offsetPercent?: number, minuteRadiusModifier?: number): number {
     const deg = 270 + ClockComponent.getDeg(i, total);
-    const radius = this.clockRadius * ((offsetPercent ? offsetPercent : 0) + (ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : this.minuteRadiusModifier));
-    const deviation = 0;
-    return deviation + this.clockCenter.x + radius * Math.cos(deg * (Math.PI / 180));
+    const minuteOffset = minuteRadiusModifier ? minuteRadiusModifier : .12;
+    const radiusModifier = ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : (this.hourRadiusModifier + minuteOffset);
+    const radius = this.clockRadius * ((offsetPercent ? offsetPercent : 0) + radiusModifier);
+    return this.clockCenter.x + radius * Math.cos(deg * (Math.PI / 180));
   }
 
-  getY(i: number, total: number, offsetPercent?: number): number {
+  getY(i: number, total: number, offsetPercent?: number, minuteRadiusModifier?: number): number {
     const deg = 270 + ClockComponent.getDeg(i, total);
-    const radius = this.clockRadius * ((offsetPercent ? offsetPercent : 0) + (ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : this.minuteRadiusModifier));
-    const deviation = 0;
-    return deviation + this.clockCenter.y + radius * Math.sin(deg * (Math.PI / 180));
+    const minuteOffset = minuteRadiusModifier ? minuteRadiusModifier : .12;
+    const radiusModifier = ClockComponent.isHourMarker(i) ? this.hourRadiusModifier : (this.hourRadiusModifier + minuteOffset);
+    const radius = this.clockRadius * ((offsetPercent ? offsetPercent : 0) + radiusModifier);
+    return this.clockCenter.y + radius * Math.sin(deg * (Math.PI / 180));
   }
 
   private static getDeg(n: number, total: number): number {
@@ -90,20 +91,62 @@ export class ClockComponent implements OnInit {
     return (ClockComponent.isHourMarker(tick) ? this.majorMarkerTextSizeToRadius : this.minorMarkerTextSizeToRadius) * this.clockRadius + 'px';
   }
 
-  getTextTransform(i: number, allMinor?: boolean): string {
-    const isMajor = allMinor ? false : ClockComponent.isHourMarker(i);
+  getHourMarkerTransform(i: number): string {
     const position: Position = this.getPosition(i);
-    const faceValue = isMajor ? this.getTickHourValue(i) : i;
+    const value = this.getTickHourValue(i);
+    const digits = value > 9 ? 2 : 1;
+    const isMajor = i % 5 === 0;
+    let xOffset: number = 1, yOffset: number = 1;
+    if (value === 12 && position != Position.TOP) {
+      xOffset = .5;
+    }
+    if (position === Position.RIGHT) {
+      yOffset = 1.25;
+    } else if (position === Position.FIRSTQUADRANT) {
+      xOffset = .5;
+      yOffset = .6;
+    }  else if (position === Position.SECONDQUADRANT) {
+      xOffset = .5;
+      yOffset = isMajor ? 1.5 : .1;
+    } else if (position === Position.THIRDQUADRENT) {
+      xOffset = .1;
+      yOffset = isMajor ? 1.5 : .1;
+    } else if (position === Position.FOURTHQUADRENT) {
+      xOffset = isMajor ? .6 : .2;
+      yOffset = isMajor ? 2.15 : .5;
+    }
+    const x = this.clockRadius * 0.029 * digits * xOffset;
+    const y = this.clockRadius * 0.024 * yOffset;
+    return "translate(-" + x + "," + y + ")";
+  }
 
-    const modifierFor12Major = 2.16;
-    const modifierFor10And11Major = 1.9;
-    const modifierFor10To12Minor = 0.8;
-    const modifierForAllMinor = 0.25;
-    const xDev = this.clockRadius * 0.029 * (!ClockComponent.isHourMarker(i) ? i >= 50 || i < 5 ? modifierFor10To12Minor : modifierForAllMinor : i >= 50 ? modifierFor10And11Major : i < 5 ? modifierFor12Major : 1);
-    const yDev = this.clockRadius * 0.024 * (!ClockComponent.isHourMarker(i) ? modifierForAllMinor : 1);
-
-    let xOffset: number, yOffset: number;
-    return "translate(-" + xDev + "," + yDev + ")";
+  getMinuteMarkerTransform(i: number): string {
+    const position: Position = this.getPosition(i);
+    const digits = i > 9 ? 2 : 1;
+    const isMajor = i % 5 === 0;
+    let xOffset: number = 1, yOffset: number = 1;
+    if (position === Position.LEFT) {
+      xOffset = .9;
+      yOffset = .6;
+    } else if (position === Position.RIGHT) {
+      xOffset = 1.5;
+      yOffset = .6;
+    } else if (position === Position.FIRSTQUADRANT) {
+      xOffset = (i > 9 ? -.2 : 0) + (isMajor ? 1.5 : .5);
+      yOffset = (i > 9 ? -.2 : 0) + (isMajor ? 1 : .15);
+    } else if (position === Position.SECONDQUADRANT) {
+      xOffset = isMajor ? 1 : .5;
+      yOffset = isMajor ? .5 : .15;
+    }  else if (position === Position.THIRDQUADRENT) {
+      xOffset = isMajor ? 1 : .7;
+      yOffset = isMajor ? .5 : .15;
+    } else if (position === Position.FOURTHQUADRENT) {
+      xOffset = isMajor ? 1.5 : .7;
+      yOffset = isMajor ? 1 : .15;
+    }
+    const x = this.clockRadius * 0.029 * digits * xOffset;
+    const y = this.clockRadius * 0.024 * digits * yOffset;
+    return "translate(-" + x + "," + y + ")";
   }
 
   private getPosition(i: number) {
@@ -111,7 +154,7 @@ export class ClockComponent implements OnInit {
       if (i == 0) return Position.TOP;
       if (i == 15) return Position.RIGHT;
       if (i == 30) return Position.BOTTOM;
-      return Position.RIGHT;
+      return Position.LEFT;
     } else {
       const quadrant = Math.floor(i / 15);
       if (quadrant == 0) return Position.FIRSTQUADRANT;

@@ -21,14 +21,14 @@
             [attr.x]="getX(tick, 60)"
             [attr.y]="getY(tick, 60)"
             [attr.font-size]="getTextSize(tick)"
-            [attr.transform]="getTextTransform(tick)">
+            [attr.transform]="getHourMarkerTransform(tick)">
         {{getTickHourValue(tick)}}
       </text>
       <text [id]="'quad' + tick" *ngFor="let tick of getTicks(60, 1)" class="text clock-numbers"
-            [attr.x]="getX(tick, 60, .28)"
-            [attr.y]="getY(tick, 60, .28)"
+            [attr.x]="getX(tick, 60, .3, -0.05)"
+            [attr.y]="getY(tick, 60, .3, -0.05)"
             [attr.font-size]="getTextSize(tick)"
-            [attr.transform]="getTextTransform(tick, true)">
+            [attr.transform]="getMinuteMarkerTransform(tick)">
         {{tick}}
       </text>
       <polygon class="polygon minute-hand" [attr.points]="getMinuteHandPoints()" [attr.transform]="getMinuteTransform()"/>
