@@ -291,11 +291,11 @@ export class ClockComponent implements OnInit {
   }
 
   private isWindingUp(event: MouseEvent) {
-    return this.mm === 0 && this.prevPosition?.x < this.clockCenter.x && event.offsetX > this.clockCenter.y;
+    return this.prevPosition ? (this.mm === 0 && this.prevPosition.x < this.clockCenter.x && event.offsetX > this.clockCenter.y) : false;
   }
 
   private isWindingDown(event: MouseEvent) {
-    return this.mm == 59 && this.prevPosition?.x > this.clockCenter.x && event.offsetX < this.clockCenter.y;
+    return this.prevPosition ? (this.mm == 59 && this.prevPosition.x > this.clockCenter.x && event.offsetX < this.clockCenter.y) : false;
   }
 
   private computeDegree(event: MouseEvent) {
