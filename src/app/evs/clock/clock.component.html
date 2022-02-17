@@ -50,6 +50,8 @@
       <text *ngIf="clockOptions.showOClock" x="45%" y="12%" class="o-clock-label">O' Clock</text>
       <polygon *ngIf="clockOptions.showHourHand"
                class="polygon hour-hand"
+               [attr.fill]="clockHandMoveStart?.hourHand ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.stroke]="clockHandMoveStart?.hourHand ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
                [attr.points]="getHourHandPoints()"
                [attr.transform]="getHourTransform()"
                (mousedown)="startHandMove($event, true)"
@@ -57,12 +59,13 @@
       />
       <polygon *ngIf="clockOptions.showMinuteHand"
                class="polygon minute-hand"
+               [attr.fill]="(clockHandMoveStart ? !clockHandMoveStart.hourHand : false) ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.stroke]="(clockHandMoveStart ? !clockHandMoveStart.hourHand : false) ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
                [attr.points]="getMinuteHandPoints()"
                [attr.transform]="getMinuteTransform()"
                (mousedown)="startHandMove($event, false)"
                (touchstart)="startHandTouchMove($event, false)"
       />
-      <line *ngIf="clockHandMoveStart" style="fill: #00FF00; stroke: #00FF00; stroke-width: 10px" class="line" [attr.x1]="clockCenter.x" [attr.x2]="clockHandMoveStart.point.x"  [attr.y1]="clockCenter.y"  [attr.y2]="clockHandMoveStart.point.y"/>
     </svg>
   </mat-grid-tile>
   <mat-grid-tile rowspan="2">

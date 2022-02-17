@@ -293,15 +293,13 @@ export class ClockComponent implements OnInit {
       const degree = this.computeDegree(event);
       this.clockHandMoveStart.point = {x: event.offsetX, y: event.offsetY};
       if (this.clockHandMoveStart.hourHand) {
-        this.hh = Math.floor(degree / 30);
+        this.hh = (Math.floor(degree / 30) % 12);
       } else {
         this.mm = Math.floor(degree / 6);
         this.hh = this.hh + (this.isWindingDown(this.mm) ? - 1 : this.isWindingUp(this.mm) ? 1 : 0);
       }
-      if (this.hh === 0) {
-        this.hh = 12;
-      }
       this.clockHandMoveStart.prevMinute = this.mm;
+      this.normalizeTime();
     }
   }
 
