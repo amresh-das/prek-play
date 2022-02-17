@@ -3,9 +3,8 @@
   stroke:rgba(255,10,0,0.62);
   stroke-width:1;
   transform-origin:50% 50%;
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
-  z-index: 10;
+  -webkit-filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
+  filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
 }
 
 .hour-hand {
@@ -13,16 +12,15 @@
   stroke:rgba(255,10,0,0.62);
   stroke-width:1;
   transform-origin:50% 50%;
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
-  z-index: 20;
+  -webkit-filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
+  filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
 }
 
 .clock-numbers {
   fill:black;
   stroke:#000000;
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .9));
+  -webkit-filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
+  filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
   user-select: none;
 }
 
@@ -50,8 +48,8 @@
 }
 
 .time-box {
-  font-size: xxx-large;
-  text-shadow: 1px 1px 2px black;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 1px black;
 }
 
 .refresh-time {
@@ -61,44 +59,38 @@
 
 .mat-card-header {
   font-weight: bolder;
-  font-size: x-large;
+  font-size: 1.2em;
   text-shadow: 1px 1px 2px black;
 }
 
 .time-label {
-  font-size: xx-large;
+  font-size: 1.2em;
+}
+
+.quarter-past-label, .quarter-to-label, .half-past-label, .o-clock-label {
+  font-size: 1.4em;
+  text-shadow: 1px 1px 1px black;
+  user-select: none;
 }
 
 .quarter-past-label {
-  font-size: xxx-large;
   fill: yellow;
   stroke: darkgoldenrod;
-  text-shadow: 1px 1px 4px black;
-  user-select: none;
 }
 
 .half-past-label {
-  font-size: xxx-large;
   fill: darkgray;
   stroke: black;
-  text-shadow: 1px 1px 4px black;
-  user-select: none;
 }
 
 .quarter-to-label {
-  font-size: xxx-large;
   fill: lightgreen;
   stroke: green;
-  text-shadow: 1px 1px 4px black;
-  user-select: none;
 }
 
 .o-clock-label {
-  font-size: xxx-large;
   fill: darkgray;
   stroke: black;
-  text-shadow: 1px 1px 4px black;
-  user-select: none;
 }
 
 .clock-options {
@@ -106,7 +98,7 @@
 }
 
 .clock-options-header {
-  font-size: xx-large;
+  font-size: 1.4em;
   height: 1.3em
 }
 

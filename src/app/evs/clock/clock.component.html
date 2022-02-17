@@ -1,5 +1,5 @@
-<mat-grid-list cols="2" rowHeight="48vh">
-  <mat-grid-tile class="clock-face" rowspan="2">
+<mat-grid-list cols="2" rowHeight="30vh">
+  <mat-grid-tile class="clock-face" rowspan="3">
     <svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize"
          (mousemove)="clockHandMoveStart && handleClockHandMove($event)"
          (mouseup)="clockHandMoveStart && endClockHandMove()"
@@ -65,7 +65,7 @@
       <line *ngIf="clockHandMoveStart" style="fill: #00FF00; stroke: #00FF00; stroke-width: 10px" class="line" [attr.x1]="clockCenter.x" [attr.x2]="clockHandMoveStart.point.x"  [attr.y1]="clockCenter.y"  [attr.y2]="clockHandMoveStart.point.y"/>
     </svg>
   </mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile rowspan="2">
     <mat-card class="clock-options">
       <mat-card-header class="clock-options-header">Clock Options</mat-card-header>
       <mat-card-content>

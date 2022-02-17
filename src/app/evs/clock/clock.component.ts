@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Point} from "@angular/cdk/drag-drop";
-import {SettingsService} from "../../services/settings.service";
-import {Position} from "./position";
+import {Point} from '@angular/cdk/drag-drop';
+import {SettingsService} from '../../services/settings.service';
+import {Position} from './position';
 
 @Component({
   selector: 'app-clock',
@@ -14,10 +14,10 @@ export class ClockComponent implements OnInit {
   private static readonly CLOCK_RADIUS_PERCENT = .33;
   private static readonly CLOCK_OPTIONS_KEY = 'clock.options';
 
-  hh: number = 12;
-  mm: number = 0;
+  hh = 12;
+  mm = 0;
   svgSize: number;
-  tickMargin: number = 10;
+  tickMargin = 10;
   clockRadius: number;
   clockCenter: Point;
   clockOptions = {
@@ -33,13 +33,47 @@ export class ClockComponent implements OnInit {
     showHalfPast: true,
     showQuarterTo: true,
     showTimeText: true
-  }
-  clockHandMoveStart: null | {isHourHand: boolean, point: Point} = null;
-  prevPosition: null | Point;
+  };
+  clockHandMoveStart: null | MoveEvent = null;
 
   private readonly hourRadiusModifier = 0.80;
   private readonly majorMarkerTextSizeToRadius = 0.09;
   private readonly minorMarkerTextSizeToRadius = 0.035;
+
+  private static getDeg(n: number, total: number): number {
+    return n * 360 / total;
+  }
+
+  private static isHourMarker(tick: number): boolean {
+    return tick % 5 === 0;
+  }
+
+  private static getPosition(i: number): Position {
+    if (i % 15 === 0) {
+      if (i === 0) {
+        return Position.TOP;
+      }
+      if (i === 15) {
+        return Position.RIGHT;
+      }
+      if (i === 30) {
+        return Position.BOTTOM;
+      }
+      return Position.LEFT;
+    } else {
+      const quadrant = Math.floor(i / 15);
+      if (quadrant === 0) {
+        return Position.FIRST_QUADRANT;
+      }
+      if (quadrant === 1) {
+        return Position.SECOND_QUADRANT;
+      }
+      if (quadrant === 2) {
+        return Position.THIRD_QUADRENT;
+      }
+      return Position.FOURTH_QUADRENT;
+    }
+  }
 
   constructor(private settingsService: SettingsService) {
   }
@@ -51,11 +85,11 @@ export class ClockComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize(): void {
     this.computeClockDimensions();
   }
 
-  private computeClockDimensions() {
+  private computeClockDimensions(): void {
     this.svgSize = Math.min(window.innerWidth, window.innerHeight) * ClockComponent.SVG_SIZE_PERCENT;
     this.clockRadius = this.svgSize * ClockComponent.CLOCK_RADIUS_PERCENT;
     this.clockCenter = {x: this.svgSize / 2, y: this.svgSize / 2};
@@ -85,15 +119,15 @@ export class ClockComponent implements OnInit {
   }
 
   getTickWidth(i: number): number {
-    return (i % 5 == 0 ? 6 : 3) * 0.002 * this.clockRadius;
+    return (i % 5 === 0 ? 6 : 3) * 0.002 * this.clockRadius;
   }
 
   getTickHeight(i: number): number {
-    return (i % 5 == 0 ? 40 : 15) * 0.002 * this.clockRadius;
+    return (i % 5 === 0 ? 40 : 15) * 0.002 * this.clockRadius;
   }
 
   getTickTransform(i: number): string {
-    return "rotate(" + i * 6 + "),translate(-3,-" + (this.clockRadius - this.tickMargin) + ")";
+    return 'rotate(' + i * 6 + '),translate(-3,-' + (this.clockRadius - this.tickMargin) + ')';
   }
 
   getX(i: number, total: number, offsetPercent?: number, minuteRadiusModifier?: number): number {
@@ -112,10 +146,6 @@ export class ClockComponent implements OnInit {
     return this.clockCenter.y + radius * Math.sin(deg * (Math.PI / 180));
   }
 
-  private static getDeg(n: number, total: number): number {
-    return n * 360 / total;
-  }
-
   getTickHourValue(tick: number): number {
     return tick < 5 ? 12 : Math.floor(tick / 5);
   }
@@ -129,8 +159,9 @@ export class ClockComponent implements OnInit {
     const value = this.getTickHourValue(i);
     const digits = value > 9 ? 2 : 1;
     const isMajor = i % 5 === 0;
-    let xOffset: number = 1, yOffset: number = 1;
-    if (value === 12 && position != Position.TOP) {
+    let xOffset = 1;
+    let yOffset = 1;
+    if (value === 12 && position !== Position.TOP) {
       xOffset = .5;
     }
     if (position === Position.RIGHT) {
@@ -150,17 +181,18 @@ export class ClockComponent implements OnInit {
     }
     const x = this.clockRadius * 0.029 * digits * xOffset;
     const y = this.clockRadius * 0.024 * yOffset;
-    return "translate(-" + x + "," + y + ")";
+    return 'translate(-' + x + ',' + y + ')';
   }
 
   getMinuteMarkerTransform(i: number): string {
     const position: Position = this.getPosition(i);
     const digits = i > 9 ? 2 : 1;
     const isMajor = i % 5 === 0;
-    let xOffset: number = 1, yOffset: number = 1;
-    if (position == Position.TOP) {
+    let xOffset = 1;
+    let yOffset = 1;
+    if (position === Position.TOP) {
       yOffset = 2;
-    } else if (position == Position.BOTTOM) {
+    } else if (position === Position.BOTTOM) {
       yOffset = .2;
     } else if (position === Position.LEFT) {
       xOffset = .9;
@@ -183,122 +215,105 @@ export class ClockComponent implements OnInit {
     }
     const x = this.clockRadius * 0.029 * digits * xOffset;
     const y = this.clockRadius * 0.024 * digits * yOffset;
-    return "translate(-" + x + "," + y + ")";
-  }
-
-  private getPosition(i: number) {
-    if (i % 15 == 0) {
-      if (i == 0) return Position.TOP;
-      if (i == 15) return Position.RIGHT;
-      if (i == 30) return Position.BOTTOM;
-      return Position.LEFT;
-    } else {
-      const quadrant = Math.floor(i / 15);
-      if (quadrant == 0) return Position.FIRST_QUADRANT;
-      if (quadrant == 1) return Position.SECOND_QUADRANT;
-      if (quadrant == 2) return Position.THIRD_QUADRENT;
-      return Position.FOURTH_QUADRENT;
-    }
-  }
-
-  private static isHourMarker(tick: number): boolean {
-    return tick % 5 == 0;
+    return 'translate(-' + x + ',' + y + ')';
   }
 
   getHourHandPoints(): string {
     const points = [];
     const radius = this.clockRadius;
+    const width = window.innerWidth * .0085;
     points.push({x: this.clockCenter.x, y: this.clockCenter.y - radius * .7});
-    points.push({x: this.clockCenter.x + 30, y: this.clockCenter.y - radius * .6});
+    points.push({x: this.clockCenter.x + width, y: this.clockCenter.y - radius * .6});
     points.push({x: this.clockCenter.x + 2, y: this.clockCenter.y - 2});
     points.push({x: this.clockCenter.x, y: this.clockCenter.y});
     points.push({x: this.clockCenter.x - 2, y: this.clockCenter.y - 2});
-    points.push({x: this.clockCenter.x - 30, y: this.clockCenter.y - radius * .6});
-    return points.map(p => p.x + "," + p.y).join(" ");
+    points.push({x: this.clockCenter.x - width, y: this.clockCenter.y - radius * .6});
+    return points.map(p => p.x + ',' + p.y).join(' ');
   }
 
   getMinuteHandPoints(): string {
     const points = [];
     const radius = this.clockRadius;
+    const width = window.innerWidth * .008;
     points.push({x: this.clockCenter.x, y: this.clockCenter.y - radius * .99});
-    points.push({x: this.clockCenter.x + 25, y: this.clockCenter.y - radius * .91});
+    points.push({x: this.clockCenter.x + width, y: this.clockCenter.y - radius * .91});
     points.push({x: this.clockCenter.x + 2, y: this.clockCenter.y - 2});
     points.push({x: this.clockCenter.x, y: this.clockCenter.y});
     points.push({x: this.clockCenter.x - 2, y: this.clockCenter.y - 2});
-    points.push({x: this.clockCenter.x - 25, y: this.clockCenter.y - radius * .91});
-    return points.map(p => p.x + "," + p.y).join(" ");
+    points.push({x: this.clockCenter.x - width, y: this.clockCenter.y - radius * .91});
+    return points.map(p => p.x + ',' + p.y).join(' ');
   }
 
   getMinuteTransform(): string {
-    return "rotate(" + ClockComponent.getDeg(this.mm % 60, 60) + ")";
+    return 'rotate(' + ClockComponent.getDeg(this.mm % 60, 60) + ')';
   }
 
-  getHourTransform() {
+  getHourTransform(): string {
     const hourDegree = ClockComponent.getDeg(this.hh % 12, 12);
     const minuteDegree = ClockComponent.getDeg(this.mm % 60, 720);
-    return "rotate(" + (hourDegree + minuteDegree) + ")";
+    return 'rotate(' + (hourDegree + minuteDegree) + ')';
   }
 
-  normalizeTime() {
+  normalizeTime(): void {
     const hrs = Math.floor(this.mm / 60);
-    this.mm = this.mm == 0 ? 0 : this.mm > 0 ? this.mm % 60 : 60 + this.mm;
+    this.mm = this.mm === 0 ? 0 : this.mm > 0 ? this.mm % 60 : 60 + this.mm;
     this.hh = (this.hh + hrs) % 12;
     if (this.hh === 0) {
       this.hh = 12;
     }
   }
 
-  refreshTime() {
+  refreshTime(): void {
     const now = new Date();
     this.hh = now.getHours() % 12;
-    if (this.hh == 0) {
+    if (this.hh === 0) {
       this.hh = 12;
     }
     this.mm = now.getMinutes();
   }
 
-  saveClockOptions() {
+  saveClockOptions(): void {
     this.settingsService.setConfig(ClockComponent.CLOCK_OPTIONS_KEY, JSON.stringify(this.clockOptions));
   }
 
-  startHandMove(event: MouseEvent, isHourHand: boolean) {
-    this.prevPosition = {x: event.offsetX, y: event.offsetY};
-    this.clockHandMoveStart = {isHourHand: isHourHand, point: {x: event.offsetX, y: event.offsetY}};
+  startHandMove(event: MouseEvent, isHourHand: boolean): void {
+    this.clockHandMoveStart = {point: {x: event.offsetX, y: event.offsetY}, hourHand: isHourHand, prevMinute: this.mm};
   }
 
-  startHandTouchMove(event: TouchEvent, isHourHand: boolean) {
+  startHandTouchMove(event: TouchEvent, isHourHand: boolean): void {
     console.log(isHourHand, event.touches.item(0));
   }
 
-  endClockHandMove() {
+  endClockHandMove(): void {
     this.clockHandMoveStart = null;
-    this.prevPosition = null;
   }
 
-  handleClockHandMove(event: MouseEvent) {
+  handleClockHandMove(event: MouseEvent): void {
     if (this.clockHandMoveStart != null) {
       const degree = this.computeDegree(event);
       this.clockHandMoveStart.point = {x: event.offsetX, y: event.offsetY};
-      if (this.clockHandMoveStart?.isHourHand) {
+      if (this.clockHandMoveStart.hourHand) {
         this.hh = Math.floor(degree / 30);
       } else {
         this.mm = Math.floor(degree / 6);
-        this.hh = this.hh + (this.isWindingDown(event) ? - 1 : this.isWindingUp(event) ? 1 : 0);
+        this.hh = this.hh + (this.isWindingDown(this.mm) ? - 1 : this.isWindingUp(this.mm) ? 1 : 0);
       }
-      if (this.hh === 0) this.hh = 12;
+      if (this.hh === 0) {
+        this.hh = 12;
+      }
+      this.clockHandMoveStart.prevMinute = this.mm;
     }
-    this.prevPosition = {x: event.offsetX, y: event.offsetY};
   }
 
-  private isWindingUp(event: MouseEvent) {
-    return this.prevPosition ? (this.mm === 0 && this.prevPosition.x < this.clockCenter.x && event.offsetX > this.clockCenter.y) : false;
+  private isWindingUp(currentMinute: number): boolean {
+    return this.clockHandMoveStart ? (this.clockHandMoveStart.prevMinute === 59 && currentMinute === 0) : false;
   }
 
-  private isWindingDown(event: MouseEvent) {
-    return this.prevPosition ? (this.mm == 59 && this.prevPosition.x > this.clockCenter.x && event.offsetX < this.clockCenter.y) : false;
+  private isWindingDown(currentMinute: number): boolean {
+    return this.clockHandMoveStart ? (this.clockHandMoveStart.prevMinute === 0 && currentMinute === 59) : false;
   }
 
-  private computeDegree(event: MouseEvent) {
+  private computeDegree(event: MouseEvent): number {
     const line1 = {a: this.clockCenter, b: {x: this.clockCenter.x, y: 0}};
     const line2 = {a: this.clockCenter, b: {x: event.offsetX, y: event.offsetY}};
     const dAx = line1.b.x - line1.a.x;
@@ -309,5 +324,11 @@ export class ClockComponent implements OnInit {
     const degree = angle * (180 / Math.PI);
     return degree < 0 ? degree + 360 : degree;
   }
+}
+
+interface MoveEvent {
+  prevMinute: number;
+  hourHand: boolean;
+  point: Point;
 }
 
