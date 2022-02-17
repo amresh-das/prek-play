@@ -72,33 +72,44 @@
     <mat-card class="clock-options">
       <mat-card-header class="clock-options-header">Clock Options</mat-card-header>
       <mat-card-content>
-        <mat-card>
-          <mat-card-header>Hours</mat-card-header>
-          <mat-card-content>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show1HourMarkers">Show 1 hour markers</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show5HourMarkers">Show 5 hour markers</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showHourHand">Show Hour hand</mat-checkbox>
-          </mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-card-header>Minutes</mat-card-header>
-          <mat-card-content>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show1MinuteMarkers">Show 1 minute markers</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show5MinuteMarkers">Show 5 minute markers</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show15MinuteMarkers">Show 15 minute markers</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showMinuteHand">Show Minute hand</mat-checkbox>
-          </mat-card-content>
-        </mat-card>
-        <mat-card>
-          <mat-card-header>Labels</mat-card-header>
-          <mat-card-content>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showOClock">Show O' clock</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterPast">Show Quarter past</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showHalfPast">Show Half past</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterTo">Show Quarter to</mat-checkbox><br>
-            <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showTimeText">Show Time in text</mat-checkbox>
-          </mat-card-content>
-        </mat-card>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Configure Hours</mat-panel-title>
+              <mat-panel-description>Major, minor ticks and Hand</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show1HourMarkers">Show 1 hour markers</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show5HourMarkers">Show 5 hour markers</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showHourHand">Show Hour hand</mat-checkbox>
+            </mat-card>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Configure Minutes</mat-panel-title>
+              <mat-panel-description>Major, minor ticks and Hand</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show1MinuteMarkers">Show 1 minute markers</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show5MinuteMarkers">Show 5 minute markers</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.show15MinuteMarkers">Show 15 minute markers</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showMinuteHand">Show Minute hand</mat-checkbox>
+            </mat-card>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Configure Labels</mat-panel-title>
+              <mat-panel-description>Quarter/Half past/to labels and Time box</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showOClock">Show O' clock</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterPast">Show Quarter past</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showHalfPast">Show Half past</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterTo">Show Quarter to</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showTimeText">Show Time in text</mat-checkbox>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
