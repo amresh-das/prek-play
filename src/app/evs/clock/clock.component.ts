@@ -155,7 +155,7 @@ export class ClockComponent implements OnInit {
   }
 
   getHourMarkerTransform(i: number): string {
-    const position: Position = this.getPosition(i);
+    const position: Position = ClockComponent.getPosition(i);
     const value = this.getTickHourValue(i);
     const digits = value > 9 ? 2 : 1;
     const isMajor = i % 5 === 0;
@@ -185,7 +185,7 @@ export class ClockComponent implements OnInit {
   }
 
   getMinuteMarkerTransform(i: number): string {
-    const position: Position = this.getPosition(i);
+    const position: Position = ClockComponent.getPosition(i);
     const digits = i > 9 ? 2 : 1;
     const isMajor = i % 5 === 0;
     let xOffset = 1;
