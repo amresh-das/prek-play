@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Point} from "@angular/cdk/drag-drop";
 import {SettingsService} from "../../services/settings.service";
+import {Position} from "./position";
 
 @Component({
   selector: 'app-clock',
@@ -9,7 +10,7 @@ import {SettingsService} from "../../services/settings.service";
 })
 export class ClockComponent implements OnInit {
 
-  private static readonly SVG_SIZE_PERCENT = .92;
+  private static readonly SVG_SIZE_PERCENT = .93;
   private static readonly CLOCK_RADIUS_PERCENT = .33;
   private static readonly CLOCK_OPTIONS_KEY = 'clock.options';
 
@@ -33,6 +34,8 @@ export class ClockComponent implements OnInit {
     showQuarterTo: true,
     showTimeText: true
   }
+  clockHandMoveStart: null | {isHourHand: boolean, point: Point} = null;
+  prevPosition: Point;
 
   private readonly hourRadiusModifier = 0.80;
   private readonly majorMarkerTextSizeToRadius = 0.09;
@@ -42,26 +45,20 @@ export class ClockComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.svgSize = ClockComponent.getSvgSize();
-    this.clockRadius = ClockComponent.getClockRadius();
-    this.clockCenter = {x: this.svgSize / 2, y: this.svgSize / 2};
     this.clockOptions = this.settingsService.getConfigObj(ClockComponent.CLOCK_OPTIONS_KEY, this.clockOptions);
     this.refreshTime();
+    this.computeClockDimensions();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.svgSize = ClockComponent.getSvgSize();
-    this.clockRadius = ClockComponent.getClockRadius();
+    this.computeClockDimensions();
+  }
+
+  private computeClockDimensions() {
+    this.svgSize = Math.min(window.innerWidth, window.innerHeight) * ClockComponent.SVG_SIZE_PERCENT;
+    this.clockRadius = this.svgSize * ClockComponent.CLOCK_RADIUS_PERCENT;
     this.clockCenter = {x: this.svgSize / 2, y: this.svgSize / 2};
-  }
-
-  static getSvgSize() {
-    return Math.min(window.innerWidth, window.innerHeight) * this.SVG_SIZE_PERCENT;
-  }
-
-  static getClockRadius() {
-    return ClockComponent.getSvgSize() * this.CLOCK_RADIUS_PERCENT;
   }
 
   getHourTicks(): number[] {
@@ -138,16 +135,16 @@ export class ClockComponent implements OnInit {
     }
     if (position === Position.RIGHT) {
       yOffset = 1.25;
-    } else if (position === Position.FIRSTQUADRANT) {
+    } else if (position === Position.FIRST_QUADRANT) {
       xOffset = .5;
       yOffset = .6;
-    }  else if (position === Position.SECONDQUADRANT) {
+    }  else if (position === Position.SECOND_QUADRANT) {
       xOffset = .5;
       yOffset = isMajor ? 1.5 : .1;
-    } else if (position === Position.THIRDQUADRENT) {
+    } else if (position === Position.THIRD_QUADRENT) {
       xOffset = .1;
       yOffset = isMajor ? 1.5 : .1;
-    } else if (position === Position.FOURTHQUADRENT) {
+    } else if (position === Position.FOURTH_QUADRENT) {
       xOffset = isMajor ? .6 : .2;
       yOffset = isMajor ? 2.15 : .5;
     }
@@ -171,16 +168,16 @@ export class ClockComponent implements OnInit {
     } else if (position === Position.RIGHT) {
       xOffset = 1.5;
       yOffset = .6;
-    } else if (position === Position.FIRSTQUADRANT) {
+    } else if (position === Position.FIRST_QUADRANT) {
       xOffset = (i > 9 ? -.2 : 0) + (isMajor ? 1.5 : .5);
       yOffset = (i > 9 ? -.2 : 0) + (isMajor ? 1 : .15);
-    } else if (position === Position.SECONDQUADRANT) {
+    } else if (position === Position.SECOND_QUADRANT) {
       xOffset = isMajor ? 1 : .5;
       yOffset = isMajor ? .5 : .15;
-    }  else if (position === Position.THIRDQUADRENT) {
+    }  else if (position === Position.THIRD_QUADRENT) {
       xOffset = isMajor ? 1 : .7;
       yOffset = isMajor ? .5 : .15;
-    } else if (position === Position.FOURTHQUADRENT) {
+    } else if (position === Position.FOURTH_QUADRENT) {
       xOffset = isMajor ? 1.5 : .7;
       yOffset = isMajor ? 1 : .15;
     }
@@ -197,10 +194,10 @@ export class ClockComponent implements OnInit {
       return Position.LEFT;
     } else {
       const quadrant = Math.floor(i / 15);
-      if (quadrant == 0) return Position.FIRSTQUADRANT;
-      if (quadrant == 1) return Position.SECONDQUADRANT;
-      if (quadrant == 2) return Position.THIRDQUADRENT;
-      return Position.FOURTHQUADRENT;
+      if (quadrant == 0) return Position.FIRST_QUADRANT;
+      if (quadrant == 1) return Position.SECOND_QUADRANT;
+      if (quadrant == 2) return Position.THIRD_QUADRENT;
+      return Position.FOURTH_QUADRENT;
     }
   }
 
@@ -254,23 +251,58 @@ export class ClockComponent implements OnInit {
   refreshTime() {
     const now = new Date();
     this.hh = now.getHours() % 12;
+    if (this.hh == 0) {
+      this.hh = 12;
+    }
     this.mm = now.getMinutes();
   }
 
   saveClockOptions() {
     this.settingsService.setConfig(ClockComponent.CLOCK_OPTIONS_KEY, JSON.stringify(this.clockOptions));
   }
-}
 
+  startHandMove(event: MouseEvent, isHourHand: boolean) {
+    this.prevPosition = {x: event.offsetX, y: event.offsetY};
+    this.clockHandMoveStart = {isHourHand: isHourHand, point: {x: event.offsetX, y: event.offsetY}};
+  }
 
-enum Position {
-  TOP,
-  BOTTOM,
-  LEFT,
-  RIGHT,
-  FIRSTQUADRANT,
-  SECONDQUADRANT,
-  THIRDQUADRENT,
-  FOURTHQUADRENT
+  endClockHandMove() {
+    this.clockHandMoveStart = null;
+  }
+
+  handleClockHandMove(event: MouseEvent) {
+    if (this.clockHandMoveStart != null) {
+      const degree = this.computeDegree(event);
+      this.clockHandMoveStart.point = {x: event.offsetX, y: event.offsetY};
+      if (this.clockHandMoveStart?.isHourHand) {
+        this.hh = Math.floor(degree / 30);
+      } else {
+        this.mm = Math.floor(degree / 6);
+        this.hh = this.hh + (this.isWindingDown(event) ? - 1 : this.isWindingUp(event) ? 1 : 0);
+      }
+      if (this.hh === 0) this.hh = 12;
+    }
+    this.prevPosition = {x: event.offsetX, y: event.offsetY};
+  }
+
+  private isWindingUp(event: MouseEvent) {
+    return this.mm === 0 && this.prevPosition.x < this.clockCenter.x && event.offsetX > this.clockCenter.y;
+  }
+
+  private isWindingDown(event: MouseEvent) {
+    return this.mm == 59 && this.prevPosition.x > this.clockCenter.x && event.offsetX < this.clockCenter.y;
+  }
+
+  private computeDegree(event: MouseEvent) {
+    const line1 = {a: this.clockCenter, b: {x: this.clockCenter.x, y: 0}};
+    const line2 = {a: this.clockCenter, b: {x: event.offsetX, y: event.offsetY}};
+    const dAx = line1.b.x - line1.a.x;
+    const dAy = line1.b.y - line1.a.y;
+    const dBx = line2.b.x - line2.a.x;
+    const dBy = line2.b.y - line2.a.y;
+    const angle = Math.atan2(dAx * dBy - dAy * dBx, dAx * dBx + dAy * dBy);
+    const degree = angle * (180 / Math.PI);
+    return degree < 0 ? degree + 360 : degree;
+  }
 }
 
