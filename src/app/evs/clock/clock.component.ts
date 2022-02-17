@@ -35,7 +35,7 @@ export class ClockComponent implements OnInit {
     showTimeText: true
   }
   clockHandMoveStart: null | {isHourHand: boolean, point: Point} = null;
-  prevPosition: Point;
+  prevPosition: null | Point;
 
   private readonly hourRadiusModifier = 0.80;
   private readonly majorMarkerTextSizeToRadius = 0.09;
@@ -266,8 +266,13 @@ export class ClockComponent implements OnInit {
     this.clockHandMoveStart = {isHourHand: isHourHand, point: {x: event.offsetX, y: event.offsetY}};
   }
 
+  startHandTouchMove(event: TouchEvent, isHourHand: boolean) {
+    console.log(isHourHand, event.touches.item(0));
+  }
+
   endClockHandMove() {
     this.clockHandMoveStart = null;
+    this.prevPosition = null;
   }
 
   handleClockHandMove(event: MouseEvent) {
@@ -286,11 +291,11 @@ export class ClockComponent implements OnInit {
   }
 
   private isWindingUp(event: MouseEvent) {
-    return this.mm === 0 && this.prevPosition.x < this.clockCenter.x && event.offsetX > this.clockCenter.y;
+    return this.mm === 0 && this.prevPosition?.x < this.clockCenter.x && event.offsetX > this.clockCenter.y;
   }
 
   private isWindingDown(event: MouseEvent) {
-    return this.mm == 59 && this.prevPosition.x > this.clockCenter.x && event.offsetX < this.clockCenter.y;
+    return this.mm == 59 && this.prevPosition?.x > this.clockCenter.x && event.offsetX < this.clockCenter.y;
   }
 
   private computeDegree(event: MouseEvent) {

@@ -2,7 +2,9 @@
   <mat-grid-tile class="clock-face" rowspan="2">
     <svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize"
          (mousemove)="clockHandMoveStart && handleClockHandMove($event)"
-         (mouseup)="clockHandMoveStart && endClockHandMove()">
+         (mouseup)="clockHandMoveStart && endClockHandMove()"
+         (touchstart)="startHandTouchMove($event, false)"
+    >
       <defs>
         <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
           <stop class="left-face" offset="0%"/>
@@ -51,12 +53,14 @@
                [attr.points]="getHourHandPoints()"
                [attr.transform]="getHourTransform()"
                (mousedown)="startHandMove($event, true)"
+               (touchstart)="startHandTouchMove($event, true)"
       />
       <polygon *ngIf="clockOptions.showMinuteHand"
                class="polygon minute-hand"
                [attr.points]="getMinuteHandPoints()"
                [attr.transform]="getMinuteTransform()"
                (mousedown)="startHandMove($event, false)"
+               (touchstart)="startHandTouchMove($event, false)"
       />
       <line *ngIf="clockHandMoveStart" style="fill: #00FF00; stroke: #00FF00; stroke-width: 10px" class="line" [attr.x1]="clockCenter.x" [attr.x2]="clockHandMoveStart.point.x"  [attr.y1]="clockCenter.y"  [attr.y2]="clockHandMoveStart.point.y"/>
     </svg>
