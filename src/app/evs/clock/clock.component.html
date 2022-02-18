@@ -1,9 +1,8 @@
 <mat-grid-list cols="2" rowHeight="30vh">
   <mat-grid-tile class="clock-face" rowspan="3">
     <svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize"
-         (mousemove)="clockHandMoveStart && handleClockHandMove($event)"
-         (mouseup)="clockHandMoveStart && endClockHandMove()"
-         (touchstart)="startHandTouchMove($event, false)"
+         (mousemove)="clockHandMovementTracker && handleClockHandMove($event.offsetX, $event.offsetY)"
+         (mouseup)="clockHandMovementTracker && endClockHandMove()"
     >
       <defs>
         <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -50,21 +49,30 @@
       <text *ngIf="clockOptions.showOClock" x="45%" y="12%" class="o-clock-label">O' Clock</text>
       <polygon *ngIf="clockOptions.showHourHand"
                class="polygon hour-hand"
-               [attr.fill]="clockHandMoveStart?.hourHand ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
-               [attr.stroke]="clockHandMoveStart?.hourHand ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.fill]="clockHandMovementTracker?.hand === ClockHandType.HOUR  ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.stroke]="clockHandMovementTracker?.hand === ClockHandType.HOUR ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
                [attr.points]="getHourHandPoints()"
                [attr.transform]="getHourTransform()"
-               (mousedown)="startHandMove($event, true)"
-               (touchstart)="startHandTouchMove($event, true)"
+               (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.HOUR)"
+               (touchstart)="startHandTouchMove($event, ClockHandType.HOUR)"
       />
       <polygon *ngIf="clockOptions.showMinuteHand"
                class="polygon minute-hand"
-               [attr.fill]="(clockHandMoveStart ? !clockHandMoveStart.hourHand : false) ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
-               [attr.stroke]="(clockHandMoveStart ? !clockHandMoveStart.hourHand : false) ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.fill]="clockHandMovementTracker?.hand === ClockHandType.MINUTE ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
+               [attr.stroke]="clockHandMovementTracker?.hand === ClockHandType.MINUTE ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.60)'"
                [attr.points]="getMinuteHandPoints()"
                [attr.transform]="getMinuteTransform()"
-               (mousedown)="startHandMove($event, false)"
-               (touchstart)="startHandTouchMove($event, false)"
+               (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.MINUTE)"
+               (touchstart)="startHandTouchMove($event, ClockHandType.MINUTE)"
+      />
+      <polygon *ngIf="clockOptions.showSecondHand"
+               class="polygon second-hand"
+               [attr.fill]="clockHandMovementTracker?.hand === ClockHandType.SECOND ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.30)'"
+               [attr.stroke]="clockHandMovementTracker?.hand === ClockHandType.SECOND ? 'rgba(22,225,187,0.78)' : 'rgba(255,10,0,0.30)'"
+               [attr.points]="getSecondHandPoints()"
+               [attr.transform]="getSecondTransform()"
+               (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.SECOND)"
+               (touchstart)="startHandTouchMove($event, ClockHandType.SECOND)"
       />
     </svg>
   </mat-grid-tile>
@@ -98,6 +106,15 @@
           </mat-expansion-panel>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
+              <mat-panel-title>Configure Seconds</mat-panel-title>
+              <mat-panel-description>Show/Hide</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showSecondHand">Show Second hand</mat-checkbox>
+            </mat-card>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
               <mat-panel-title>Configure Labels</mat-panel-title>
               <mat-panel-description>Quarter/Half past/to labels and Time box</mat-panel-description>
             </mat-expansion-panel-header>
@@ -118,12 +135,17 @@
       <mat-card-header>Time</mat-card-header>
       <mat-form-field>
         <mat-label class="time-label">Hours</mat-label>
-        <input matInput type="number" [(ngModel)]="hh" (change)="normalizeTime()">
+        <input matInput type="number" [(ngModel)]="hh" (change)="normalizeTime()" maxlength="2">
       </mat-form-field>
-      :
-      <mat-form-field>
+      <span *ngIf="clockOptions.showMinuteHand">:</span>
+      <mat-form-field *ngIf="clockOptions.showMinuteHand">
         <mat-label class="time-label">Minutes</mat-label>
-        <input matInput type="number" [(ngModel)]="mm" (change)="normalizeTime()">
+        <input matInput type="number" [(ngModel)]="mm" (change)="normalizeTime()" maxlength="2">
+      </mat-form-field>
+      <span *ngIf="clockOptions.showSecondHand">:</span>
+      <mat-form-field *ngIf="clockOptions.showSecondHand">
+        <mat-label class="time-label">Seconds</mat-label>
+        <input matInput type="number" [(ngModel)]="ss" (change)="normalizeTime()" maxlength="2">
       </mat-form-field>
       <mat-icon class="refresh-time" (click)="refreshTime()">refresh</mat-icon>
     </mat-card>

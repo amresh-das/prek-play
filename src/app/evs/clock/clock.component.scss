@@ -1,15 +1,12 @@
-.minute-hand {
+.second-hand, .minute-hand, .hour-hand {
   stroke-width:1;
   transform-origin:50% 50%;
   -webkit-filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
   filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
 }
 
-.hour-hand {
-  stroke-width:1;
-  transform-origin:50% 50%;
-  -webkit-filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
-  filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .9));
+.second-hand {
+  fill: rgba(255,10,0,0.30);
 }
 
 .clock-numbers {
