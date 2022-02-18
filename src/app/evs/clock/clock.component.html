@@ -1,8 +1,9 @@
 <mat-grid-list cols="2" rowHeight="30vh">
   <mat-grid-tile class="clock-face" rowspan="3">
-    <svg class="svg" [attr.width]="svgSize" [attr.height]="svgSize"
+    <svg #svgClock class="svg clock-face" [attr.width]="svgSize" [attr.height]="svgSize"
          (mousemove)="clockHandMovementTracker && handleClockHandMove($event.offsetX, $event.offsetY)"
          (mouseup)="clockHandMovementTracker && endClockHandMove()"
+         (touchstart)="startHandTouchMove($event, ClockHandType.HOUR)"
     >
       <defs>
         <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -148,6 +149,9 @@
         <input matInput type="number" [(ngModel)]="ss" (change)="normalizeTime()" maxlength="2">
       </mat-form-field>
       <mat-icon class="refresh-time" (click)="refreshTime()">refresh</mat-icon>
+    </mat-card>
+    <mat-card>
+      {{svgClock.getClientRects().item(0)?.x}},{{svgClock.getClientRects().item(0)?.y}}
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
