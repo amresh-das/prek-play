@@ -332,7 +332,6 @@ export class ClockComponent implements OnInit {
   handleHandMoveWithTouch(event: TouchEvent): void {
     const svgRect = this.svg.nativeElement.getBoundingClientRect();
     const item = event.touches.item(0);
-    console.log('Trying move: ', item);
     if (item) {
       this.handleClockHandMove(item.clientX - svgRect.x, item.clientY - svgRect.y);
     }
