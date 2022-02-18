@@ -1,9 +1,9 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Point} from '@angular/cdk/drag-drop';
 import {SettingsService} from '../../services/settings.service';
 import {Position} from './position';
-import {ClockHand} from "./clock.hand";
-import {MoveEvent} from "./move.event";
+import {ClockHand} from './clock.hand';
+import {MoveEvent} from './move.event';
 
 @Component({
   selector: 'app-clock',
@@ -20,6 +20,7 @@ export class ClockComponent implements OnInit {
   mm = 0;
   ss = 0;
   nn = 0;
+  @ViewChild('svgClock') svg: ElementRef<SVGElement>;
   svgSize: number;
   tickMargin = 10;
   clockRadius: number;
@@ -37,7 +38,8 @@ export class ClockComponent implements OnInit {
     showHalfPast: true,
     showQuarterTo: true,
     showTimeText: true,
-    showSecondHand: false
+    showSecondHand: false,
+    enableTouch: true
   };
   clockHandMovementTracker: null | MoveEvent = null;
   ClockHandType = ClockHand;
@@ -314,11 +316,26 @@ export class ClockComponent implements OnInit {
 
   startHandMove(offsetX: number, offsetY: number, hand: ClockHand): void {
     this.nn = 0;
-    this.clockHandMovementTracker = {point: {x: offsetX, y: offsetY}, hand: hand, prevDegree: this.computeDegree(offsetX, offsetY)};
+    this.clockHandMovementTracker = {point: {x: offsetX, y: offsetY}, hand, prevDegree: this.computeDegree(offsetX, offsetY)};
   }
 
   startHandTouchMove(event: TouchEvent, hand: ClockHand): void {
-    console.log(hand, event);
+    if (this.clockOptions.enableTouch) {
+      const svgRect = this.svg.nativeElement.getBoundingClientRect();
+      const item = event.touches.item(0);
+      if (item) {
+        this.startHandMove(item.clientX - svgRect.x, item.clientY - svgRect.y, hand);
+      }
+    }
+  }
+
+  handleHandMoveWithTouch(event: TouchEvent): void {
+    const svgRect = this.svg.nativeElement.getBoundingClientRect();
+    const item = event.touches.item(0);
+    console.log('Trying move: ', item);
+    if (item) {
+      this.handleClockHandMove(item.clientX - svgRect.x, item.clientY - svgRect.y);
+    }
   }
 
   endClockHandMove(): void {
@@ -350,7 +367,7 @@ export class ClockComponent implements OnInit {
         this.hh = Math.floor(degree / 30);
       }
 
-      this.clockHandMovementTracker = {point: {x: offsetX, y: offsetY}, hand: hand, prevDegree: degree};
+      this.clockHandMovementTracker = {point: {x: offsetX, y: offsetY}, hand, prevDegree: degree};
       this.normalizeTime();
     }
   }

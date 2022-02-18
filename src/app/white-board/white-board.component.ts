@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {fromEvent, Subscription} from "rxjs";
-import {pairwise, switchMap, takeUntil} from "rxjs/operators";
+import {fromEvent, Subscription} from 'rxjs';
+import {pairwise, switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-white-board',
@@ -8,7 +8,7 @@ import {pairwise, switchMap, takeUntil} from "rxjs/operators";
   styleUrls: ['./white-board.component.scss']
 })
 export class WhiteBoardComponent implements AfterViewInit, OnDestroy {
-  color = "black";
+  color = 'black';
   lineSize = 8;
   isDrawn = false;
   @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
@@ -40,9 +40,9 @@ export class WhiteBoardComponent implements AfterViewInit, OnDestroy {
   }
 
   colorChanged() {
-    const element = document.getElementsByClassName("mat-slider-thumb").item(0);
+    const element = document.getElementsByClassName('mat-slider-thumb').item(0);
     if (element) {
-      element.setAttribute("style", "{background-color: " + this.color + "}");
+      element.setAttribute('style', '{background-color: ' + this.color + '}');
     }
   }
 

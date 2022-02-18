@@ -3,7 +3,8 @@
     <svg #svgClock class="svg clock-face" [attr.width]="svgSize" [attr.height]="svgSize"
          (mousemove)="clockHandMovementTracker && handleClockHandMove($event.offsetX, $event.offsetY)"
          (mouseup)="clockHandMovementTracker && endClockHandMove()"
-         (touchstart)="startHandTouchMove($event, ClockHandType.HOUR)"
+         (touchmove)="clockHandMovementTracker && handleHandMoveWithTouch($event)"
+         (touchend)="clockHandMovementTracker && endClockHandMove()"
     >
       <defs>
         <linearGradient id="clockgradient" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -55,7 +56,7 @@
                [attr.points]="getHourHandPoints()"
                [attr.transform]="getHourTransform()"
                (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.HOUR)"
-               (touchstart)="startHandTouchMove($event, ClockHandType.HOUR)"
+               (touchstart)="!clockHandMovementTracker && startHandTouchMove($event, ClockHandType.HOUR)"
       />
       <polygon *ngIf="clockOptions.showMinuteHand"
                class="polygon minute-hand"
@@ -64,7 +65,7 @@
                [attr.points]="getMinuteHandPoints()"
                [attr.transform]="getMinuteTransform()"
                (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.MINUTE)"
-               (touchstart)="startHandTouchMove($event, ClockHandType.MINUTE)"
+               (touchstart)="!clockHandMovementTracker && startHandTouchMove($event, ClockHandType.MINUTE)"
       />
       <polygon *ngIf="clockOptions.showSecondHand"
                class="polygon second-hand"
@@ -73,7 +74,7 @@
                [attr.points]="getSecondHandPoints()"
                [attr.transform]="getSecondTransform()"
                (mousedown)="startHandMove($event.offsetX, $event.offsetY, ClockHandType.SECOND)"
-               (touchstart)="startHandTouchMove($event, ClockHandType.SECOND)"
+               (touchstart)="!clockHandMovementTracker && startHandTouchMove($event, ClockHandType.SECOND)"
       />
     </svg>
   </mat-grid-tile>
@@ -124,7 +125,8 @@
               <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterPast">Show Quarter past</mat-checkbox><br>
               <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showHalfPast">Show Half past</mat-checkbox><br>
               <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showQuarterTo">Show Quarter to</mat-checkbox><br>
-              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showTimeText">Show Time in text</mat-checkbox>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.showTimeText">Show Time in text</mat-checkbox><br>
+              <mat-checkbox (change)="saveClockOptions()" [(ngModel)]="clockOptions.enableTouch">Allow moving clock with touch</mat-checkbox>
             </mat-card>
           </mat-expansion-panel>
         </mat-accordion>
@@ -149,9 +151,6 @@
         <input matInput type="number" [(ngModel)]="ss" (change)="normalizeTime()" maxlength="2">
       </mat-form-field>
       <mat-icon class="refresh-time" (click)="refreshTime()">refresh</mat-icon>
-    </mat-card>
-    <mat-card>
-      {{svgClock.getClientRects().item(0)?.x}},{{svgClock.getClientRects().item(0)?.y}}
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
