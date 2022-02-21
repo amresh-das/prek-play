@@ -30,7 +30,6 @@ export class PhonicsComponent implements OnInit {
   blends = ['oo', 'ee', 'ck', 'ch', 'sh', 'th', 'bl', 'cl', 'fl', 'sl', 'gl', 'pl', 'dr', 'gr', 'cr', 'fr', 'br', 'tr', 'pr',
     'sc', 'sk', 'sl', 'tch', 'sp', 'sm', 'squ', 'st', 'sw', 'tw', 'str', 'spr', 'ay', 'ey', 'ow', 'ew', 'au', 'aw', 'al', 'ph', 'wh',
     'igh', 'ing', 'ou', 'ce', 'se', 'ge', 'ar', 'er', 'ir', 'ur', 'or', 'dge', 'cy', 'ci', 'gi', 'gy'];
-  blendsTodo = ['ar', 'er', 'ir'];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
   private static readonly PHONICS_FILTER_VALUES = 'phonics.filter.values';
   private static readonly PHONICS_COLOR_SCHEME_CONSONANT = 'phonics.color.scheme.consonants';

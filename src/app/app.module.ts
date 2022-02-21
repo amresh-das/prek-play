@@ -12,7 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import { PhonicsComponent } from './phonics/phonics.component';
+import { PhonicsComponent } from './language/phonics.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -20,12 +20,12 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {WordPicComponent} from './phonics/word.pic.component';
+import {WordPicComponent} from './language/word.pic.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatRippleModule} from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
-import { ReadWordComponent } from './phonics/read-word.component';
+import { ReadWordComponent } from './language/read-word.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import { SettingsComponent } from './settings/settings.component';
@@ -41,11 +41,12 @@ import { WhiteBoardComponent } from './white-board/white-board.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSliderModule} from '@angular/material/slider';
-import { VowelsComponent } from './phonics/vowels.component';
+import { VowelsComponent } from './language/vowels.component';
 import { CanvasComponent } from './shared/canvas/canvas.component';
 import { AddComponent } from './maths/add/add.component';
 import { SubtractComponent } from './maths/subtract/subtract.component';
 import {ClockComponent} from './evs/clock/clock.component';
+import { VerbsComponent } from './language/verbs.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {ClockComponent} from './evs/clock/clock.component';
     CanvasComponent,
     AddComponent,
     SubtractComponent,
-    ClockComponent
+    ClockComponent,
+    VerbsComponent
   ],
   imports: [
     BrowserModule,
