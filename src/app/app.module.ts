@@ -48,6 +48,7 @@ import { SubtractComponent } from './maths/subtract/subtract.component';
 import {ClockComponent} from './evs/clock/clock.component';
 import { VerbsComponent } from './language/verbs.component';
 import { WordsComponent } from './language/words.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { WordsComponent } from './language/words.component';
     AddComponent,
     SubtractComponent,
     ClockComponent,
-    VerbsComponent
+    VerbsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -65,6 +65,9 @@
   &nbsp;
   <span class="app-title"><span class="app-alt-title">|alt|</span><span class="app-l-title">learner</span><span *ngIf="subtitle"> - {{subtitle}}</span></span>
   <span class="app-spacer"></span>
+  <button mat-button (click)="navigateMenu('about', 'About')">
+    <mat-icon aria-hidden="false" aria-label="info">info</mat-icon>
+  </button>
   <button mat-button (click)="navigateMenu('settings', 'Configure Settings')">
     <mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon>
   </button>
