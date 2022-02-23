@@ -1,0 +1,9 @@
+[
+  {"word": "sit", "resources" : ["sit.gif"] },
+  {"word": "chase", "resources" : ["chase.gif"] },
+  {"word": "pick", "resources" : ["pick.gif"] },
+  {"word": "eat", "resources" : ["bite2.gif"] },
+  {"word": "mix", "resources" : ["mix.gif"] },
+  {"word": "walk", "resources" : ["walk.gif"] },
+  {"word": "read", "resources" : ["read.gif"] }
+]

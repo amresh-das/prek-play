@@ -10,4 +10,9 @@ export class WordsService {
   getWords(): Observable<Array<Word>> {
     return this.http.get<Word[]>('/assets/words/words.json');
   }
+
+  getVerbs(): Observable<Array<Word>> {
+    return this.http.get<Word[]>('/assets/words/verbs.json');
+  }
+
 }
