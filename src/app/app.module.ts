@@ -47,10 +47,12 @@ import { AddComponent } from './maths/add/add.component';
 import { SubtractComponent } from './maths/subtract/subtract.component';
 import {ClockComponent} from './evs/clock/clock.component';
 import { VerbsComponent } from './language/verbs.component';
+import { WordsComponent } from './language/words.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    WordsComponent,
     PhonicsComponent,
     WordPicComponent,
     ReadWordComponent,

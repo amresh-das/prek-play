@@ -1,0 +1,67 @@
+@import "../../app-style.scss";
+
+:host ::ng-deep .mat-tab-label {
+  background-image: $tab-gradient;
+}
+
+:host ::ng-deep .mat-form-field {
+  margin-top: 10px;
+  margin-right: 5px;
+  font-size: 1em;
+  color: darkblue;
+  text-shadow: 1px 1px #3c0e5a;
+}
+
+.filter-chip-list {
+  width:60%;
+}
+
+.actions {
+  float: right;
+  padding-top: 2em;
+  vertical-align: middle;
+}
+
+.color-picker {
+  width: 30px;
+  height: 33px;
+}
+
+.mat-button {
+  font-size: smaller;
+}
+
+.mat-chip {
+  font-size: 1.5em;
+}
+
+.mat-button {
+  border: 1px solid gray;
+  margin: 1px;
+}
+
+.word-tile, .word-pic-tile {
+  color: #666666;
+  border-radius: 10px;
+}
+
+.word-tile {
+  background-image: $no-pic-word-gradient;
+}
+
+.word-pic-tile {
+  background-image: $with-pic-word-gradient;
+  cursor: pointer;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.word-controls {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  cursor: pointer;
+  font-size: medium;
+}
