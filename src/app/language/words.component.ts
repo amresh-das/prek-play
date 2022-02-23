@@ -33,13 +33,6 @@ export class WordsComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
   constructor(private wordsService: WordsService, public dialog: MatDialog, private settingsService: SettingsService) {
-    this.filters = JSON.parse(settingsService.getConfigOrDefault(this.prefix + '.filter.values', '[]'));
-    this.consonantColor = settingsService.getConfigOrDefault(this.prefix + '.color.scheme.consonants', '#000000');
-    this.vowelColor = settingsService.getConfigOrDefault(this.prefix + '.color.scheme.vowels', '#000000');
-    this.hiddenWords = JSON.parse(this.settingsService.getConfigOrDefault(this.prefix + '.hidden.words', '[]'));
-    const fontSize = settingsService.getConfigOrDefault(this.prefix + '.words.font.size', '1.3');
-    this.wordFontSize = fontSize + 'em';
-    this.wordShadow = Number.parseFloat(fontSize) > 1.0 ? '2px 1px' : 'none';
   }
 
   columnCount: number = 3;
@@ -47,6 +40,13 @@ export class WordsComponent implements OnInit {
 
   ngOnInit(): void {
     this.columnCount = window.innerWidth / this.wordWidth;
+    this.filters = JSON.parse(this.settingsService.getConfigOrDefault(this.prefix + '.filter.values', '[]'));
+    this.consonantColor = this.settingsService.getConfigOrDefault(this.prefix + '.color.scheme.consonants', '#000000');
+    this.vowelColor = this.settingsService.getConfigOrDefault(this.prefix + '.color.scheme.vowels', '#000000');
+    this.hiddenWords = JSON.parse(this.settingsService.getConfigOrDefault(this.prefix + '.hidden.words', '[]'));
+    const fontSize = this.settingsService.getConfigOrDefault(this.prefix + '.words.font.size', '1.3');
+    this.wordFontSize = fontSize + 'em';
+    this.wordShadow = Number.parseFloat(fontSize) > 1.0 ? '2px 1px' : 'none';
   }
 
   @HostListener('window:resize')
