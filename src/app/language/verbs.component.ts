@@ -9,12 +9,15 @@ import {WordsService} from "../services/words.service";
 })
 export class VerbsComponent implements OnInit {
   verbs: Word[] = [];
-  verbFilters: string[];
+  verbFilters: string[] = [];
 
   constructor(private wordsService: WordsService) { }
 
   ngOnInit(): void {
-    this.wordsService.getVerbs().subscribe(verbs => this.verbs = verbs);
+    this.wordsService.getVerbs().subscribe(verbs => {
+      this.verbs = verbs
+      this.verbFilters = this.verbs.map(v => v.word);
+    });
   }
 
 }
