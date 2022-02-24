@@ -12,21 +12,22 @@ import {SubtractComponent} from './maths/subtract/subtract.component';
 import {ClockComponent} from './evs/clock/clock.component';
 import {VerbsComponent} from './language/verbs.component';
 import {AboutComponent} from './about/about.component';
+import {AuthGuard} from './services/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
-  { path: 'whiteboard', component: WhiteBoardComponent },
-  { path: 'phonics', component: PhonicsComponent },
-  { path: 'verbs', component: VerbsComponent },
-  { path: 'vowels', component: VowelsComponent },
-  { path: 'seasons', component: SeasonsComponent },
-  { path: 'family', component: FamilyTreeComponent },
-  { path: 'clock', component: ClockComponent },
-  { path: 'animal-categories', component: AnimalCategoriesComponent },
-  { path: 'maths/addition', component: AddComponent },
-  { path: 'maths/subtraction', component: SubtractComponent },
-  { path: 'settings', component: SettingsComponent }
+  { path: 'whiteboard', component: WhiteBoardComponent, canActivate : [AuthGuard] },
+  { path: 'phonics', component: PhonicsComponent, canActivate : [AuthGuard] },
+  { path: 'verbs', component: VerbsComponent, canActivate : [AuthGuard] },
+  { path: 'vowels', component: VowelsComponent, canActivate : [AuthGuard] },
+  { path: 'seasons', component: SeasonsComponent, canActivate : [AuthGuard] },
+  { path: 'family', component: FamilyTreeComponent, canActivate : [AuthGuard] },
+  { path: 'clock', component: ClockComponent, canActivate : [AuthGuard] },
+  { path: 'animal-categories', component: AnimalCategoriesComponent, canActivate : [AuthGuard] },
+  { path: 'maths/addition', component: AddComponent, canActivate : [AuthGuard] },
+  { path: 'maths/subtraction', component: SubtractComponent, canActivate : [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({

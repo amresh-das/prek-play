@@ -29,7 +29,7 @@ import { ReadWordComponent } from './language/read-word.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
 import { SettingsComponent } from './settings/settings.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {SelectContextItemsComponent} from './shared/select-context-items/select-context-items.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -49,6 +49,7 @@ import {ClockComponent} from './evs/clock/clock.component';
 import { VerbsComponent } from './language/verbs.component';
 import { WordsComponent } from './language/words.component';
 import { AboutComponent } from './about/about.component';
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -102,9 +103,26 @@ import { AboutComponent } from './about/about.component';
     DragDropModule,
     MatExpansionModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
-  providers: [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    Location,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('28523494863-6fpqh3i0171mrm3105ga6po9errrmrqb.apps.googleusercontent.com')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

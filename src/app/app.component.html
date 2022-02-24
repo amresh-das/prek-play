@@ -3,39 +3,43 @@
     <mat-icon class="app-menu">menu</mat-icon>
   </a>
   <mat-menu #menu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('whiteboard', 'White Board')">
+    <a *ngIf="!this.loggedIn" mat-menu-item (click)="navigateMenu('about', 'About')">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </a>
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('whiteboard', 'White Board')">
       <mat-icon>draw</mat-icon>
       <span>White Board</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('language', 'Language')" [matMenuTriggerFor]="phonicsSubMenu">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('language', 'Language')" [matMenuTriggerFor]="phonicsSubMenu">
       <mat-icon>text_snippet</mat-icon>
       <span>Language</span>
     </a>
-    <a mat-menu-item [matMenuTriggerFor]="mathsMenu">
+    <a *ngIf="this.loggedIn" mat-menu-item [matMenuTriggerFor]="mathsMenu">
       <mat-icon>calculate</mat-icon>
       <span>Maths</span>
     </a>
-    <a mat-menu-item [matMenuTriggerFor]="evsMenu">
+    <a *ngIf="this.loggedIn" mat-menu-item [matMenuTriggerFor]="evsMenu">
       <mat-icon>public</mat-icon>
       <span>Environmental Studies</span>
     </a>
   </mat-menu>
   <mat-menu #phonicsSubMenu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('phonics', 'Read Words')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('phonics', 'Read Words')">
       <mat-icon>text_snippet</mat-icon>
       <span>Phonics</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('vowels', 'Identify Vowels')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('vowels', 'Identify Vowels')">
       <span style="font-size: 0.7em">aeiou&nbsp;&nbsp;&nbsp;&nbsp;</span>
       <span>Vowels</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('verbs', 'Understand Verbs')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('verbs', 'Understand Verbs')">
       <mat-icon>directions_run</mat-icon>
       <span>Verbs</span>
     </a>
   </mat-menu>
   <mat-menu #evsMenu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('seasons', 'Learn Seasons')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('seasons', 'Learn Seasons')">
       <mat-icon>wb_cloudy</mat-icon>
       <span>Seasons</span>
     </a>
@@ -43,21 +47,21 @@
 <!--      <mat-icon>groups</mat-icon>-->
 <!--      <span>Family</span>-->
 <!--    </a>-->
-    <a mat-menu-item (click)="navigateMenu('animal-categories', 'Domestic & Wild Animals')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('animal-categories', 'Domestic & Wild Animals')">
       <mat-icon>pets</mat-icon>
       <span>Domestic & Wild Animals</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('clock', 'Clock')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('clock', 'Clock')">
       <mat-icon>schedule</mat-icon>
       <span>Clock</span>
     </a>
   </mat-menu>
   <mat-menu #mathsMenu="matMenu">
-    <a mat-menu-item (click)="navigateMenu('maths/addition', 'Addition')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('maths/addition', 'Addition')">
       <mat-icon>add</mat-icon>
       <span>Addition</span>
     </a>
-    <a mat-menu-item (click)="navigateMenu('maths/subtraction', 'Subtraction')">
+    <a *ngIf="this.loggedIn" mat-menu-item (click)="navigateMenu('maths/subtraction', 'Subtraction')">
       <mat-icon>remove</mat-icon>
       <span>Subtraction</span>
     </a>
@@ -71,8 +75,27 @@
   <button mat-button (click)="navigateMenu('settings', 'Configure Settings')">
     <mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon>
   </button>
+  <a mat-menu-item [matMenuTriggerFor]="userMenu">
+    <mat-icon *ngIf="!user" class="account-menu">account_circle</mat-icon>
+    <img *ngIf="user" class="profile-photo" [src]="user.photoUrl">
+    <span class="account-menu">{{user?.name}}</span>
+  </a>
+  <mat-menu #userMenu="matMenu">
+    <a mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </a>
+  </mat-menu>
 </mat-toolbar>
 <mat-divider></mat-divider>
 <mat-card>
   <router-outlet></router-outlet>
+</mat-card>
+<mat-card *ngIf="!user">
+  <mat-card-header>You are not logged in. Please sign in to access all app features.</mat-card-header>
+  <mat-card-content>
+    <button mat-button (click)="login()">
+      <mat-icon aria-hidden="false" aria-label="Login">login</mat-icon>
+    </button>
+  </mat-card-content>
 </mat-card>
