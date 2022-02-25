@@ -11,8 +11,8 @@
     <span id="domestic" #domesticHolder="cdkDropList" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="resultDomestic" [cdkDropListEnterPredicate]="isDomesticAllowed">
       <mat-card class="category-card">
         <mat-card-content>
-          <img src="assets/images/animalfarm.png" class="category mat-elevation-z2"/>
-          <img *ngFor="let animal of resultDomestic" [src]="'assets/images/' + animal + '.png'" class="animal-result {{animal}}"/>
+          <img src="https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/animalfarm.png" class="category mat-elevation-z2"/>
+          <img *ngFor="let animal of resultDomestic" [src]="'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/' + animal + '.png'" class="animal-result {{animal}}"/>
         </mat-card-content>
       </mat-card>
     </span>
@@ -22,7 +22,7 @@
     <span #choiceHolder cdkDropList [cdkDropListData]="animals" [cdkDropListConnectedTo]="[domesticHolder, wildHolder]">
       <mat-card *ngFor="let animal of animals.slice(0, 1); index as i" class="selection mat-elevation-z10">
         <mat-card-content *ngIf="showImage">
-          <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'assets/images/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
+          <img [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag src="{{'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/' + animal + '.png'}}" alt="{{animal}}" class="choice"/>
         </mat-card-content>
         <mat-card-content *ngIf="!showImage">
           <span [id]="animal" *ngIf="i === 0" #choiceImg cdkDrag class="choice">{{animal | titlecase}}</span>
@@ -38,8 +38,8 @@
     <span id="wild" #wildHolder="cdkDropList" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="resultWild" [cdkDropListEnterPredicate]="isWildAllowed">
       <mat-card class="category-card">
         <mat-card-content>
-          <img src="assets/images/jungle.png" class="category mat-elevation-z2"/>
-          <img *ngFor="let animal of resultWild" [src]="'assets/images/' + animal + '.png'" class="animal-result {{animal}}"/>
+          <img src="https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/jungle.png" class="category mat-elevation-z2"/>
+          <img *ngFor="let animal of resultWild" [src]="'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/' + animal + '.png'" class="animal-result {{animal}}"/>
         </mat-card-content>
       </mat-card>
     </span>

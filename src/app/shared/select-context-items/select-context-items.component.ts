@@ -46,7 +46,7 @@ export class SelectContextItemsComponent implements OnInit {
   }
 
   getThemePic(): string {
-    return '/assets/images/' + this.data.themePics[this.displayIndex];
+    return 'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/' + this.data.themePics[this.displayIndex];
   }
 
   prev() {
@@ -67,7 +67,7 @@ export class SelectContextItemsComponent implements OnInit {
 
   getPic(item: Item) {
     const pic = item.pics ? item.pics[Randomizer.randomInt(item.pics.length)] : '';
-    return '/assets/images/' + pic;
+    return 'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/' + pic;
   }
 
   allowDrag(item: CdkDrag<any>) {

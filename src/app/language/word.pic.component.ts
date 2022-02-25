@@ -39,11 +39,11 @@ export class WordPicComponent {
   resource(): string {
     let prefix;
     if (this.resourceType() === 'image') {
-      prefix = '/assets/images/'
+      prefix = 'https://altlearner-assets.s3.ap-south-1.amazonaws.com/images/'
     } else if (this.resourceType() === 'audio') {
-      prefix = '/assets/audio/'
+      prefix = 'https://altlearner-assets.s3.ap-south-1.amazonaws.com/audio/'
     } else if (this.resourceType() === 'video') {
-      prefix = '/assets/video/'
+      prefix = 'https://altlearner-assets.s3.ap-south-1.amazonaws.com/video/'
     }
     return prefix + this.resources[this.displayIndex];
   }
