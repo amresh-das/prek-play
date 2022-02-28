@@ -2,8 +2,10 @@
   {"word": "sit", "resources" : ["sit.gif"] },
   {"word": "chase", "resources" : ["chase.gif"] },
   {"word": "pick", "resources" : ["pick.gif"] },
-  {"word": "eat", "resources" : ["bite2.gif"] },
+  {"word": "eat", "resources" : ["aarav-eating.gif","bite2.gif"] },
   {"word": "mix", "resources" : ["mix.gif"] },
   {"word": "walk", "resources" : ["walk.gif"] },
-  {"word": "read", "resources" : ["read.gif"] }
+  {"word": "cycling", "resources" : ["aarav-cycling.gif","cycling.gif"] },
+  {"word": "drinking", "resources" : ["aarav-drinking.gif","drinking.gif"] },
+  {"word": "read", "resources" : ["read.gif","aarav-reading.gif"] }
 ]
